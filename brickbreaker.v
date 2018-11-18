@@ -73,7 +73,7 @@ module control(
 
 	reg current_state, next_state;
 	
-	
+	// Bricks will be 16x4 pixels
 	
 	/* FSM States
 	 *
@@ -99,14 +99,16 @@ module control(
 				  ERASE_BRICK = 4'd8, // Only when the ball collides with a brick
 				  DRAW_BALL = 4'd9;
 	
+	reg [5:0] ram_counter;
+	
 	always @(*)
 	begin: state_table
 		case (current_state)
 			STORE_INTO_RAM: begin
-				if (ram_counter == 5'd31) // 32 blocks to store into RAM so 32 clock cycles for that
+				if (ram_counter == 6'd40) // 40 blocks to store into RAM so 32 clock cycles for that
 					next_state = INITIAL_DRAW;
 				else
-					next_State = STORE_INTO_RAM;
+					next_state = STORE_INTO_RAM;
 			end
 		endcase	
 	end // state_table
@@ -126,14 +128,68 @@ module control(
 		if (!resetn) begin
 			current_state <= STORE_INTO_RAM;
 		end
+		else begin
+			current_state <= next_state;
+		end
 	end // stateFFs
 	
+	always @(posedge clk)
+	begin: ram_counting
+		if (!resetn)
+			ram_counter <= 6'd0;
+		else begin
+			if (current_state == STORE_INTO_RAM)
+				ram_counter <= ram_counter + 1'b1
+		end
+	end // ram_counting
 
 endmodule
 
 module datapath(
 		input clk,
-		input store_ram
+		input resetn,
+		input store_ram,
+		output reg [7:0] x,
+		output reg [6:0] y, 
+		output reg [2:0] colour
 	);
+	
+	wire [17:0] ram_out;
+	
+	ram256x18 storage(
+		.data(ram_info_counter),
+		.address(ram_address_counter),
+		.wren(store_ram),
+		.clock(clk),
+		.q()
+	);
+	
+	reg [17:0] ram_info_counter;
+	reg [6:0] ram_address_counter;
+	
+	/*
+	 * ram_info_counter holds all the information, the color, y, x
+	 * ram_address_counter holds the address for which the info of a brick will be stored
+	 * To generate the bricks, x += 16, once x reaches end of screen, x = 0, y += 8. Address
+	 * increments by one each time.
+	 */
+	always @(posedge clk)
+	begin
+		if (!resetn)
+			ram_info_counter <= 18'd0;
+			ram_address_counter <= 7'd0;
+		else if (store_ram)
+		begin
+			ram_address_counter <= ram_address_counter + 1'b1;
+			ram_info_counter[17:15] = 3'b100;
+			if (ram_info_counter[7:0] == 8'd143)
+				ram_info_counter[7:0] <= 8'd0;
+				ram_info_counter[14:8] <= ram_info_counter[14:8] + 7'd8;
+			else
+				ram_info_counter[7:0] <= ram_info_counter[7:0] + 8'd16
+		end
+	end
+
+	
 
 endmodule
