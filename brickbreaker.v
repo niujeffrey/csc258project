@@ -60,7 +60,7 @@ module BrickBreaker(
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
 		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
-	wire store_ram, draw_all_bricks, paddle, enable_black, enable_paddle_move, draw_ball, enable_ball_move;	
+	wire store_ram, draw_all_bricks, paddle, enable_black, enable_paddle_move, draw_ball, enable_ball_move, clear_screen;	
 	wire [8:0] mouse_x, mouse_y;
 
 	control c0(
@@ -77,7 +77,8 @@ module BrickBreaker(
 		.enable_black(enable_black),
 		.enable_paddle_move(enable_paddle_move),
 		.draw_ball(draw_ball),
-		.enable_ball_move(enable_ball_move)
+		.enable_ball_move(enable_ball_move),
+		.clear_screen(clear_screen)
 	);
 	
 	datapath d0(
@@ -94,6 +95,7 @@ module BrickBreaker(
 		.key_right(~KEY[1]),
 		.draw_ball(draw_ball),
 		.enable_ball_move(enable_ball_move),
+		.clear_screen(clear_screen),
 		.x(x),
 		.y(y),
 		.colour(colour)
@@ -132,7 +134,8 @@ module control(
 		output reg enable_black,
 		output reg enable_paddle_move,
 		output reg draw_ball,
-		output reg enable_ball_move
+		output reg enable_ball_move,
+		output reg clear_screen
 	);
 
 	reg [3:0] current_state, next_state;
@@ -251,8 +254,12 @@ module control(
 		enable_black = 1'b0;
 		enable_paddle_move = 1'b0;
 		enable_ball_move = 1'b0;
+		clear_screen = 1'b0;
 		
 		case (current_state)
+			CLEAR_SCREEN: begin
+				clear_screen = 1'b1;
+			end
 			STORE_INTO_RAM: begin
 				store_ram = 1'b1;
 			end
@@ -306,6 +313,7 @@ module control(
 	end // stateFFs
 	
 	always @(posedge clk)
+	begin
 		if (!resetn)
 			clear_counter <= 16'd0;
 		else
@@ -411,13 +419,16 @@ module datapath(
 		input key_left,
 		input draw_ball,
 		input enable_ball_move,
+		input clear_screen,
 		output reg [7:0] x,
 		output reg [6:0] y, 
 		output reg [2:0] colour
 	);
 	
 	wire [17:0] ram_out;
-		
+	
+	reg [7:0] clear_x;
+	reg [6:0] clear_y;
 	reg [17:0] ram_info;
 	reg [7:0] ram_address;
 	reg [5:0] draw_counter;
@@ -483,6 +494,31 @@ module datapath(
 			end
 		end
 	end
+	
+	always @(posedge clk)
+	begin: clearing_screen
+		if (!resetn)
+		begin
+			clear_x <= 8'd0;
+			clear_y <= 7'd0;
+		end
+		else
+		begin
+			if (clear_screen)
+			begin
+				if (clear_x == 8'd159)
+				begin
+					clear_x <= 8'd0;
+					if (clear_y == 7'd119)
+						clear_y <= 7'd0;
+					else
+						clear_y <= clear_y + 1'b1;
+				end
+				else
+					clear_x <= clear_x + 1'b1;
+			end
+		end
+	end // clearing_screen
 
 	always @(posedge clk)
 	begin: increment_draw_counter
@@ -539,6 +575,12 @@ module datapath(
 			x = ball_x + draw_ball_counter[0];
 			y = ball_y + draw_ball_counter[1];
 			colour = enable_black ? 3'b000 : 3'b100;
+		end
+		else if (clear_screen)
+		begin
+			x = clear_x;
+			y = clear_y;
+			colour = 3'b000;
 		end
 	end // decide_where_x_y_colour_come_from
 	

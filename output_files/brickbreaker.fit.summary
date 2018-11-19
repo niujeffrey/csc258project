@@ -1,12 +1,12 @@
-Fitter Status : Successful - Mon Nov 19 16:22:41 2018
+Fitter Status : Successful - Mon Nov 19 16:56:46 2018
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : brickbreaker
 Top-level Entity Name : BrickBreaker
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 181 / 32,070 ( < 1 % )
-Total registers : 148
+Logic utilization (in ALMs) : 208 / 32,070 ( < 1 % )
+Total registers : 181
 Total pins : 49 / 457 ( 11 % )
 Total virtual pins : 0
 Total block memory bits : 62,208 / 4,065,280 ( 2 % )
