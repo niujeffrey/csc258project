@@ -32,26 +32,26 @@ module BrickBreaker(
 	wire [2:0] colour;
 	wire writeEn;
 	
-	vga_adapter VGA(
-			.resetn(resetn),
-			.clock(CLOCK_50),
-			.colour(colour),
-			.x(x),
-			.y(y),
-			.plot(writeEn),
-			/* Signals for the DAC to drive the monitor. */
-			.VGA_R(VGA_R),
-			.VGA_G(VGA_G),
-			.VGA_B(VGA_B),
-			.VGA_HS(VGA_HS),
-			.VGA_VS(VGA_VS),
-			.VGA_BLANK(VGA_BLANK_N),
-			.VGA_SYNC(VGA_SYNC_N),
-			.VGA_CLK(VGA_CLK));
-		defparam VGA.RESOLUTION = "160x120";
-		defparam VGA.MONOCHROME = "FALSE";
-		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
-		defparam VGA.BACKGROUND_IMAGE = "black.mif";
+//	vga_adapter VGA(
+//			.resetn(resetn),
+//			.clock(CLOCK_50),
+//			.colour(colour),
+//			.x(x),
+//			.y(y),
+//			.plot(writeEn),
+//			/* Signals for the DAC to drive the monitor. */
+//			.VGA_R(VGA_R),
+//			.VGA_G(VGA_G),
+//			.VGA_B(VGA_B),
+//			.VGA_HS(VGA_HS),
+//			.VGA_VS(VGA_VS),
+//			.VGA_BLANK(VGA_BLANK_N),
+//			.VGA_SYNC(VGA_SYNC_N),
+//			.VGA_CLK(VGA_CLK));
+//		defparam VGA.RESOLUTION = "160x120";
+//		defparam VGA.MONOCHROME = "FALSE";
+//		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+//		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
 	wire store_ram, draw_all_bricks;	
 	
@@ -80,7 +80,8 @@ module control(
 		input resetn,
 		output reg writeEn,
 		output reg store_ram,
-		output reg draw_all_bricks
+		output reg draw_all_bricks,
+		output reg draw
 	);
 
 	reg current_state, next_state;
@@ -113,6 +114,7 @@ module control(
 	
 	reg [5:0] ram_counter;
 	reg [11:0] draw_all_counter;
+	reg [5:0] draw_counter;
 	
 	always @(*)
 	begin: state_table
@@ -129,6 +131,12 @@ module control(
 				else
 					next_state = INITIAL_DRAW;
 			end
+			ERASE_BALL: begin
+				if (draw_counter == 5'b10000)
+					next_state = MOVE_BALL;
+				else
+					next_state = ERASE_BALL;
+			end
 		endcase	
 	end // state_table
 	
@@ -137,6 +145,7 @@ module control(
 		writeEn = 1'b0;
 		store_ram = 1'b0;
 		draw_all_bricks = 1'b0;
+		draw = 1'b0;
 		
 		case (current_state)
 			STORE_INTO_RAM: begin
@@ -144,6 +153,11 @@ module control(
 			end
 			INITIAL_DRAW: begin
 				draw_all_bricks = 1'b1;
+				draw = 1'b1;
+				writeEn = 1'b1;
+			end
+			ERASE_BALL: begin
+				draw = 1'b1;
 				writeEn = 1'b1;
 			end
 		endcase
@@ -194,6 +208,7 @@ module datapath(
 		input resetn,
 		input store_ram,
 		input draw_all,
+		input draw,
 		output reg [7:0] x,
 		output reg [6:0] y, 
 		output reg [2:0] colour
@@ -266,7 +281,7 @@ module datapath(
 			draw_counter <= 6'd0;
 		else
 		begin
-			if (draw_all)
+			if (draw == 1'b1)
 			begin
 				if (draw_counter == 6'b111111)
 					draw_counter <= 6'd0;
