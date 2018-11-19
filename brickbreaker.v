@@ -53,22 +53,34 @@ module BrickBreaker(
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
 		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
-	wire store_ram;	
+	wire store_ram, draw_all_bricks;	
 	
 	control c0(
 		.clk(CLOCK_50),
 		.resetn(resetn),
-		.store_ram(store_ram)
+		.writeEn(writeEn),
+		.store_ram(store_ram),
+		.draw_all_bricks(draw_all_bricks)
 	);
 	
-	datapath d0();
+	datapath d0(
+		.clk(CLOCK_50),
+		.resetn(resetn),
+		.store_ram(store_ram),
+		.draw_all(draw_all_bricks),
+		.x(x),
+		.y(y),
+		.colour(colour)
+	);
 		
 endmodule
 
 module control(
 		input clk,
 		input resetn,
-		output reg store_ram
+		output reg writeEn,
+		output reg store_ram,
+		output reg draw_all_bricks
 	);
 
 	reg current_state, next_state;
@@ -100,6 +112,7 @@ module control(
 				  DRAW_BALL = 4'd9;
 	
 	reg [5:0] ram_counter;
+	reg [11:0] draw_all_counter;
 	
 	always @(*)
 	begin: state_table
@@ -110,15 +123,28 @@ module control(
 				else
 					next_state = STORE_INTO_RAM;
 			end
+			INITIAL_DRAW: begin
+				if (initial_counter == 12'b101000000000) // 2560 = 40 bricks * 64 pixels each
+					next_state = MOVE_MOUSE;
+				else
+					next_state = INITIAL_DRAW;
+			end
 		endcase	
 	end // state_table
 	
 	always @(*)
 	begin: enable_signals
+		writeEn = 1'b0;
 		store_ram = 1'b0;
+		draw_all_bricks = 1'b0;
+		
 		case (current_state)
 			STORE_INTO_RAM: begin
 				store_ram = 1'b1;
+			end
+			INITIAL_DRAW: begin
+				draw_all_bricks = 1'b1;
+				writeEn = 1'b1;
 			end
 		endcase
 	end // enable_signals
@@ -137,11 +163,29 @@ module control(
 	begin: ram_counting
 		if (!resetn)
 			ram_counter <= 6'd0;
-		else begin
+		else
+		begin
 			if (current_state == STORE_INTO_RAM)
-				ram_counter <= ram_counter + 1'b1
+			begin
+				ram_counter <= ram_counter + 1'b1;
+			end
+			else
+				ram_counter <= 6'd0;
 		end
 	end // ram_counting
+	
+	always @(posedge clk)
+	begin: brick_counting
+		if (!resetn)
+			draw_all_counter <= 12'd0;
+		else
+		begin
+			if (current_state == INITIAL_DRAW)
+				draw_all_counter <= draw_all_counter + 1'b1;
+			else
+				draw_all_counter <= 12'b0;
+		end
+	end // brick_counting
 
 endmodule
 
@@ -149,6 +193,7 @@ module datapath(
 		input clk,
 		input resetn,
 		input store_ram,
+		input draw_all,
 		output reg [7:0] x,
 		output reg [6:0] y, 
 		output reg [2:0] colour
@@ -157,39 +202,77 @@ module datapath(
 	wire [17:0] ram_out;
 	
 	ram256x18 storage(
-		.data(ram_info_counter),
-		.address(ram_address_counter),
+		.data(ram_info),
+		.address(ram_address),
 		.wren(store_ram),
 		.clock(clk),
-		.q()
+		.q(ram_out)
 	);
 	
-	reg [17:0] ram_info_counter;
-	reg [6:0] ram_address_counter;
+	reg [17:0] ram_info;
+	reg [6:0] ram_address;
+	reg [5:0] draw_counter;
 	
 	/*
-	 * ram_info_counter holds all the information, the color, y, x
-	 * ram_address_counter holds the address for which the info of a brick will be stored
+	 * ram_info holds all the information, the color, y, x
+	 * ram_address holds the address for which the info of a brick will be stored
 	 * To generate the bricks, x += 16, once x reaches end of screen, x = 0, y += 8. Address
 	 * increments by one each time.
 	 */
 	always @(posedge clk)
 	begin
 		if (!resetn)
-			ram_info_counter <= 18'd0;
-			ram_address_counter <= 7'd0;
-		else if (store_ram)
+			ram_info <= 18'd0;
+			ram_address <= 7'd0;
+			draw_counter <= 6'd0;
+		else if (store_ram == 1'b1)
 		begin
-			ram_address_counter <= ram_address_counter + 1'b1;
-			ram_info_counter[17:15] = 3'b100;
-			if (ram_info_counter[7:0] == 8'd143)
-				ram_info_counter[7:0] <= 8'd0;
-				ram_info_counter[14:8] <= ram_info_counter[14:8] + 7'd8;
+			// ram_address increment for each brick added into memory
+			if (ram_address == 7'd40)
+				ram_address <= 7'd0;
 			else
-				ram_info_counter[7:0] <= ram_info_counter[7:0] + 8'd16
+				ram_address <= ram_address + 1'b1;
+				
+			ram_info[17:15] = 3'b100;
+			if (ram_info[7:0] == 8'd144)
+			begin
+				ram_info[7:0] <= 8'd0;
+				ram_info[14:8] <= ram_info[14:8] + 7'd8;
+			end
+			else
+				ram_info[7:0] <= ram_info[7:0] + 8'd16;
+		end
+		else if (draw_all) begin
+			ram_info <= 18'd0;
+			if (draw_counter == 6'd24) begin
+				if (ram_address == 7'd40)
+					ram_address <= ram_address + 1'b1;
+				else
+					ram_address <= 7'd0;
+			end
 		end
 	end
 
+	always @(posedge clk)
+	begin: draw_counter
+		if (!resetn)
+			draw_counter <= 6'd0;
+		else
+		begin
+			if (draw_counter == 6'd24)
+				draw_counter <= 6'd0;
+			else
+				draw_counter <= draw_counter + 1'b1;
+		end
+	end // draw_counter
 	
-
+	always @(*)
+	begin: decide_where_x_y_colour_come_from
+		if (draw_all)
+		begin
+			x = ram_out[7:0] + draw_counter[3:0];
+			y = ram_out[14:8] + draw_counter[5:4];
+			colour = ram_out[17:15];
+		end
+	end // decide_where_x_y_colour_come_from
 endmodule
