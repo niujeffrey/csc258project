@@ -31,27 +31,27 @@ module BrickBreaker(
 	wire [6:0] y;
 	wire [2:0] colour;
 	wire writeEn;
-	
-	vga_adapter VGA(
-			.resetn(resetn),
-			.clock(CLOCK_50),
-			.colour(colour),
-			.x(x),
-			.y(y),
-			.plot(writeEn),
-			/* Signals for the DAC to drive the monitor. */
-			.VGA_R(VGA_R),
-			.VGA_G(VGA_G),
-			.VGA_B(VGA_B),
-			.VGA_HS(VGA_HS),
-			.VGA_VS(VGA_VS),
-			.VGA_BLANK(VGA_BLANK_N),
-			.VGA_SYNC(VGA_SYNC_N),
-			.VGA_CLK(VGA_CLK));
-		defparam VGA.RESOLUTION = "160x120";
-		defparam VGA.MONOCHROME = "FALSE";
-		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
-		defparam VGA.BACKGROUND_IMAGE = "black.mif";
+//	
+//	vga_adapter VGA(
+//			.resetn(resetn),
+//			.clock(CLOCK_50),
+//			.colour(colour),
+//			.x(x),
+//			.y(y),
+//			.plot(writeEn),
+//			/* Signals for the DAC to drive the monitor. */
+//			.VGA_R(VGA_R),
+//			.VGA_G(VGA_G),
+//			.VGA_B(VGA_B),
+//			.VGA_HS(VGA_HS),
+//			.VGA_VS(VGA_VS),
+//			.VGA_BLANK(VGA_BLANK_N),
+//			.VGA_SYNC(VGA_SYNC_N),
+//			.VGA_CLK(VGA_CLK));
+//		defparam VGA.RESOLUTION = "160x120";
+//		defparam VGA.MONOCHROME = "FALSE";
+//		defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+//		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
 	wire store_ram, draw_all_bricks;	
 	
@@ -100,7 +100,7 @@ module control(
 	 * This loop can be interrupted when we reach 15 (or some other number) of frames, where
 	 * we then move the ball, potentially detect a collision, make the ball bounce off, and so on.
 	 */
-	localparam STORE_INTO_RAM = 4'd0
+	localparam STORE_INTO_RAM = 4'd0,
 				  INITIAL_DRAW = 4'd1,
 //				  MOVE_MOUSE = 4'd2,
 				  ERASE_PADDLE = 4'd3,
@@ -124,8 +124,8 @@ module control(
 					next_state = STORE_INTO_RAM;
 			end
 			INITIAL_DRAW: begin
-				if (initial_counter == 12'b101000000000) // 2560 = 40 bricks * 64 pixels each
-					next_state = MOVE_MOUSE;
+				if (draw_all_counter == 12'b101000000000) // 2560 = 40 bricks * 64 pixels each
+					next_state = ERASE_PADDLE;
 				else
 					next_state = INITIAL_DRAW;
 			end
@@ -200,6 +200,10 @@ module datapath(
 	);
 	
 	wire [17:0] ram_out;
+		
+	reg [17:0] ram_info;
+	reg [7:0] ram_address;
+	reg [5:0] draw_counter;
 	
 	ram256x18 storage(
 		.data(ram_info),
@@ -208,10 +212,7 @@ module datapath(
 		.clock(clk),
 		.q(ram_out)
 	);
-	
-	reg [17:0] ram_info;
-	reg [6:0] ram_address;
-	reg [5:0] draw_counter;
+
 	
 	/*
 	 * ram_info holds all the information, the color, y, x
@@ -222,18 +223,25 @@ module datapath(
 	always @(posedge clk)
 	begin
 		if (!resetn)
-			ram_info <= 18'd0;
-			ram_address <= 7'd0;
+		begin
+			ram_info <= 18'b001000000000000000;
+			ram_address <= 8'd0;
 			draw_counter <= 6'd0;
+		end
 		else if (store_ram == 1'b1)
 		begin
 			// ram_address increment for each brick added into memory
-			if (ram_address == 7'd40)
-				ram_address <= 7'd0;
+			if (ram_address == 8'd40)
+				ram_address <= 8'd0;
 			else
 				ram_address <= ram_address + 1'b1;
 				
-			ram_info[17:15] = 3'b100;
+			// Cycle through colours for some spice in life
+			if (ram_info[17:15] == 3'b111)
+				ram_info[17:15] <= 3'b001;
+			else
+				ram_info[17:15] <= ram_info[17:15] + 1'b1;
+				
 			if (ram_info[7:0] == 8'd144)
 			begin
 				ram_info[7:0] <= 8'd0;
@@ -245,26 +253,29 @@ module datapath(
 		else if (draw_all) begin
 			ram_info <= 18'd0;
 			if (draw_counter == 6'd24) begin
-				if (ram_address == 7'd40)
+				if (ram_address == 8'd40)
 					ram_address <= ram_address + 1'b1;
 				else
-					ram_address <= 7'd0;
+					ram_address <= 8'd0;
 			end
 		end
 	end
 
 	always @(posedge clk)
-	begin: draw_counter
+	begin: increment_draw_counter
 		if (!resetn)
 			draw_counter <= 6'd0;
 		else
 		begin
-			if (draw_counter == 6'd24)
-				draw_counter <= 6'd0;
-			else
-				draw_counter <= draw_counter + 1'b1;
+			if (draw_all)
+			begin
+				if (draw_counter == 6'b111111)
+					draw_counter <= 6'd0;
+				else
+					draw_counter <= draw_counter + 1'b1;
+			end
 		end
-	end // draw_counter
+	end // increment_draw_counter
 	
 	always @(*)
 	begin: decide_where_x_y_colour_come_from
