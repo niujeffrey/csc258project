@@ -93,7 +93,7 @@ module control(
 	 * First state, we draw everything: all the bricks, the ball at it's initial position,
 	 * and the paddle at its initial position.
 	 *
-	 * Then we enter the second state, third state, MOVE_MOUSE, ERASE_PADDLE, MOVE_PADDLE, DRAW_PADDLE: 
+	 * Then we enter the second state, third state, ... ERASE_PADDLE, MOVE_PADDLE, DRAW_PADDLE: 
 	 * since the mouse can move at any time, we should consistently be in this state such 
 	 * that we can redraw the paddle where the mouse is.
 	 * 
@@ -102,7 +102,7 @@ module control(
 	 */
 	localparam STORE_INTO_RAM = 4'd0
 				  INITIAL_DRAW = 4'd1,
-				  MOVE_MOUSE = 4'd2,
+//				  MOVE_MOUSE = 4'd2,
 				  ERASE_PADDLE = 4'd3,
 				  MOVE_PADDLE = 4'd4,
 				  DRAW_PADDLE = 4'd5,
