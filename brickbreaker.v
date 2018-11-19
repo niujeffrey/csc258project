@@ -226,7 +226,6 @@ module datapath(
 		begin
 			ram_info <= 18'b001000000000000000;
 			ram_address <= 8'd0;
-			draw_counter <= 6'd0;
 		end
 		else if (store_ram == 1'b1)
 		begin
