@@ -60,3 +60,5 @@ set_global_assignment -name VERILOG_FILE PS2MouseKeyboard/Altera_UP_PS2_Data_In.
 set_global_assignment -name VERILOG_FILE PS2MouseKeyboard/Altera_UP_PS2_Command_Out.v
 set_global_assignment -name VERILOG_FILE PS2MouseKeyboard/PS2_Mouse_Controller.v
 set_global_assignment -name VERILOG_FILE brickbreaker.v
+set_global_assignment -name COMMAND_MACRO_FILE datapath.do
+set_global_assignment -name COMMAND_MACRO_FILE combined.do

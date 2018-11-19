@@ -1,0 +1,95 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Jeffrey/Documents/University/CSC258/project
+vBrickBreaker
+Z1 !s110 1542591481
+!i10b 1
+!s100 VIfIL9k`b5ldiVQFAQ2Qb1
+I3AaI7Y8bMfn:d<HcW8eLN1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1542591362
+Z4 8brickbreaker.v
+Z5 Fbrickbreaker.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1542591481.000000
+Z8 !s107 ram256x18.v|brickbreaker.v|
+Z9 !s90 -reportprogress|300|-timescale|1ns/1ns|brickbreaker.v|ram256x18.v|
+!i113 1
+Z10 o-timescale 1ns/1ns
+Z11 tCvgOpt 0
+n@brick@breaker
+vcontrol
+R1
+!i10b 1
+!s100 CN76J==1]V;C<Sb95:6ho1
+ImTlFRlRHjCzo6F7KlNz]:3
+R2
+R0
+R3
+R4
+R5
+L0 78
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vdatapath
+R1
+!i10b 1
+!s100 RzAL]18`mWP_6klG^;lB<0
+InVJmdXb1=m?FFDG<W[_2l0
+R2
+R0
+R3
+R4
+R5
+L0 192
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vram256x18
+R1
+!i10b 1
+!s100 OWkZZob45<OQNn;UHGmYB3
+I^]ZXLHNiI7^YJmogQg=X>0
+R2
+R0
+w1542580006
+8ram256x18.v
+Fram256x18.v
+L0 40
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

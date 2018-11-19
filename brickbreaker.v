@@ -252,11 +252,11 @@ module datapath(
 		end
 		else if (draw_all) begin
 			ram_info <= 18'd0;
-			if (draw_counter == 6'd24) begin
+			if (draw_counter == 6'b111111) begin
 				if (ram_address == 8'd40)
-					ram_address <= ram_address + 1'b1;
-				else
 					ram_address <= 8'd0;
+				else
+					ram_address <= ram_address + 1'b1;
 			end
 		end
 	end
