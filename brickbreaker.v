@@ -1,7 +1,7 @@
 module BrickBreaker(
 		CLOCK_50,
 		KEY,
-		HEX0,
+		HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR,
 		// The VGA inputs
 		VGA_CLK,
 		VGA_HS,
@@ -17,7 +17,8 @@ module BrickBreaker(
 	
 	input CLOCK_50;
 	input [3:0] KEY;
-	output [6:0] HEX0;
+	output [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+	output [2:0] LEDR;
 	
 	output VGA_CLK;
 	output VGA_HS;
@@ -66,9 +67,10 @@ module BrickBreaker(
 	control c0(
 		.clk(CLOCK_50),
 		.resetn(resetn),
-		.display(HEX0),
+		.display(),                      //removed HEX0 from here
 		.key_left(~KEY[2]),
 		.key_right(~KEY[1]),
+		.mouse_x_in(x_coord),
 		.writeEn(writeEn),
 		.store_ram(store_ram),
 		.draw(draw),
@@ -90,7 +92,7 @@ module BrickBreaker(
 		.draw_paddle(paddle),
 		.enable_black(enable_black),
 		.enable_paddle_move(enable_paddle_move),
-		.mouse_x(mouse_x),
+		.mouse_x_in(x_coord),
 		.key_left(~KEY[2]),
 		.key_right(~KEY[1]),
 		.draw_ball(draw_ball),
@@ -101,8 +103,76 @@ module BrickBreaker(
 		.colour(colour)
 	);
 	
+	wire [8:0] x_coord, y_coord;
 	
-	mouse_tracker my_mouse(
+//	ps2 #(
+//			.WIDTH(160),
+//			.HEIGHT(120),
+//			.BIN(100),
+//			.HYSTERESIS(30))
+//	mouse1(
+//			.start(~KEY[0]),  
+//			.reset(~KEY[1]),  
+//			.CLOCK_50(CLOCK_50),  
+//			.PS2_CLK(PS2_CLK), 
+//			.PS2_DAT(PS2_DAT), 
+//			.button_left(LEDR[0]),  
+//			.button_right(LEDR[1]),  
+//			.button_middle(LEDR[2]),  
+//			.bin_x(x_coord),
+//			.bin_y(y_coord)
+//			);
+			
+			
+			////////////////////////////////////////////////////**********************************************************///////////////////////////////////////
+			////////////////////////////////////////   HEX displays for testing mouse coordinates, leave in for now, do not need. Same with LEDS. /////////////////
+			///////////////////////////////////// module called tester below is what drives mouse so don't touch that//////////////////////////////////////
+	  hex_decoder hex0(
+	     .hex_digit(x_coord[3:0]),
+		  .segments(HEX0)
+		  );
+
+    hex_decoder hex1(
+	     .hex_digit(x_coord[7:4]),
+		  .segments(HEX1)
+		  );
+
+    hex_decoder hex2(
+	     .hex_digit({3'b0, x_coord[8]}),
+		  .segments(HEX2)
+		  );
+
+    // Put Y coordinates on hex displays 3-5
+
+    hex_decoder hex3(
+	     .hex_digit(y_coord[3:0]),
+		  .segments(HEX3)
+		  );
+
+    hex_decoder hex4(
+	     .hex_digit(y_coord[7:4]),
+		  .segments(HEX4)
+		  );
+
+    hex_decoder hex5(
+	     .hex_digit({3'b0, y_coord[8]}),
+		  .segments(HEX5)
+		  );
+	
+	mouse_tracker tester(
+	     .clock(CLOCK_50),
+		  .reset(KEY[0]),
+		  .enable_tracking(1'b1),
+		  .PS2_CLK(PS2_CLK),
+		  .PS2_DAT(PS2_DAT),
+		  .x_pos(x_coord),
+		  .y_pos(y_coord),
+		  .left_click(LEDR[1]),
+		  .right_click(LEDR[0])
+		  );
+	  
+
+/*	mouse_tracker my_mouse(
 		.clock(clk),
 		.reset(resetn),
 		.enable_tracking(1'b1),
@@ -115,7 +185,7 @@ module BrickBreaker(
 		.count()
 	);
 	
-	
+	*/
 
 		
 endmodule
@@ -125,6 +195,7 @@ module control(
 		input resetn,
 		input key_left,
 		input key_right,
+		input [7:0] mouse_x_in,
 		output [6:0] display,
 		output reg writeEn,
 		output reg store_ram,
@@ -140,7 +211,8 @@ module control(
 
 	reg [3:0] current_state, next_state;
 	
-	hex_decoder h(current_state, display);
+	reg [7:0] mouse_prev;
+	//hex_decoder h(current_state, display);                took out/////////////////
 	
 	// Bricks will be 16x4 pixels
 	
@@ -218,9 +290,10 @@ module control(
 				next_state = DRAW_PADDLE;
 			end
 			WAIT: begin
-				if (frame_counter == 4'b0011 & (key_left | key_right))
+				if (frame_counter == 4'b0010) //& (mouse_x_in == mouse_prev))                                    //don't need any condition for mouse apparantely
+				//if (frame_counter == 4'b0011 & (key_left | key_right))             //speed of paddle
 					next_state = ERASE_PADDLE;
-				else if (ball_frame_counter == 4'b0101)
+				else if (ball_frame_counter == 4'b0001)                            //speed of ball
 					next_state = ERASE_BALL;
 				else
 					next_state = WAIT;
@@ -259,6 +332,7 @@ module control(
 		case (current_state)
 			CLEAR_SCREEN: begin
 				clear_screen = 1'b1;
+				writeEn = 1'b1;
 			end
 			STORE_INTO_RAM: begin
 				store_ram = 1'b1;
@@ -301,6 +375,17 @@ module control(
 			end			
 		endcase
 	end // enable_signals
+	
+	//store mouse coordinate
+	always @(posedge clk)
+	begin: storing_mouse_coordinate
+		if (!resetn)
+			mouse_prev <= 7'd0;
+		else
+		begin
+			mouse_prev <= mouse_x_in;
+		end
+	end
 	
 	always @(posedge clk)
 	begin: stateFFs
@@ -389,7 +474,7 @@ module control(
 		end
 		else
 		begin
-			if (timer == 20'b11001011011100110101)
+			if (timer == 20'b11001011011100110101)               //org value b11001011011100110101
 			begin
 				timer <= 20'b0;
 				frame_counter <= frame_counter + 1'b1;
@@ -397,10 +482,10 @@ module control(
 			end
 			else
 				timer <= timer + 1'b1;
-			if (frame_counter == 4'b0011)
+			if (frame_counter == 4'b0010)                                   //speed of paddle
 				frame_counter <= 4'b0;
-			if (ball_frame_counter == 4'b0101)
-				ball_frame_counter <= 4'b0;
+			if (ball_frame_counter == 4'b0001)                              //speed of ball
+				ball_frame_counter <= 4'b0; 											
 		end
 	end // frame_counting
 endmodule
@@ -414,7 +499,7 @@ module datapath(
 		input draw_paddle,
 		input enable_black,
 		input enable_paddle_move,
-		input [8:0] mouse_x,
+		input [7:0] mouse_x_in,
 		input key_right,
 		input key_left,
 		input draw_ball,
@@ -439,6 +524,9 @@ module datapath(
 	reg [6:0] ball_y;
 	reg ball_x_dir, ball_y_dir;
 	
+	reg [7:0] mouse_prev;
+
+	reg clear_screen_reg;
 	
 	ram256x18 storage(
 		.data(ram_info),
@@ -495,6 +583,28 @@ module datapath(
 		end
 	end
 	
+		//store mouse coordinate
+	always @(posedge clk)
+	begin: storing_mouse_coordinate
+		if (!resetn)
+			mouse_prev <= 7'd0;
+		else
+		begin
+			mouse_prev <= mouse_x_in;
+		end
+	end
+	
+//		//store clear screen                     //moved to moving paddle always block
+//	always @(posedge clk)
+//	begin: storing_mouse_coordinate_data
+//		if (!resetn)
+//			clear_screen_reg <= 7'd0;
+//		else
+//		begin
+//			clear_screen_reg <= clear_screen;
+//		end
+//	end
+	
 	always @(posedge clk)
 	begin: clearing_screen
 		if (!resetn)
@@ -504,7 +614,7 @@ module datapath(
 		end
 		else
 		begin
-			if (clear_screen)
+			if (clear_screen_reg)              //changed
 			begin
 				if (clear_x == 8'd159)
 				begin
@@ -567,7 +677,7 @@ module datapath(
 		else if (draw_paddle)
 		begin
 			x = paddle_x + draw_counter[3:0];
-			y = 7'd100 + draw_counter[5:4];
+			y = 7'd115 + draw_counter[5:4];
 			colour = enable_black ? 3'b000 : 3'b111;
 		end
 		else if (draw_ball)
@@ -576,7 +686,7 @@ module datapath(
 			y = ball_y + draw_ball_counter[1];
 			colour = enable_black ? 3'b000 : 3'b100;
 		end
-		else if (clear_screen)
+		else if (clear_screen_reg)
 		begin
 			x = clear_x;
 			y = clear_y;
@@ -588,11 +698,17 @@ module datapath(
 	begin
 		if (!resetn)
 			paddle_x <= 8'd80;
-		else if (enable_paddle_move)
-			if (key_left)
-				paddle_x <= paddle_x - 1'b1;
-			else if (key_right)
-				paddle_x <= paddle_x + 1'b1;
+		else if (enable_paddle_move) begin
+			//if (mouse_x_in != mouse_prev) begin                            //mouse_x_in != mouse_prev
+				//if (paddle_x != 8'd0)
+					paddle_x <= mouse_x_in;           //or can just decrement x value???????????????? whichever works best with mouse
+					//paddle_x <= paddle_x - 1'b1;
+			//end
+//			else if (key_right) begin
+//				if (paddle_x != 8'd148)
+//					paddle_x <= <= mouse_x_in;
+//				end
+		end
 	end
 	
 	always @(posedge clk)
@@ -603,16 +719,18 @@ module datapath(
 			ball_y <= 7'd98;
 			ball_x_dir <= 1'b1;
 			ball_y_dir <= 1'b0;
+			clear_screen_reg <= 7'd0;
 		end
 		else
 		begin
+			clear_screen_reg <= clear_screen;
 			if (enable_ball_move)
 			begin
 				if (ball_x_dir == 1'b1)
 				begin
 					if (ball_x == 8'd158) begin
 						ball_x_dir <= 1'b0;
-						ball_x = 8'd157;
+						ball_x <= 8'd157;
 					end
 					else
 						ball_x <= ball_x + 1'b1;
@@ -621,21 +739,43 @@ module datapath(
 				begin
 					if (ball_x == 8'd0) begin
 						ball_x_dir <= 1'b1;
-						ball_x = 8'd1;
+						ball_x <= 8'd1;
 					end
 					else
 						ball_x <= ball_x - 1'b1;
 				end
 				if (ball_y_dir == 1'b1)
 				begin
-					if (ball_y < 7'd118)
+					if (ball_y < 7'd110)
 						ball_y <= ball_y + 1'b1;
+					/////////////////////////////////////ball collisions////////////////////////////
+					else if (ball_y == 7'd110) begin                   //later on have if ball past 115 and not hit paddle reset game
+						if ((((paddle_x + 16) - ball_x) < 16) & (((paddle_x + 16) - ball_x) >= 0)) begin
+							ball_y_dir <= 1'b0;
+							ball_y <= 7'd109;
+						end
+						else 
+							ball_y <= ball_y + 1'b1;
+							//clear_screen_reg <= 1'b1;                   //trying level reset//////////////////
+					end
+//					else if(ball_y < 7'd117) begin
+//						ball_y <= ball_y + 1'b1;
+//					end
+					else begin
+						if(ball_y < 7'd117) begin
+							ball_y <= ball_y + 1'b1;
+						end
+						else begin
+							ball_y_dir <= 1'b0;
+							ball_y <= 7'd116;
+						end
+					end               
 				end
 				else
 				begin
 					if (ball_y == 7'd0) begin
 						ball_y_dir <= 1'b1;
-						ball_y = 7'd1;
+						ball_y <= 7'd1;
 					end
 					else
 						ball_y <= ball_y - 1'b1;

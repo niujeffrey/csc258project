@@ -1,18 +1,56 @@
 |BrickBreaker
-CLOCK_50 => CLOCK_50.IN3
+CLOCK_50 => CLOCK_50.IN4
 KEY[0] => resetn.IN4
 KEY[1] => _.IN1
 KEY[1] => _.IN1
 KEY[2] => _.IN1
 KEY[2] => _.IN1
 KEY[3] => ~NO_FANOUT~
-HEX0[0] <= control:c0.display
-HEX0[1] <= control:c0.display
-HEX0[2] <= control:c0.display
-HEX0[3] <= control:c0.display
-HEX0[4] <= control:c0.display
-HEX0[5] <= control:c0.display
-HEX0[6] <= control:c0.display
+HEX0[0] <= hex_decoder:hex0.segments
+HEX0[1] <= hex_decoder:hex0.segments
+HEX0[2] <= hex_decoder:hex0.segments
+HEX0[3] <= hex_decoder:hex0.segments
+HEX0[4] <= hex_decoder:hex0.segments
+HEX0[5] <= hex_decoder:hex0.segments
+HEX0[6] <= hex_decoder:hex0.segments
+HEX1[0] <= hex_decoder:hex1.segments
+HEX1[1] <= hex_decoder:hex1.segments
+HEX1[2] <= hex_decoder:hex1.segments
+HEX1[3] <= hex_decoder:hex1.segments
+HEX1[4] <= hex_decoder:hex1.segments
+HEX1[5] <= hex_decoder:hex1.segments
+HEX1[6] <= hex_decoder:hex1.segments
+HEX2[0] <= hex_decoder:hex2.segments
+HEX2[1] <= hex_decoder:hex2.segments
+HEX2[2] <= hex_decoder:hex2.segments
+HEX2[3] <= hex_decoder:hex2.segments
+HEX2[4] <= hex_decoder:hex2.segments
+HEX2[5] <= hex_decoder:hex2.segments
+HEX2[6] <= hex_decoder:hex2.segments
+HEX3[0] <= hex_decoder:hex3.segments
+HEX3[1] <= hex_decoder:hex3.segments
+HEX3[2] <= hex_decoder:hex3.segments
+HEX3[3] <= hex_decoder:hex3.segments
+HEX3[4] <= hex_decoder:hex3.segments
+HEX3[5] <= hex_decoder:hex3.segments
+HEX3[6] <= hex_decoder:hex3.segments
+HEX4[0] <= hex_decoder:hex4.segments
+HEX4[1] <= hex_decoder:hex4.segments
+HEX4[2] <= hex_decoder:hex4.segments
+HEX4[3] <= hex_decoder:hex4.segments
+HEX4[4] <= hex_decoder:hex4.segments
+HEX4[5] <= hex_decoder:hex4.segments
+HEX4[6] <= hex_decoder:hex4.segments
+HEX5[0] <= hex_decoder:hex5.segments
+HEX5[1] <= hex_decoder:hex5.segments
+HEX5[2] <= hex_decoder:hex5.segments
+HEX5[3] <= hex_decoder:hex5.segments
+HEX5[4] <= hex_decoder:hex5.segments
+HEX5[5] <= hex_decoder:hex5.segments
+HEX5[6] <= hex_decoder:hex5.segments
+LEDR[0] <= mouse_tracker:tester.right_click
+LEDR[1] <= mouse_tracker:tester.left_click
+LEDR[2] <= <GND>
 VGA_CLK <= vga_adapter:VGA.VGA_CLK
 VGA_HS <= vga_adapter:VGA.VGA_HS
 VGA_VS <= vga_adapter:VGA.VGA_VS
@@ -48,8 +86,8 @@ VGA_B[6] <= vga_adapter:VGA.VGA_B
 VGA_B[7] <= vga_adapter:VGA.VGA_B
 VGA_B[8] <= vga_adapter:VGA.VGA_B
 VGA_B[9] <= vga_adapter:VGA.VGA_B
-PS2_CLK <> mouse_tracker:my_mouse.PS2_CLK
-PS2_DAT <> mouse_tracker:my_mouse.PS2_DAT
+PS2_CLK <> mouse_tracker:tester.PS2_CLK
+PS2_DAT <> mouse_tracker:tester.PS2_DAT
 
 
 |BrickBreaker|vga_adapter:VGA
@@ -888,10 +926,7 @@ clk => clear_counter[12].CLK
 clk => clear_counter[13].CLK
 clk => clear_counter[14].CLK
 clk => clear_counter[15].CLK
-clk => current_state[0].CLK
-clk => current_state[1].CLK
-clk => current_state[2].CLK
-clk => current_state[3].CLK
+clk => current_state~1.DATAIN
 resetn => timer.OUTPUTSELECT
 resetn => timer.OUTPUTSELECT
 resetn => timer.OUTPUTSELECT
@@ -924,6 +959,12 @@ resetn => current_state.OUTPUTSELECT
 resetn => current_state.OUTPUTSELECT
 resetn => current_state.OUTPUTSELECT
 resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
 resetn => clear_counter.OUTPUTSELECT
 resetn => clear_counter.OUTPUTSELECT
 resetn => clear_counter.OUTPUTSELECT
@@ -971,39 +1012,33 @@ resetn => ball_counter.OUTPUTSELECT
 resetn => ball_counter.OUTPUTSELECT
 resetn => ball_counter.OUTPUTSELECT
 resetn => ball_counter.OUTPUTSELECT
-key_left => always0.IN0
-key_right => always0.IN1
-display[0] <= hex_decoder:h.port1
-display[1] <= hex_decoder:h.port1
-display[2] <= hex_decoder:h.port1
-display[3] <= hex_decoder:h.port1
-display[4] <= hex_decoder:h.port1
-display[5] <= hex_decoder:h.port1
-display[6] <= hex_decoder:h.port1
-writeEn <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
-store_ram <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-draw_all_bricks <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-draw <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
-draw_paddle <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+key_left => ~NO_FANOUT~
+key_right => ~NO_FANOUT~
+mouse_x_in[0] => ~NO_FANOUT~
+mouse_x_in[1] => ~NO_FANOUT~
+mouse_x_in[2] => ~NO_FANOUT~
+mouse_x_in[3] => ~NO_FANOUT~
+mouse_x_in[4] => ~NO_FANOUT~
+mouse_x_in[5] => ~NO_FANOUT~
+mouse_x_in[6] => ~NO_FANOUT~
+mouse_x_in[7] => ~NO_FANOUT~
+display[0] <= <GND>
+display[1] <= <GND>
+display[2] <= <GND>
+display[3] <= <GND>
+display[4] <= <GND>
+display[5] <= <GND>
+display[6] <= <GND>
+writeEn <= WideOr10.DB_MAX_OUTPUT_PORT_TYPE
+store_ram <= store_ram.DB_MAX_OUTPUT_PORT_TYPE
+draw_all_bricks <= draw_all_bricks.DB_MAX_OUTPUT_PORT_TYPE
+draw <= WideOr11.DB_MAX_OUTPUT_PORT_TYPE
+draw_paddle <= WideOr12.DB_MAX_OUTPUT_PORT_TYPE
 enable_black <= enable_black.DB_MAX_OUTPUT_PORT_TYPE
-enable_paddle_move <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+enable_paddle_move <= enable_paddle_move.DB_MAX_OUTPUT_PORT_TYPE
 draw_ball <= draw_ball.DB_MAX_OUTPUT_PORT_TYPE
-enable_ball_move <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-clear_screen <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|BrickBreaker|control:c0|hex_decoder:h
-hex_digit[0] => Decoder0.IN3
-hex_digit[1] => Decoder0.IN2
-hex_digit[2] => Decoder0.IN1
-hex_digit[3] => Decoder0.IN0
-segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
-segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
-segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
-segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
-segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
-segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
-segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+enable_ball_move <= enable_ball_move.DB_MAX_OUTPUT_PORT_TYPE
+clear_screen <= clear_screen.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |BrickBreaker|datapath:d0
@@ -1051,6 +1086,7 @@ resetn => ball_y.OUTPUTSELECT
 resetn => ball_y.OUTPUTSELECT
 resetn => ball_x_dir.OUTPUTSELECT
 resetn => ball_y_dir.OUTPUTSELECT
+resetn => clear_screen_reg.OUTPUTSELECT
 resetn => clear_x.OUTPUTSELECT
 resetn => clear_x.OUTPUTSELECT
 resetn => clear_x.OUTPUTSELECT
@@ -1163,31 +1199,16 @@ enable_paddle_move => paddle_x.OUTPUTSELECT
 enable_paddle_move => paddle_x.OUTPUTSELECT
 enable_paddle_move => paddle_x.OUTPUTSELECT
 enable_paddle_move => paddle_x.OUTPUTSELECT
-mouse_x[0] => ~NO_FANOUT~
-mouse_x[1] => ~NO_FANOUT~
-mouse_x[2] => ~NO_FANOUT~
-mouse_x[3] => ~NO_FANOUT~
-mouse_x[4] => ~NO_FANOUT~
-mouse_x[5] => ~NO_FANOUT~
-mouse_x[6] => ~NO_FANOUT~
-mouse_x[7] => ~NO_FANOUT~
-mouse_x[8] => ~NO_FANOUT~
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_right => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
-key_left => paddle_x.OUTPUTSELECT
+mouse_x_in[0] => paddle_x.DATAB
+mouse_x_in[1] => paddle_x.DATAB
+mouse_x_in[2] => paddle_x.DATAB
+mouse_x_in[3] => paddle_x.DATAB
+mouse_x_in[4] => paddle_x.DATAB
+mouse_x_in[5] => paddle_x.DATAB
+mouse_x_in[6] => paddle_x.DATAB
+mouse_x_in[7] => paddle_x.DATAB
+key_right => ~NO_FANOUT~
+key_left => ~NO_FANOUT~
 draw_ball => draw_ball_counter.OUTPUTSELECT
 draw_ball => draw_ball_counter.OUTPUTSELECT
 draw_ball => colour[2].OUTPUTSELECT
@@ -1206,7 +1227,7 @@ draw_ball => x[4].OUTPUTSELECT
 draw_ball => x[5].OUTPUTSELECT
 draw_ball => x[6].OUTPUTSELECT
 draw_ball => x[7].OUTPUTSELECT
-draw_ball => x[7].IN0
+draw_ball => x[7].IN1
 enable_ball_move => ball_x_dir.OUTPUTSELECT
 enable_ball_move => ball_x.OUTPUTSELECT
 enable_ball_move => ball_x.OUTPUTSELECT
@@ -1224,22 +1245,7 @@ enable_ball_move => ball_y.OUTPUTSELECT
 enable_ball_move => ball_y.OUTPUTSELECT
 enable_ball_move => ball_y.OUTPUTSELECT
 enable_ball_move => ball_y_dir.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_x.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => clear_y.OUTPUTSELECT
-clear_screen => x[7].IN1
+clear_screen => clear_screen_reg.DATAA
 x[0] <= x[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 x[1] <= x[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 x[2] <= x[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
@@ -1597,7 +1603,91 @@ wren_a => ram_block1a16.PORTAWE
 wren_a => ram_block1a17.PORTAWE
 
 
-|BrickBreaker|mouse_tracker:my_mouse
+|BrickBreaker|hex_decoder:hex0
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|BrickBreaker|hex_decoder:hex1
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|BrickBreaker|hex_decoder:hex2
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|BrickBreaker|hex_decoder:hex3
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|BrickBreaker|hex_decoder:hex4
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|BrickBreaker|hex_decoder:hex5
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|BrickBreaker|mouse_tracker:tester
 clock => clock.IN1
 reset => _.IN1
 reset => byte1.OUTPUTSELECT
@@ -1685,7 +1775,7 @@ count[2] <= count[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 count[3] <= count[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2
+|BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2
 CLOCK_50 => CLOCK_50.IN2
 reset => reset.IN2
 the_command[0] => the_command_w.DATAB
@@ -1718,7 +1808,7 @@ received_data[7] <= Altera_UP_PS2_Data_In:PS2_Data_In.received_data
 received_data_en <= Altera_UP_PS2_Data_In:PS2_Data_In.received_data_en
 
 
-|BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In
+|BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In
 clk => received_data_en~reg0.CLK
 clk => received_data[0]~reg0.CLK
 clk => received_data[1]~reg0.CLK
@@ -1793,7 +1883,7 @@ received_data[7] <= received_data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 received_data_en <= received_data_en~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out
+|BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out
 clk => error_communication_timed_out~reg0.CLK
 clk => command_was_sent~reg0.CLK
 clk => cur_bit[0].CLK

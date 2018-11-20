@@ -1,5 +1,5 @@
 Analysis & Synthesis report for brickbreaker
-Mon Nov 19 16:55:45 2018
+Tue Nov 20 10:05:00 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -14,35 +14,40 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
-  9. State Machine - |BrickBreaker|mouse_tracker:my_mouse|curr_state
- 10. State Machine - |BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver
- 11. State Machine - |BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter
- 12. State Machine - |BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver
- 13. User-Specified and Inferred Latches
- 14. Registers Removed During Synthesis
- 15. Removed Registers Triggering Further Register Optimizations
- 16. General Register Statistics
- 17. Multiplexer Restructuring Statistics (Restructuring Performed)
- 18. Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated
- 19. Source assignments for datapath:d0|ram256x18:storage|altsyncram:altsyncram_component|altsyncram_8dm1:auto_generated
- 20. Parameter Settings for User Entity Instance: vga_adapter:VGA
- 21. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
- 22. Parameter Settings for User Entity Instance: vga_adapter:VGA|altsyncram:VideoMemory
- 23. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component
- 24. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller
- 25. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator
- 26. Parameter Settings for User Entity Instance: datapath:d0|ram256x18:storage|altsyncram:altsyncram_component
- 27. Parameter Settings for User Entity Instance: mouse_tracker:my_mouse
- 28. Parameter Settings for User Entity Instance: mouse_tracker:my_mouse|PS2_Controller:tracker2
- 29. Parameter Settings for User Entity Instance: mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out
- 30. altsyncram Parameter Settings by Entity Instance
- 31. altpll Parameter Settings by Entity Instance
- 32. Port Connectivity Checks: "mouse_tracker:my_mouse|PS2_Controller:tracker2"
- 33. Port Connectivity Checks: "mouse_tracker:my_mouse"
- 34. Post-Synthesis Netlist Statistics for Top Partition
- 35. Elapsed Time Per Partition
- 36. Analysis & Synthesis Messages
- 37. Analysis & Synthesis Suppressed Messages
+  9. State Machine - |BrickBreaker|mouse_tracker:tester|curr_state
+ 10. State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver
+ 11. State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter
+ 12. State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver
+ 13. State Machine - |BrickBreaker|control:c0|current_state
+ 14. User-Specified and Inferred Latches
+ 15. Registers Removed During Synthesis
+ 16. Removed Registers Triggering Further Register Optimizations
+ 17. General Register Statistics
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated
+ 20. Source assignments for datapath:d0|ram256x18:storage|altsyncram:altsyncram_component|altsyncram_8dm1:auto_generated
+ 21. Parameter Settings for User Entity Instance: vga_adapter:VGA
+ 22. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
+ 23. Parameter Settings for User Entity Instance: vga_adapter:VGA|altsyncram:VideoMemory
+ 24. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component
+ 25. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller
+ 26. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator
+ 27. Parameter Settings for User Entity Instance: datapath:d0|ram256x18:storage|altsyncram:altsyncram_component
+ 28. Parameter Settings for User Entity Instance: mouse_tracker:tester
+ 29. Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2
+ 30. Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out
+ 31. altsyncram Parameter Settings by Entity Instance
+ 32. altpll Parameter Settings by Entity Instance
+ 33. Port Connectivity Checks: "mouse_tracker:tester|PS2_Controller:tracker2"
+ 34. Port Connectivity Checks: "mouse_tracker:tester"
+ 35. Port Connectivity Checks: "hex_decoder:hex5"
+ 36. Port Connectivity Checks: "hex_decoder:hex2"
+ 37. Port Connectivity Checks: "datapath:d0"
+ 38. Port Connectivity Checks: "control:c0"
+ 39. Post-Synthesis Netlist Statistics for Top Partition
+ 40. Elapsed Time Per Partition
+ 41. Analysis & Synthesis Messages
+ 42. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -69,14 +74,14 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Nov 19 16:55:45 2018       ;
+; Analysis & Synthesis Status     ; Successful - Tue Nov 20 10:05:00 2018       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; brickbreaker                                ;
 ; Top-level Entity Name           ; BrickBreaker                                ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 176                                         ;
-; Total pins                      ; 49                                          ;
+; Total registers                 ; 331                                         ;
+; Total pins                      ; 87                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 62,208                                      ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -237,18 +242,18 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 214            ;
+; Estimate of Logic utilization (ALMs needed) ; 350            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 368            ;
+; Combinational ALUT usage for logic          ; 592            ;
 ;     -- 7 input functions                    ; 3              ;
-;     -- 6 input functions                    ; 55             ;
-;     -- 5 input functions                    ; 67             ;
-;     -- 4 input functions                    ; 43             ;
-;     -- <=3 input functions                  ; 200            ;
+;     -- 6 input functions                    ; 88             ;
+;     -- 5 input functions                    ; 73             ;
+;     -- 4 input functions                    ; 89             ;
+;     -- <=3 input functions                  ; 339            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 176            ;
+; Dedicated logic registers                   ; 331            ;
 ;                                             ;                ;
-; I/O pins                                    ; 49             ;
+; I/O pins                                    ; 87             ;
 ; Total MLAB memory bits                      ; 0              ;
 ; Total block memory bits                     ; 62208          ;
 ;                                             ;                ;
@@ -258,37 +263,44 @@ agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 174            ;
-; Total fan-out                               ; 2477           ;
-; Average fan-out                             ; 3.69           ;
+; Maximum fan-out                             ; 329            ;
+; Total fan-out                               ; 3784           ;
+; Average fan-out                             ; 3.36           ;
 +---------------------------------------------+----------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                     ;
-+---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                          ; Entity Name            ; Library Name ;
-+---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |BrickBreaker                                           ; 368 (1)             ; 176 (0)                   ; 62208             ; 0          ; 49   ; 0            ; |BrickBreaker                                                                                                ; BrickBreaker           ; work         ;
-;    |control:c0|                                         ; 134 (122)           ; 79 (79)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|control:c0                                                                                     ; control                ; work         ;
-;       |hex_decoder:h|                                   ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|control:c0|hex_decoder:h                                                                       ; hex_decoder            ; work         ;
-;    |datapath:d0|                                        ; 170 (170)           ; 67 (67)                   ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0                                                                                    ; datapath               ; work         ;
-;       |ram256x18:storage|                               ; 0 (0)               ; 0 (0)                     ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x18:storage                                                                  ; ram256x18              ; work         ;
-;          |altsyncram:altsyncram_component|              ; 0 (0)               ; 0 (0)                     ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x18:storage|altsyncram:altsyncram_component                                  ; altsyncram             ; work         ;
-;             |altsyncram_8dm1:auto_generated|            ; 0 (0)               ; 0 (0)                     ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x18:storage|altsyncram:altsyncram_component|altsyncram_8dm1:auto_generated   ; altsyncram_8dm1        ; work         ;
-;    |vga_adapter:VGA|                                    ; 63 (2)              ; 30 (0)                    ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA                                                                                ; vga_adapter            ; work         ;
-;       |altsyncram:VideoMemory|                          ; 9 (0)               ; 4 (0)                     ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory                                                         ; altsyncram             ; work         ;
-;          |altsyncram_m6m1:auto_generated|               ; 9 (0)               ; 4 (4)                     ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated                          ; altsyncram_m6m1        ; work         ;
-;             |decode_01a:rden_decode_b|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_01a:rden_decode_b ; decode_01a             ; work         ;
-;             |decode_7la:decode2|                        ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_7la:decode2       ; decode_7la             ; work         ;
-;             |mux_ifb:mux3|                              ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3             ; mux_ifb                ; work         ;
-;       |vga_address_translator:user_input_translator|    ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_address_translator:user_input_translator                                   ; vga_address_translator ; work         ;
-;       |vga_controller:controller|                       ; 42 (32)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller                                                      ; vga_controller         ; work         ;
-;          |vga_address_translator:controller_translator| ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator         ; vga_address_translator ; work         ;
-;       |vga_pll:mypll|                                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll                                                                  ; vga_pll                ; work         ;
-;          |altpll:altpll_component|                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component                                          ; altpll                 ; work         ;
-;             |altpll_80u:auto_generated|                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated                ; altpll_80u             ; work         ;
-+---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+------------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                        ;
++---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
+; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                          ; Entity Name               ; Library Name ;
++---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
+; |BrickBreaker                                           ; 592 (1)             ; 331 (0)                   ; 62208             ; 0          ; 87   ; 0            ; |BrickBreaker                                                                                                ; BrickBreaker              ; work         ;
+;    |control:c0|                                         ; 112 (112)           ; 85 (85)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|control:c0                                                                                     ; control                   ; work         ;
+;    |datapath:d0|                                        ; 209 (209)           ; 68 (68)                   ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0                                                                                    ; datapath                  ; work         ;
+;       |ram256x18:storage|                               ; 0 (0)               ; 0 (0)                     ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x18:storage                                                                  ; ram256x18                 ; work         ;
+;          |altsyncram:altsyncram_component|              ; 0 (0)               ; 0 (0)                     ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x18:storage|altsyncram:altsyncram_component                                  ; altsyncram                ; work         ;
+;             |altsyncram_8dm1:auto_generated|            ; 0 (0)               ; 0 (0)                     ; 4608              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x18:storage|altsyncram:altsyncram_component|altsyncram_8dm1:auto_generated   ; altsyncram_8dm1           ; work         ;
+;    |hex_decoder:hex0|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex0                                                                               ; hex_decoder               ; work         ;
+;    |hex_decoder:hex1|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex1                                                                               ; hex_decoder               ; work         ;
+;    |hex_decoder:hex3|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex3                                                                               ; hex_decoder               ; work         ;
+;    |hex_decoder:hex4|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex4                                                                               ; hex_decoder               ; work         ;
+;    |mouse_tracker:tester|                               ; 179 (64)            ; 148 (51)                  ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester                                                                           ; mouse_tracker             ; work         ;
+;       |PS2_Controller:tracker2|                         ; 115 (8)             ; 97 (6)                    ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2                                                   ; PS2_Controller            ; work         ;
+;          |Altera_UP_PS2_Command_Out:PS2_Command_Out|    ; 93 (93)             ; 66 (66)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out         ; Altera_UP_PS2_Command_Out ; work         ;
+;          |Altera_UP_PS2_Data_In:PS2_Data_In|            ; 14 (14)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In                 ; Altera_UP_PS2_Data_In     ; work         ;
+;    |vga_adapter:VGA|                                    ; 63 (2)              ; 30 (0)                    ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA                                                                                ; vga_adapter               ; work         ;
+;       |altsyncram:VideoMemory|                          ; 9 (0)               ; 4 (0)                     ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory                                                         ; altsyncram                ; work         ;
+;          |altsyncram_m6m1:auto_generated|               ; 9 (0)               ; 4 (4)                     ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated                          ; altsyncram_m6m1           ; work         ;
+;             |decode_01a:rden_decode_b|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_01a:rden_decode_b ; decode_01a                ; work         ;
+;             |decode_7la:decode2|                        ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_7la:decode2       ; decode_7la                ; work         ;
+;             |mux_ifb:mux3|                              ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3             ; mux_ifb                   ; work         ;
+;       |vga_address_translator:user_input_translator|    ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_address_translator:user_input_translator                                   ; vga_address_translator    ; work         ;
+;       |vga_controller:controller|                       ; 42 (32)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller                                                      ; vga_controller            ; work         ;
+;          |vga_address_translator:controller_translator| ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator         ; vga_address_translator    ; work         ;
+;       |vga_pll:mypll|                                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll                                                                  ; vga_pll                   ; work         ;
+;          |altpll:altpll_component|                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component                                          ; altpll                    ; work         ;
+;             |altpll_80u:auto_generated|                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated                ; altpll_80u                ; work         ;
++---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -304,7 +316,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |BrickBreaker|mouse_tracker:my_mouse|curr_state                                                                                                                                                       ;
+; State Machine - |BrickBreaker|mouse_tracker:tester|curr_state                                                                                                                                                         ;
 +------------------------+--------------------+------------------------+------------------------+-----------------------+------------------------+-----------------------+-----------------------+----------------------+
 ; Name                   ; curr_state.PROCESS ; curr_state.LOAD_BYTE_2 ; curr_state.LOAD_BYTE_3 ; curr_state.GET_BYTE_3 ; curr_state.LOAD_BYTE_1 ; curr_state.GET_BYTE_2 ; curr_state.GET_BYTE_1 ; curr_state.WAIT_INIT ;
 +------------------------+--------------------+------------------------+------------------------+-----------------------+------------------------+-----------------------+-----------------------+----------------------+
@@ -321,7 +333,7 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver                                                                                                                                                               ;
+; State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver                                                                                                                                                                 ;
 +--------------------------------------------+--------------------------------------------+-------------------------------------------+---------------------------------------+------------------------------------+-------------------------------------------+
 ; Name                                       ; s_ps2_transceiver.PS2_STATE_3_END_TRANSFER ; s_ps2_transceiver.PS2_STATE_2_COMMAND_OUT ; s_ps2_transceiver.PS2_STATE_1_DATA_IN ; s_ps2_transceiver.PS2_STATE_0_IDLE ; s_ps2_transceiver.PS2_STATE_4_END_DELAYED ;
 +--------------------------------------------+--------------------------------------------+-------------------------------------------+---------------------------------------+------------------------------------+-------------------------------------------+
@@ -335,7 +347,7 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter                                                                                                                                                                                                                                                                                                            ;
+; State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter                                                                                                                                                                                                                                                                                                              ;
 +------------------------------------------------------+--------------------------------------------------+------------------------------------------------+-----------------------------------------------+-------------------------------------------------+---------------------------------------------+----------------------------------------------+------------------------------------------------------+------------------------------------+
 ; Name                                                 ; s_ps2_transmitter.PS2_STATE_7_TRANSMISSION_ERROR ; s_ps2_transmitter.PS2_STATE_6_COMMAND_WAS_SENT ; s_ps2_transmitter.PS2_STATE_5_RECEIVE_ACK_BIT ; s_ps2_transmitter.PS2_STATE_4_TRANSMIT_STOP_BIT ; s_ps2_transmitter.PS2_STATE_3_TRANSMIT_DATA ; s_ps2_transmitter.PS2_STATE_2_WAIT_FOR_CLOCK ; s_ps2_transmitter.PS2_STATE_1_INITIATE_COMMUNICATION ; s_ps2_transmitter.PS2_STATE_0_IDLE ;
 +------------------------------------------------------+--------------------------------------------------+------------------------------------------------+-----------------------------------------------+-------------------------------------------------+---------------------------------------------+----------------------------------------------+------------------------------------------------------+------------------------------------+
@@ -352,7 +364,7 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |BrickBreaker|mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver                                                                                                          ;
+; State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver                                                                                                            ;
 +------------------------------------------+--------------------------------------+------------------------------------+------------------------------------------+---------------------------------+------------------------------------+
 ; Name                                     ; s_ps2_receiver.PS2_STATE_3_PARITY_IN ; s_ps2_receiver.PS2_STATE_2_DATA_IN ; s_ps2_receiver.PS2_STATE_1_WAIT_FOR_DATA ; s_ps2_receiver.PS2_STATE_0_IDLE ; s_ps2_receiver.PS2_STATE_4_STOP_IN ;
 +------------------------------------------+--------------------------------------+------------------------------------+------------------------------------------+---------------------------------+------------------------------------+
@@ -364,15 +376,31 @@ Encoding Type:  One-Hot
 +------------------------------------------+--------------------------------------+------------------------------------+------------------------------------------+---------------------------------+------------------------------------+
 
 
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |BrickBreaker|control:c0|current_state                                                                                                                                                                                                                                                                                                  ;
++-----------------------------------+----------------------------+-----------------------------------+--------------------+-------------------------+-------------------------+--------------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+
+; Name                              ; current_state.CLEAR_SCREEN ; current_state.INITIAL_DRAW_PADDLE ; current_state.WAIT ; current_state.DRAW_BALL ; current_state.MOVE_BALL ; current_state.ERASE_BALL ; current_state.DRAW_PADDLE ; current_state.MOVE_PADDLE ; current_state.ERASE_PADDLE ; current_state.INITIAL_DRAW ; current_state.STORE_INTO_RAM ;
++-----------------------------------+----------------------------+-----------------------------------+--------------------+-------------------------+-------------------------+--------------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+
+; current_state.STORE_INTO_RAM      ; 0                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ;
+; current_state.INITIAL_DRAW        ; 0                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 0                         ; 0                         ; 0                          ; 1                          ; 1                            ;
+; current_state.ERASE_PADDLE        ; 0                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 0                         ; 0                         ; 1                          ; 0                          ; 1                            ;
+; current_state.MOVE_PADDLE         ; 0                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 0                         ; 1                         ; 0                          ; 0                          ; 1                            ;
+; current_state.DRAW_PADDLE         ; 0                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 1                         ; 0                         ; 0                          ; 0                          ; 1                            ;
+; current_state.ERASE_BALL          ; 0                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 1                        ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ;
+; current_state.MOVE_BALL           ; 0                          ; 0                                 ; 0                  ; 0                       ; 1                       ; 0                        ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ;
+; current_state.DRAW_BALL           ; 0                          ; 0                                 ; 0                  ; 1                       ; 0                       ; 0                        ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ;
+; current_state.WAIT                ; 0                          ; 0                                 ; 1                  ; 0                       ; 0                       ; 0                        ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ;
+; current_state.INITIAL_DRAW_PADDLE ; 0                          ; 1                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ;
+; current_state.CLEAR_SCREEN        ; 1                          ; 0                                 ; 0                  ; 0                       ; 0                       ; 0                        ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ;
++-----------------------------------+----------------------------+-----------------------------------+--------------------+-------------------------+-------------------------+--------------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+
+
+
 +----------------------------------------------------------------------------------------------------+
 ; User-Specified and Inferred Latches                                                                ;
 +-----------------------------------------------------+---------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
 +-----------------------------------------------------+---------------------+------------------------+
-; control:c0|next_state[0]                            ; control:c0|Mux1     ; yes                    ;
-; control:c0|next_state[1]                            ; control:c0|Mux1     ; yes                    ;
-; control:c0|next_state[2]                            ; control:c0|Mux1     ; yes                    ;
-; control:c0|next_state[3]                            ; control:c0|Mux1     ; yes                    ;
 ; datapath:d0|x[7]                                    ; datapath:d0|x[7]    ; yes                    ;
 ; datapath:d0|x[5]                                    ; datapath:d0|x[7]    ; yes                    ;
 ; datapath:d0|x[6]                                    ; datapath:d0|x[7]    ; yes                    ;
@@ -391,121 +419,58 @@ Encoding Type:  One-Hot
 ; datapath:d0|y[0]                                    ; datapath:d0|x[7]    ; yes                    ;
 ; datapath:d0|y[1]                                    ; datapath:d0|x[7]    ; yes                    ;
 ; datapath:d0|y[2]                                    ; datapath:d0|x[7]    ; yes                    ;
-; Number of user-specified and inferred latches = 22  ;                     ;                        ;
+; Number of user-specified and inferred latches = 18  ;                     ;                        ;
 +-----------------------------------------------------+---------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                                                                                                     ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
-; Register name                                                                                                                                 ; Reason for Removal                     ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
-; mouse_tracker:my_mouse|init_byte_received                                                                                                     ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|init_done                                                                                      ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|idle_counter[0..3]                                                                             ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|ps2_data_reg                                                                                   ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|idle_counter[4..7]                                                                             ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|ps2_clk_reg                                                                                    ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|last_ps2_clk                                                                                   ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[2,3]                                ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[1..3]                                        ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0]                                       ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[1]                          ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[1]                                   ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[1]                                  ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[0]                                           ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_was_sent                                     ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|error_communication_timed_out                        ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[4..17]                              ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[2..20]                               ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[2..13]                      ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[1..8]                                    ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[0]                                                ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data_en                                             ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[1..3]                                             ; Stuck at GND due to stuck port clock   ;
-; datapath:d0|ram_info[8,9]                                                                                                                     ; Merged with datapath:d0|ram_info[10]   ;
-; datapath:d0|ram_info[1..3]                                                                                                                    ; Merged with datapath:d0|ram_info[0]    ;
-; datapath:d0|ram_info[0,10]                                                                                                                    ; Stuck at GND due to stuck port data_in ;
-; mouse_tracker:my_mouse|curr_state.LOAD_BYTE_1                                                                                                 ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state.LOAD_BYTE_2                                                                                                 ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state~2                                                                                                           ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state~3                                                                                                           ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state~4                                                                                                           ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state.WAIT_INIT                                                                                                   ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|curr_state.GET_BYTE_1                                                                                                  ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|curr_state.PROCESS                                                                                                     ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state.LOAD_BYTE_3                                                                                                 ; Lost fanout                            ;
-; mouse_tracker:my_mouse|curr_state.GET_BYTE_2                                                                                                  ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|curr_state.GET_BYTE_3                                                                                                  ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver~2                                                                            ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver~3                                                                            ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_4_END_DELAYED                                                      ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_0_IDLE                                                             ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_1_DATA_IN                                                          ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_2_COMMAND_OUT                                                      ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_3_END_TRANSFER                                                     ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~2                                  ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~3                                  ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~4                                  ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_0_IDLE                   ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_1_INITIATE_COMMUNICATION ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_2_WAIT_FOR_CLOCK         ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_3_TRANSMIT_DATA          ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_4_TRANSMIT_STOP_BIT      ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_5_RECEIVE_ACK_BIT        ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_6_COMMAND_WAS_SENT       ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_7_TRANSMISSION_ERROR     ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~2                                             ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~3                                             ; Lost fanout                            ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_4_STOP_IN                           ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_0_IDLE                              ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_1_WAIT_FOR_DATA                     ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_2_DATA_IN                           ; Stuck at GND due to stuck port clock   ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_3_PARITY_IN                         ; Stuck at GND due to stuck port clock   ;
-; Total Number of Removed Registers = 126                                                                                                       ;                                        ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                                                                                                                          ;
++-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                                                           ; Reason for Removal                                                                                                ;
++-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
+; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[0..7]                                                         ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[4..7]                ; Merged with mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2] ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[1,3]                 ; Merged with mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0] ;
+; datapath:d0|ram_info[8,9]                                                                                               ; Merged with datapath:d0|ram_info[10]                                                                              ;
+; datapath:d0|ram_info[1..3]                                                                                              ; Merged with datapath:d0|ram_info[0]                                                                               ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0]                   ; Stuck at GND due to stuck port data_in                                                                            ;
+; datapath:d0|ram_info[0,10]                                                                                              ; Stuck at GND due to stuck port data_in                                                                            ;
+; control:c0|current_state.INITIAL_DRAW_PADDLE                                                                            ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|curr_state~2                                                                                       ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|curr_state~3                                                                                       ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|curr_state~4                                                                                       ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver~2                                                        ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver~3                                                        ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~2              ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~3              ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~4              ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~2                         ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~3                         ; Lost fanout                                                                                                       ;
+; control:c0|current_state~2                                                                                              ; Lost fanout                                                                                                       ;
+; control:c0|current_state~3                                                                                              ; Lost fanout                                                                                                       ;
+; control:c0|current_state~4                                                                                              ; Lost fanout                                                                                                       ;
+; control:c0|current_state~5                                                                                              ; Lost fanout                                                                                                       ;
+; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_2_COMMAND_OUT                                  ; Stuck at GND due to stuck port data_in                                                                            ;
+; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_4_END_DELAYED                                  ; Stuck at GND due to stuck port data_in                                                                            ;
+; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_3_END_TRANSFER                                 ; Stuck at GND due to stuck port data_in                                                                            ;
+; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_1_WAIT_FOR_DATA ; Stuck at GND due to stuck port data_in                                                                            ;
+; Total Number of Removed Registers = 41                                                                                  ;                                                                                                                   ;
++-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                                                                           ;
-+-----------------------------------------------------------------------------------------------------------------------------+-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Register name                                                                                                               ; Reason for Removal      ; Registers Removed due to This Register                                                                                                        ;
-+-----------------------------------------------------------------------------------------------------------------------------+-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|init_done                                                                    ; Stuck at GND            ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[1],                         ;
-;                                                                                                                             ; due to stuck port clock ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|error_communication_timed_out,                       ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[2],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[3],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[4],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[5],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[6],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[7],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[8],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[9],                         ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[10],                        ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[11],                        ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[12],                        ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[13],                        ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2],                                      ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[4],                                      ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[5],                                      ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[6],                                      ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[7],                                      ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[8]                                       ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|ps2_data_reg                                                                 ; Stuck at GND            ; mouse_tracker:my_mouse|PS2_Controller:tracker2|idle_counter[4],                                                                               ;
-;                                                                                                                             ; due to stuck port clock ; mouse_tracker:my_mouse|PS2_Controller:tracker2|idle_counter[5],                                                                               ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|idle_counter[6],                                                                               ;
-;                                                                                                                             ;                         ; mouse_tracker:my_mouse|PS2_Controller:tracker2|idle_counter[7]                                                                                ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_2_COMMAND_OUT                                    ; Stuck at GND            ; mouse_tracker:my_mouse|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_3_END_TRANSFER,                                                    ;
-;                                                                                                                             ; due to stuck port clock ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_1_WAIT_FOR_DATA                     ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|ps2_clk_reg                                                                  ; Stuck at GND            ; mouse_tracker:my_mouse|PS2_Controller:tracker2|last_ps2_clk                                                                                   ;
-;                                                                                                                             ; due to stuck port clock ;                                                                                                                                               ;
-; mouse_tracker:my_mouse|curr_state~2                                                                                         ; Lost Fanouts            ; mouse_tracker:my_mouse|curr_state.LOAD_BYTE_3                                                                                                 ;
-; mouse_tracker:my_mouse|curr_state.GET_BYTE_1                                                                                ; Stuck at GND            ; mouse_tracker:my_mouse|curr_state.PROCESS                                                                                                     ;
-;                                                                                                                             ; due to stuck port clock ;                                                                                                                                               ;
-; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_0_IDLE ; Stuck at GND            ; mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter.PS2_STATE_1_INITIATE_COMMUNICATION ;
-;                                                                                                                             ; due to stuck port clock ;                                                                                                                                               ;
-+-----------------------------------------------------------------------------------------------------------------------------+-------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                                                                                                  ;
++----------------------------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------+
+; Register name                                                                          ; Reason for Removal        ; Registers Removed due to This Register                                                                                  ;
++----------------------------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------+
+; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[3]                           ; Lost Fanouts              ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[4],                                                           ;
+;                                                                                        ;                           ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[5],                                                           ;
+;                                                                                        ;                           ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[6],                                                           ;
+;                                                                                        ;                           ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[7]                                                            ;
+; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_2_COMMAND_OUT ; Stuck at GND              ; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_3_END_TRANSFER,                                ;
+;                                                                                        ; due to stuck port data_in ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_1_WAIT_FOR_DATA ;
++----------------------------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -513,50 +478,64 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 176   ;
-; Number of registers using Synchronous Clear  ; 99    ;
-; Number of registers using Synchronous Load   ; 23    ;
+; Total registers                              ; 331   ;
+; Number of registers using Synchronous Clear  ; 206   ;
+; Number of registers using Synchronous Load   ; 20    ;
 ; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 63    ;
+; Number of registers using Clock Enable       ; 183   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|yCounter[0]                                             ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ram_counter[4]                                                                         ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|paddle_counter[1]                                                                      ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_counter[2]                                                                        ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|control:c0|timer[14]                                                                              ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |BrickBreaker|control:c0|draw_all_counter[2]                                                                    ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |BrickBreaker|control:c0|clear_counter[11]                                                                      ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[14]                                                                          ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|frame_counter[0]                                                                       ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_frame_counter[0]                                                                  ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|clear_x[7]                                                                            ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_ball_counter[0]                                                                  ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_counter[0]                                                                       ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|paddle_x[5]                                                                           ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|paddle_x[4]                                                                           ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|clear_y[2]                                                                            ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ram_address[6]                                                                        ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[7]                                                                           ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[17]                                                                          ;
-; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[1]                                                                             ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[3]                                                                             ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_y[4]                                                                             ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_y[1]                                                                             ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3|result_node[2] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|Add8                                                                                  ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |BrickBreaker|datapath:d0|x[2]                                                                                  ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[3]                                                                                  ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[1]                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2]              ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data[5]                    ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ram_counter[0]                                                                                          ;
+; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |BrickBreaker|control:c0|draw_all_counter[7]                                                                                     ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|paddle_x[3]                                                                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|paddle_x[6]                                                                                            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |BrickBreaker|control:c0|clear_counter[0]                                                                                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[3]                   ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|control:c0|timer[19]                                                                                               ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|paddle_counter[0]                                                                                       ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_counter[2]                                                                                         ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|yCounter[6]                                                              ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte1[4]                                                                                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte3[4]                                                                                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte2[0]                                                                                      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|right_click                                                                                   ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[11]                                                                                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|frame_counter[0]                                                                                        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_frame_counter[0]                                                                                   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|clear_x[1]                                                                                             ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_counter[1]                                                                                        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_ball_counter[0]                                                                                   ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|clear_y[1]                                                                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ram_address[0]                                                                                         ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[1] ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[6]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[3]                  ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[3]                       ;
+; 4:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[7]         ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[4]                                                                                            ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[17]                                                                                           ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|x_pos[6]                                                                                      ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|y_pos[0]                                                                                      ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[7]                                                                                              ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[6]                                                                                              ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_y[3]                                                                                              ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_y[1]                                                                                              ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3|result_node[1]                  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|Add8                                                                                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |BrickBreaker|datapath:d0|x[2]                                                                                                   ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[4]                                                                                                   ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[2]                                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------+
@@ -1126,54 +1105,54 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mouse_tracker:my_mouse ;
-+----------------+-----------+----------------------------------------+
-; Parameter Name ; Value     ; Type                                   ;
-+----------------+-----------+----------------------------------------+
-; XMIN           ; 000000000 ; Unsigned Binary                        ;
-; YMIN           ; 000000000 ; Unsigned Binary                        ;
-; XMAX           ; 010011111 ; Unsigned Binary                        ;
-; YMAX           ; 001110111 ; Unsigned Binary                        ;
-; XSTART         ; 001001111 ; Unsigned Binary                        ;
-; YSTART         ; 000111011 ; Unsigned Binary                        ;
-+----------------+-----------+----------------------------------------+
++-------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mouse_tracker:tester ;
++----------------+-----------+--------------------------------------+
+; Parameter Name ; Value     ; Type                                 ;
++----------------+-----------+--------------------------------------+
+; XMIN           ; 000000000 ; Unsigned Binary                      ;
+; YMIN           ; 000000000 ; Unsigned Binary                      ;
+; XMAX           ; 010011111 ; Unsigned Binary                      ;
+; YMAX           ; 001110111 ; Unsigned Binary                      ;
+; XSTART         ; 001001111 ; Unsigned Binary                      ;
+; YSTART         ; 000111011 ; Unsigned Binary                      ;
++----------------+-----------+--------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mouse_tracker:my_mouse|PS2_Controller:tracker2 ;
-+------------------+-------+------------------------------------------------------------------+
-; Parameter Name   ; Value ; Type                                                             ;
-+------------------+-------+------------------------------------------------------------------+
-; INITIALIZE_MOUSE ; 1     ; Signed Integer                                                   ;
-+------------------+-------+------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2 ;
++------------------+-------+----------------------------------------------------------------+
+; Parameter Name   ; Value ; Type                                                           ;
++------------------+-------+----------------------------------------------------------------+
+; INITIALIZE_MOUSE ; 1     ; Signed Integer                                                 ;
++------------------+-------+----------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out ;
-+------------------------------------+----------------------+---------------------------------------------------------------------------+
-; Parameter Name                     ; Value                ; Type                                                                      ;
-+------------------------------------+----------------------+---------------------------------------------------------------------------+
-; CLOCK_CYCLES_FOR_101US             ; 5050                 ; Signed Integer                                                            ;
-; NUMBER_OF_BITS_FOR_101US           ; 13                   ; Signed Integer                                                            ;
-; COUNTER_INCREMENT_FOR_101US        ; 0000000000001        ; Unsigned Binary                                                           ;
-; CLOCK_CYCLES_FOR_15MS              ; 750000               ; Signed Integer                                                            ;
-; NUMBER_OF_BITS_FOR_15MS            ; 20                   ; Signed Integer                                                            ;
-; COUNTER_INCREMENT_FOR_15MS         ; 00000000000000000001 ; Unsigned Binary                                                           ;
-; CLOCK_CYCLES_FOR_2MS               ; 100000               ; Signed Integer                                                            ;
-; NUMBER_OF_BITS_FOR_2MS             ; 17                   ; Signed Integer                                                            ;
-; COUNTER_INCREMENT_FOR_2MS          ; 00000000000000001    ; Unsigned Binary                                                           ;
-; PS2_STATE_0_IDLE                   ; 000                  ; Unsigned Binary                                                           ;
-; PS2_STATE_1_INITIATE_COMMUNICATION ; 001                  ; Unsigned Binary                                                           ;
-; PS2_STATE_2_WAIT_FOR_CLOCK         ; 010                  ; Unsigned Binary                                                           ;
-; PS2_STATE_3_TRANSMIT_DATA          ; 011                  ; Unsigned Binary                                                           ;
-; PS2_STATE_4_TRANSMIT_STOP_BIT      ; 100                  ; Unsigned Binary                                                           ;
-; PS2_STATE_5_RECEIVE_ACK_BIT        ; 101                  ; Unsigned Binary                                                           ;
-; PS2_STATE_6_COMMAND_WAS_SENT       ; 110                  ; Unsigned Binary                                                           ;
-; PS2_STATE_7_TRANSMISSION_ERROR     ; 111                  ; Unsigned Binary                                                           ;
-+------------------------------------+----------------------+---------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out ;
++------------------------------------+----------------------+-------------------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                                    ;
++------------------------------------+----------------------+-------------------------------------------------------------------------+
+; CLOCK_CYCLES_FOR_101US             ; 5050                 ; Signed Integer                                                          ;
+; NUMBER_OF_BITS_FOR_101US           ; 13                   ; Signed Integer                                                          ;
+; COUNTER_INCREMENT_FOR_101US        ; 0000000000001        ; Unsigned Binary                                                         ;
+; CLOCK_CYCLES_FOR_15MS              ; 750000               ; Signed Integer                                                          ;
+; NUMBER_OF_BITS_FOR_15MS            ; 20                   ; Signed Integer                                                          ;
+; COUNTER_INCREMENT_FOR_15MS         ; 00000000000000000001 ; Unsigned Binary                                                         ;
+; CLOCK_CYCLES_FOR_2MS               ; 100000               ; Signed Integer                                                          ;
+; NUMBER_OF_BITS_FOR_2MS             ; 17                   ; Signed Integer                                                          ;
+; COUNTER_INCREMENT_FOR_2MS          ; 00000000000000001    ; Unsigned Binary                                                         ;
+; PS2_STATE_0_IDLE                   ; 000                  ; Unsigned Binary                                                         ;
+; PS2_STATE_1_INITIATE_COMMUNICATION ; 001                  ; Unsigned Binary                                                         ;
+; PS2_STATE_2_WAIT_FOR_CLOCK         ; 010                  ; Unsigned Binary                                                         ;
+; PS2_STATE_3_TRANSMIT_DATA          ; 011                  ; Unsigned Binary                                                         ;
+; PS2_STATE_4_TRANSMIT_STOP_BIT      ; 100                  ; Unsigned Binary                                                         ;
+; PS2_STATE_5_RECEIVE_ACK_BIT        ; 101                  ; Unsigned Binary                                                         ;
+; PS2_STATE_6_COMMAND_WAS_SENT       ; 110                  ; Unsigned Binary                                                         ;
+; PS2_STATE_7_TRANSMISSION_ERROR     ; 111                  ; Unsigned Binary                                                         ;
++------------------------------------+----------------------+-------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1226,7 +1205,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mouse_tracker:my_mouse|PS2_Controller:tracker2"                                                                                                                       ;
+; Port Connectivity Checks: "mouse_tracker:tester|PS2_Controller:tracker2"                                                                                                                         ;
 +-------------------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port                          ; Type   ; Severity ; Details                                                                                                                                      ;
 +-------------------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1237,17 +1216,51 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------+
-; Port Connectivity Checks: "mouse_tracker:my_mouse"           ;
-+-----------------+--------+----------+------------------------+
-; Port            ; Type   ; Severity ; Details                ;
-+-----------------+--------+----------+------------------------+
-; enable_tracking ; Input  ; Info     ; Stuck at VCC           ;
-; y_pos           ; Output ; Info     ; Explicitly unconnected ;
-; left_click      ; Output ; Info     ; Explicitly unconnected ;
-; right_click     ; Output ; Info     ; Explicitly unconnected ;
-; count           ; Output ; Info     ; Explicitly unconnected ;
-+-----------------+--------+----------+------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mouse_tracker:tester"                                                                                               ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                  ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; enable_tracking ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; count           ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "hex_decoder:hex5"      ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; hex_digit[3..1] ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "hex_decoder:hex2"      ;
++-----------------+-------+----------+--------------+
+; Port            ; Type  ; Severity ; Details      ;
++-----------------+-------+----------+--------------+
+; hex_digit[3..1] ; Input ; Info     ; Stuck at GND ;
++-----------------+-------+----------+--------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datapath:d0"                                                                                                                                                                          ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type  ; Severity ; Details                                                                                                                                                                          ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; mouse_x_in ; Input ; Warning  ; Input port expression (9 bits) is wider than the input port (8 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control:c0"                                                                                                                                                                            ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                                                                          ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; display    ; Output ; Info     ; Explicitly unconnected                                                                                                                                                           ;
+; mouse_x_in ; Input  ; Warning  ; Input port expression (9 bits) is wider than the input port (8 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -1255,44 +1268,43 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 176                         ;
+; arriav_ff             ; 331                         ;
 ;     CLR SCLR          ; 10                          ;
-;     ENA               ; 19                          ;
+;     ENA               ; 50                          ;
 ;     ENA CLR SCLR      ; 10                          ;
-;     ENA SCLR          ; 23                          ;
-;     ENA SLD           ; 11                          ;
-;     SCLR              ; 56                          ;
-;     SLD               ; 12                          ;
-;     plain             ; 35                          ;
+;     ENA SCLR          ; 105                         ;
+;     ENA SLD           ; 18                          ;
+;     SCLR              ; 81                          ;
+;     SLD               ; 2                           ;
+;     plain             ; 55                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 370                         ;
-;     arith             ; 136                         ;
-;         1 data inputs ; 101                         ;
-;         2 data inputs ; 20                          ;
-;         3 data inputs ; 9                           ;
-;         4 data inputs ; 1                           ;
-;         5 data inputs ; 5                           ;
+; arriav_lcell_comb     ; 597                         ;
+;     arith             ; 201                         ;
+;         1 data inputs ; 174                         ;
+;         2 data inputs ; 19                          ;
+;         3 data inputs ; 4                           ;
+;         5 data inputs ; 4                           ;
 ;     extend            ; 3                           ;
 ;         7 data inputs ; 3                           ;
-;     normal            ; 211                         ;
+;     normal            ; 354                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 6                           ;
-;         3 data inputs ; 43                          ;
-;         4 data inputs ; 42                          ;
-;         5 data inputs ; 62                          ;
-;         6 data inputs ; 55                          ;
-;     shared            ; 20                          ;
-;         0 data inputs ; 2                           ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 45                          ;
+;         3 data inputs ; 56                          ;
+;         4 data inputs ; 89                          ;
+;         5 data inputs ; 69                          ;
+;         6 data inputs ; 88                          ;
+;     shared            ; 39                          ;
+;         0 data inputs ; 4                           ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 12                          ;
+;         2 data inputs ; 29                          ;
 ;         3 data inputs ; 2                           ;
-; boundary_port         ; 49                          ;
+; boundary_port         ; 87                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 27                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.70                        ;
-; Average LUT depth     ; 2.60                        ;
+; Max LUT depth         ; 5.40                        ;
+; Average LUT depth     ; 2.52                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1301,7 +1313,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -1311,7 +1323,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Mon Nov 19 16:55:33 2018
+    Info: Processing started: Tue Nov 20 10:04:46 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off brickbreaker -c brickbreaker
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -1341,11 +1353,11 @@ Info (12021): Found 3 design units, including 3 entities, in source file ps2mous
     Info (12023): Found entity 3: hex_decoder File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Mouse_Controller.v Line: 374
 Info (12021): Found 3 design units, including 3 entities, in source file brickbreaker.v
     Info (12023): Found entity 1: BrickBreaker File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1
-    Info (12023): Found entity 2: control File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 123
-    Info (12023): Found entity 3: datapath File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 408
-Warning (10236): Verilog HDL Implicit Net warning at brickbreaker.v(106): created implicit net for "clk" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 106
+    Info (12023): Found entity 2: control File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 193
+    Info (12023): Found entity 3: datapath File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 493
 Info (12127): Elaborating entity "BrickBreaker" for the top level hierarchy
-Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 57
+Warning (10034): Output port "LEDR[2]" at brickbreaker.v(21) has no driver File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
+Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 58
 Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA|vga_address_translator:user_input_translator" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 192
 Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 213
 Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|altsyncram:VideoMemory" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 213
@@ -1396,38 +1408,49 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/altp
     Info (12023): Found entity 1: altpll_80u File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altpll_80u.tdf Line: 26
 Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA|vga_controller:controller" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 252
-Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 82
-Warning (10270): Verilog HDL Case Statement warning at brickbreaker.v(186): incomplete case statement has no default case item File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 186
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(185): inferring latch(es) for variable "next_state", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-Warning (10270): Verilog HDL Case Statement warning at brickbreaker.v(259): incomplete case statement has no default case item File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 259
-Info (10041): Inferred latch for "next_state[0]" at brickbreaker.v(185) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-Info (10041): Inferred latch for "next_state[1]" at brickbreaker.v(185) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-Info (10041): Inferred latch for "next_state[2]" at brickbreaker.v(185) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-Info (10041): Inferred latch for "next_state[3]" at brickbreaker.v(185) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-Info (12128): Elaborating entity "hex_decoder" for hierarchy "control:c0|hex_decoder:h" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 143
-Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 102
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(560): inferring latch(es) for variable "x", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 560
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(560): inferring latch(es) for variable "y", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 560
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(560): inferring latch(es) for variable "colour", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 560
-Info (10041): Inferred latch for "colour[0]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "colour[1]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "colour[2]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[0]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[1]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[2]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[3]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[4]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[5]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "y[6]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[0]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[1]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[2]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[3]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[4]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[5]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[6]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (10041): Inferred latch for "x[7]" at brickbreaker.v(567) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-Info (12128): Elaborating entity "ram256x18" for hierarchy "datapath:d0|ram256x18:storage" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 449
+Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 84
+Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(214): object "mouse_prev" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 214
+Warning (10270): Verilog HDL Case Statement warning at brickbreaker.v(258): incomplete case statement has no default case item File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 258
+Info (10264): Verilog HDL Case Statement information at brickbreaker.v(258): all case item expressions in this case statement are onehot File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 258
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(257): inferring latch(es) for variable "next_state", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (10270): Verilog HDL Case Statement warning at brickbreaker.v(332): incomplete case statement has no default case item File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 332
+Info (10264): Verilog HDL Case Statement information at brickbreaker.v(332): all case item expressions in this case statement are onehot File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 332
+Warning (10034): Output port "display" at brickbreaker.v(199) has no driver File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 199
+Info (10041): Inferred latch for "next_state.CLEAR_SCREEN" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.WAIT" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.DRAW_BALL" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.MOVE_BALL" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.ERASE_BALL" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.DRAW_PADDLE" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.MOVE_PADDLE" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.ERASE_PADDLE" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.INITIAL_DRAW" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (10041): Inferred latch for "next_state.STORE_INTO_RAM" at brickbreaker.v(257) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 104
+Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(527): object "mouse_prev" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 527
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(670): inferring latch(es) for variable "x", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 670
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(670): inferring latch(es) for variable "y", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 670
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(670): inferring latch(es) for variable "colour", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 670
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(722): truncated value with size 7 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 722
+Info (10041): Inferred latch for "colour[0]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "colour[1]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "colour[2]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[0]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[1]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[2]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[3]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[4]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[5]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "y[6]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[0]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[1]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[2]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[3]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[4]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[5]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[6]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (10041): Inferred latch for "x[7]" at brickbreaker.v(677) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+Info (12128): Elaborating entity "ram256x18" for hierarchy "datapath:d0|ram256x18:storage" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 537
 Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram256x18:storage|altsyncram:altsyncram_component" File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x18.v Line: 86
 Info (12130): Elaborated megafunction instantiation "datapath:d0|ram256x18:storage|altsyncram:altsyncram_component" File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x18.v Line: 86
 Info (12133): Instantiated megafunction "datapath:d0|ram256x18:storage|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x18.v Line: 86
@@ -1448,61 +1471,71 @@ Info (12133): Instantiated megafunction "datapath:d0|ram256x18:storage|altsyncra
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_8dm1.tdf
     Info (12023): Found entity 1: altsyncram_8dm1 File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_8dm1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_8dm1" for hierarchy "datapath:d0|ram256x18:storage|altsyncram:altsyncram_component|altsyncram_8dm1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "mouse_tracker" for hierarchy "mouse_tracker:my_mouse" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 116
-Info (12128): Elaborating entity "PS2_Controller" for hierarchy "mouse_tracker:my_mouse|PS2_Controller:tracker2" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Mouse_Controller.v Line: 165
+Info (12128): Elaborating entity "hex_decoder" for hierarchy "hex_decoder:hex0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 133
+Info (12128): Elaborating entity "mouse_tracker" for hierarchy "mouse_tracker:tester" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 172
+Info (12128): Elaborating entity "PS2_Controller" for hierarchy "mouse_tracker:tester|PS2_Controller:tracker2" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Mouse_Controller.v Line: 165
 Warning (10230): Verilog HDL assignment warning at PS2_Controller.v(64): truncated value with size 32 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 64
 Warning (10230): Verilog HDL assignment warning at PS2_Controller.v(65): truncated value with size 32 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 65
-Info (12128): Elaborating entity "Altera_UP_PS2_Data_In" for hierarchy "mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 246
-Info (12128): Elaborating entity "Altera_UP_PS2_Command_Out" for hierarchy "mouse_tracker:my_mouse|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 266
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13012): Latch control:c0|next_state[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[1] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch control:c0|next_state[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[2] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch control:c0|next_state[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[1] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch control:c0|next_state[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 185
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[1] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[7] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|colour[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|x[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|colour[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|colour[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
-Warning (13012): Latch datapath:d0|y[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 567
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state[0] File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 305
+Info (12128): Elaborating entity "Altera_UP_PS2_Data_In" for hierarchy "mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 246
+Info (12128): Elaborating entity "Altera_UP_PS2_Command_Out" for hierarchy "mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 266
+Warning (14026): LATCH primitive "control:c0|next_state.STORE_INTO_RAM_837" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.INITIAL_DRAW_829" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.ERASE_PADDLE_821" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.MOVE_PADDLE_813" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.DRAW_PADDLE_805" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.ERASE_BALL_797" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.MOVE_BALL_789" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.DRAW_BALL_781" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.WAIT_773" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (14026): LATCH primitive "control:c0|next_state.CLEAR_SCREEN_765" is permanently enabled File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 257
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch datapath:d0|x[7] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|x[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|x[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|y[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|y[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|y[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|y[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|colour[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|x[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|x[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|x[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|x[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|x[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|colour[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|colour[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 212
+Warning (13012): Latch datapath:d0|y[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|y[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
+Warning (13012): Latch datapath:d0|y[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 677
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_ball File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 207
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at VCC File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 26
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
+    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at VCC File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 27
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 14 registers lost all their fanouts during netlist optimizations.
+Info (17049): 23 registers lost all their fanouts during netlist optimizations.
 Warning (20013): Ignored 385 assignments for entity "DE1_SoC" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CS_N -entity DE1_SoC was ignored
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DIN -entity DE1_SoC was ignored
@@ -1894,20 +1927,22 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altpll_80u.tdf Line: 34
     Info: Must be connected
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 19
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 19
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 19
-Info (21057): Implemented 456 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 768 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 42 output pins
+    Info (21059): Implemented 80 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 379 logic cells
+    Info (21061): Implemented 653 logic cells
     Info (21064): Implemented 27 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 446 warnings
-    Info: Peak virtual memory: 4886 megabytes
-    Info: Processing ended: Mon Nov 19 16:55:45 2018
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:28
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 461 warnings
+    Info: Peak virtual memory: 4890 megabytes
+    Info: Processing ended: Tue Nov 20 10:05:00 2018
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:30
 
 
 +------------------------------------------+
