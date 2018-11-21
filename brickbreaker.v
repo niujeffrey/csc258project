@@ -332,7 +332,7 @@ module control(
 					next_state = ERASE_BALL;
 			end
 			DETECT_COLLISION: begin
-				if (ram_counter == 6'd40)
+				if (ram_counter == 6'd63)
 					next_state = STORE_BLACK_BRICK;
 				else
 					next_state = DETECT_COLLISION;
@@ -558,7 +558,7 @@ module control(
 		end
 		else
 		begin
-			if (timer == 20'b11001011011100110101)               //org value b11001011011100110101
+			if (timer == 20'b01001011011100110101)               //org value b11001011011100110101
 			begin
 				timer <= 20'b0;
 				frame_counter <= frame_counter + 1'b1;
