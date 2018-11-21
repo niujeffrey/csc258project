@@ -3,31 +3,31 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'control:c0|current_state.DRAW_BALL'
-Slack : -8.401
-TNS   : -141.939
+Slack : -9.497
+TNS   : -146.588
 
 Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -3.787
-TNS   : -766.493
+Slack : -4.219
+TNS   : -892.843
 
 Type  : Slow 1100mV 85C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 33.976
+Slack : 33.653
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.356
+Slack : 0.340
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.406
+Slack : 0.392
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'control:c0|current_state.DRAW_BALL'
-Slack : 1.077
+Slack : 1.321
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'control:c0|current_state.DRAW_BALL'
-Slack : 0.125
+Slack : 0.327
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -35,39 +35,39 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.874
+Slack : 8.871
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 18.782
+Slack : 18.778
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'control:c0|current_state.DRAW_BALL'
-Slack : -8.533
-TNS   : -144.843
+Slack : -9.535
+TNS   : -147.756
 
 Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -3.514
-TNS   : -678.166
+Slack : -3.993
+TNS   : -815.377
 
 Type  : Slow 1100mV 0C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 34.232
+Slack : 34.000
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
-Slack : 0.328
+Slack : 0.319
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.351
+Slack : 0.390
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'control:c0|current_state.DRAW_BALL'
-Slack : 0.981
+Slack : 1.154
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'control:c0|current_state.DRAW_BALL'
-Slack : 0.155
+Slack : 0.345
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -79,35 +79,35 @@ Slack : 8.829
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 18.756
+Slack : 18.759
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'control:c0|current_state.DRAW_BALL'
-Slack : -4.600
-TNS   : -75.886
+Slack : -5.283
+TNS   : -82.064
 
 Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -2.982
-TNS   : -563.309
+Slack : -3.050
+TNS   : -620.443
 
 Type  : Fast 1100mV 85C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 36.032
+Slack : 35.673
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.178
+Slack : 0.177
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.234
+Slack : 0.246
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'control:c0|current_state.DRAW_BALL'
-Slack : 0.673
+Slack : 0.705
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'control:c0|current_state.DRAW_BALL'
-Slack : 0.173
+Slack : 0.373
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -115,7 +115,7 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.809
+Slack : 8.808
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
@@ -123,31 +123,31 @@ Slack : 18.893
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'control:c0|current_state.DRAW_BALL'
-Slack : -4.440
-TNS   : -73.405
+Slack : -4.983
+TNS   : -77.317
 
 Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -2.354
-TNS   : -431.537
+Slack : -2.416
+TNS   : -489.061
 
 Type  : Fast 1100mV 0C Model Setup 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 36.522
+Slack : 36.242
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
-Slack : 0.168
+Slack : 0.135
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.217
+Slack : 0.234
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'control:c0|current_state.DRAW_BALL'
-Slack : 0.598
+Slack : 0.648
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'control:c0|current_state.DRAW_BALL'
-Slack : 0.238
+Slack : 0.395
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL|vcoph[0]'
@@ -155,11 +155,11 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.802
+Slack : 8.803
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'VGA|mypll|altpll_component|auto_generated|generic_pll1~PLL_OUTPUT_COUNTER|divclk'
-Slack : 18.889
+Slack : 18.888
 TNS   : 0.000
 
 ------------------------------------------------------------

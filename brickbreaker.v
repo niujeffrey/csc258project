@@ -62,6 +62,7 @@ module BrickBreaker(
 		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
 	wire store_ram, draw_all_bricks, paddle, enable_black, enable_paddle_move, draw_ball, enable_ball_move, clear_screen;	
+	wire enable_brick_erase, enable_collision_detection, enable_black_brick;
 	wire [8:0] mouse_x, mouse_y;
 
 	control c0(
@@ -80,7 +81,10 @@ module BrickBreaker(
 		.enable_paddle_move(enable_paddle_move),
 		.draw_ball(draw_ball),
 		.enable_ball_move(enable_ball_move),
-		.clear_screen(clear_screen)
+		.clear_screen(clear_screen),
+		.enable_collision_detection(enable_collision_detection),
+		.enable_brick_erase(enable_brick_erase),
+		.enable_black_brick(enable_black_brick)
 	);
 	
 	datapath d0(
@@ -98,6 +102,9 @@ module BrickBreaker(
 		.draw_ball(draw_ball),
 		.enable_ball_move(enable_ball_move),
 		.clear_screen(clear_screen),
+		.enable_collision_detection(enable_collision_detection),
+		.enable_brick_erase(enable_brick_erase),
+		.enable_black_brick(enable_black_brick),
 		.x(x),
 		.y(y),
 		.colour(colour)
@@ -186,8 +193,6 @@ module BrickBreaker(
 	);
 	
 	*/
-
-		
 endmodule
 
 module control(
@@ -206,7 +211,10 @@ module control(
 		output reg enable_paddle_move,
 		output reg draw_ball,
 		output reg enable_ball_move,
-		output reg clear_screen
+		output reg clear_screen,
+		output reg enable_brick_erase,
+		output reg enable_collision_detection,
+		output reg enable_black_brick
 	);
 
 	reg [3:0] current_state, next_state;
@@ -218,40 +226,44 @@ module control(
 	
 	/* FSM States
 	 *
-	 * So here's the idea for the states.
-	 * First state, we draw everything: all the bricks, the ball at it's initial position,
-	 * and the paddle at its initial position.
-	 *
-	 * Then we enter the second state, third state, ... ERASE_PADDLE, MOVE_PADDLE, DRAW_PADDLE: 
-	 * since the mouse can move at any time, we should consistently be in this state such 
-	 * that we can redraw the paddle where the mouse is.
-	 * 
-	 * This loop can be interrupted when we reach 15 (or some other number) of frames, where
-	 * we then move the ball, potentially detect a collision, make the ball bounce off, and so on.
+	 * So here's the actual idea for the states
+	 * 1. CLEAR_SCREEN draws black over the entire screen, essentially reseting it
+	 * 2. STORE_INTO_RAM intializes all the bricks into the 256x18 ram
+	 * 3. INITIAL_DRAW draws all the bricks onto the screen
+	 * 4. WAIT waits for the time when something can happen by counting frames. Then it hands off to
+	 *    either ERASE_PADDLE or ERASE_BALL to trigger a movement in either of those objects
+	 * 5. ERASE_PADDLE erases the paddle
+	 * 6. MOVE_PADDLE moves the paddle to the mouse coordinate
+	 * 7. DRAW_PADDLE draws the paddle onto the screen
+	 * 8. ERASE_BALL, MOVE_BALL, DRAW_BALL are analagous
+	 * 9. DETECT_COLLISION goes through the ram and checks whether the ball has collided with a brick
+	 *    that is hasn't been hit before. i.e. the brick isn't black already
+	 * 10. ERASE_BRICK removes a collided brick from view
 	 */
-	localparam CLEAR_SCREEN = 4'd12,
-				  STORE_INTO_RAM = 4'd0,
-				  INITIAL_DRAW = 4'd1,
-//				  MOVE_MOUSE = 4'd2,
-				  INITIAL_DRAW_PADDLE = 4'd11,
+	localparam CLEAR_SCREEN = 4'd0,
+				  STORE_INTO_RAM = 4'd1,
+				  INITIAL_DRAW = 4'd2,
 				  ERASE_PADDLE = 4'd3,
 				  MOVE_PADDLE = 4'd4,
 				  DRAW_PADDLE = 4'd5,
-				  WAIT = 4'd10,
-				  ERASE_BALL = 4'd6,
-				  MOVE_BALL = 4'd7,
-				  ERASE_BRICK = 4'd8, // Only when the ball collides with a brick
-				  DRAW_BALL = 4'd9;
+				  WAIT = 4'd6,
+				  ERASE_BALL = 4'd7,
+				  MOVE_BALL = 4'd8,
+				  DRAW_BALL = 4'd9,
+				  DETECT_COLLISION = 4'd10,
+				  STORE_BLACK_BRICK = 4'd11,
+				  ERASE_BRICK = 4'd12;
 	
-	reg [15:0] clear_counter;
-	reg [5:0] ram_counter;
-	reg [11:0] draw_all_counter;
-	reg [5:0] ball_counter;
-	reg [6:0] paddle_counter;
+	reg [15:0] clear_counter;    // ensure CLEAR_SCREEN lasts long enough
+	reg [5:0] ram_counter; 		  // ensure the storing/checking the ram lasts	
+	reg [11:0] draw_all_counter; // ensure that drawing all the bricks lasts
+	reg [5:0] ball_counter;		  // ensure drawing ball lasts
+	reg [6:0] paddle_counter;    // ensure drawing paddle lasts
+	reg [6:0] brick_counter; 	  // ensure erasing brick lasts
 	
-	reg [19:0] timer;
-	reg [3:0] frame_counter;
-	reg [3:0] ball_frame_counter; // To count frame for the ball to move
+	reg [19:0] timer;			     // 60 Hz counter
+	reg [3:0] frame_counter;	  // Count the frames for the paddle to move
+	reg [3:0] ball_frame_counter;// To count frame for the ball to move
 	
 	always @(*)
 	begin: state_table
@@ -269,7 +281,7 @@ module control(
 					next_state = STORE_INTO_RAM;
 			end
 			INITIAL_DRAW: begin
-				if (draw_all_counter == 12'b101000000000) // 2560 = 40 bricks * 64 pixels each
+				if (draw_all_counter == 12'd2560) // 2560 = 40 bricks * 64 pixels each
 					next_state = DRAW_PADDLE;
 				else
 					next_state = INITIAL_DRAW;
@@ -306,9 +318,24 @@ module control(
 			end
 			ERASE_BALL: begin
 				if (ball_counter == 5'd4)
-					next_state = MOVE_BALL;
+					next_state = DETECT_COLLISION;
 				else
 					next_state = ERASE_BALL;
+			end
+			DETECT_COLLISION: begin
+				if (ram_counter == 6'd40)
+					next_state = STORE_BLACK_BRICK;
+				else
+					next_state = DETECT_COLLISION;
+			end
+			STORE_BLACK_BRICK: begin
+				next_state = ERASE_BRICK;
+			end
+			ERASE_BRICK: begin
+				if (brick_counter == 7'd64)
+					next_state = MOVE_BALL;
+				else
+					next_state = ERASE_BRICK;
 			end
 			MOVE_BALL: begin
 				next_state = DRAW_BALL;
@@ -328,6 +355,9 @@ module control(
 		enable_paddle_move = 1'b0;
 		enable_ball_move = 1'b0;
 		clear_screen = 1'b0;
+		enable_collision_detection = 1'b0;
+		enable_brick_erase = 1'b0;
+		enable_black_brick = 1'b0;
 		
 		case (current_state)
 			CLEAR_SCREEN: begin
@@ -339,11 +369,6 @@ module control(
 			end
 			INITIAL_DRAW: begin
 				draw_all_bricks = 1'b1;
-				draw = 1'b1;
-				writeEn = 1'b1;
-			end
-			INITIAL_DRAW_PADDLE: begin
-				draw_paddle = 1'b1;
 				draw = 1'b1;
 				writeEn = 1'b1;
 			end
@@ -372,7 +397,19 @@ module control(
 			end
 			MOVE_BALL: begin
 				enable_ball_move = 1'b1;
-			end			
+			end
+			DETECT_COLLISION: begin
+				enable_collision_detection = 1'b1;
+			end
+			STORE_BLACK_BRICK: begin
+				store_ram = 1'b1;
+				enable_black_brick = 1'b1;
+			end
+			ERASE_BRICK: begin
+				enable_brick_erase = 1'b1;
+				draw = 1'b1;
+				writeEn = 1'b1;
+			end
 		endcase
 	end // enable_signals
 	
@@ -398,7 +435,7 @@ module control(
 	end // stateFFs
 	
 	always @(posedge clk)
-	begin
+	begin: clear_counting
 		if (!resetn)
 			clear_counter <= 16'd0;
 		else
@@ -408,7 +445,7 @@ module control(
 			else
 				clear_counter <= 16'd0;
 		end
-	end
+	end // clear_counting
 	
 	always @(posedge clk)
 	begin: ram_counting
@@ -416,7 +453,7 @@ module control(
 			ram_counter <= 6'd0;
 		else
 		begin
-			if (current_state == STORE_INTO_RAM)
+			if (current_state == STORE_INTO_RAM | current_state == DETECT_COLLISION)
 			begin
 				ram_counter <= ram_counter + 1'b1;
 			end
@@ -437,6 +474,19 @@ module control(
 				draw_all_counter <= 12'b0;
 		end
 	end // brick_counting
+	
+	always @(posedge clk)
+	begin: brick_erasing
+		if (!resetn)
+			brick_counter <= 7'd0;
+		else
+		begin
+			if (current_state == ERASE_BRICK)
+				brick_counter <= brick_counter + 1'b1;
+			else
+				brick_counter <= 7'd0;
+		end
+	end // brick_erasing
 
 	always @(posedge clk)
 	begin: paddle_counting
@@ -505,8 +555,11 @@ module datapath(
 		input draw_ball,
 		input enable_ball_move,
 		input clear_screen,
+		input enable_collision_detection,
+		input enable_brick_erase,
+		input enable_black_brick,
 		output reg [7:0] x,
-		output reg [6:0] y, 
+		output reg [6:0] y,
 		output reg [2:0] colour
 	);
 	
@@ -527,6 +580,13 @@ module datapath(
 	reg [7:0] mouse_prev;
 
 	reg clear_screen_reg;
+	
+	reg [7:0] brick_to_clear_x;
+	reg [6:0] brick_to_clear_y;
+	reg actually_collides;
+	reg [7:0] address_of_collision;
+	reg [17:0] info_of_collided_brick;
+	
 	
 	ram256x18 storage(
 		.data(ram_info),
@@ -552,25 +612,33 @@ module datapath(
 		end
 		else if (store_ram == 1'b1)
 		begin
-			// ram_address increment for each brick added into memory
-			if (ram_address == 8'd40)
-				ram_address <= 8'd0;
-			else
-				ram_address <= ram_address + 1'b1;
-				
-			// Cycle through colours for some spice in life
-			if (ram_info[17:15] == 3'b111)
-				ram_info[17:15] <= 3'b001;
-			else
-				ram_info[17:15] <= ram_info[17:15] + 1'b1;
-				
-			if (ram_info[7:0] == 8'd144)
+			if (enable_black_brick & actually_collides)
 			begin
-				ram_info[7:0] <= 8'd0;
-				ram_info[14:8] <= ram_info[14:8] + 7'd8;
+				ram_address <= address_of_collision;
+				ram_info <= info_of_collided_brick;
 			end
 			else
-				ram_info[7:0] <= ram_info[7:0] + 8'd16;
+			begin
+				// ram_address increment for each brick added into memory
+				if (ram_address == 8'd40)
+					ram_address <= 8'd0;
+				else
+					ram_address <= ram_address + 1'b1;
+					
+				// Cycle through colours for some spice in life
+				if (ram_info[17:15] == 3'b111)
+					ram_info[17:15] <= 3'b001;
+				else
+					ram_info[17:15] <= ram_info[17:15] + 1'b1;
+					
+				if (ram_info[7:0] == 8'd144)
+				begin
+					ram_info[7:0] <= 8'd0;
+					ram_info[14:8] <= ram_info[14:8] + 7'd8;
+				end
+				else
+					ram_info[7:0] <= ram_info[7:0] + 8'd16;
+			end
 		end
 		else if (draw_all) begin
 			ram_info <= 18'd0;
@@ -580,6 +648,13 @@ module datapath(
 				else
 					ram_address <= ram_address + 1'b1;
 			end
+		end
+		else if (enable_collision_detection)
+		begin
+			if (ram_address == 8'd40)
+				ram_address <= 8'd0;
+			else
+				ram_address <= ram_address + 1'b1;
 		end
 	end
 	
@@ -692,10 +767,16 @@ module datapath(
 			y = clear_y;
 			colour = 3'b000;
 		end
+		else if (enable_brick_erase & actually_collides)
+		begin
+			x = brick_to_clear_x + draw_counter[3:0];
+			y = brick_to_clear_y + draw_counter[5:4];
+			colour = 3'b000;
+		end
 	end // decide_where_x_y_colour_come_from
 	
 	always @(posedge clk)
-	begin
+	begin: paddle_movement
 		if (!resetn)
 			paddle_x <= 8'd80;
 		else if (enable_paddle_move) begin
@@ -709,7 +790,7 @@ module datapath(
 //					paddle_x <= <= mouse_x_in;
 //				end
 		end
-	end
+	end // paddle_movement
 	
 	always @(posedge clk)
 	begin
@@ -720,6 +801,8 @@ module datapath(
 			ball_x_dir <= 1'b1;
 			ball_y_dir <= 1'b0;
 			clear_screen_reg <= 7'd0;
+			actually_collides <= 1'b0;
+			address_of_collision <= 8'd0;
 		end
 		else
 		begin
@@ -781,6 +864,50 @@ module datapath(
 						ball_y <= ball_y - 1'b1;
 				end
 			end
+			else if (enable_collision_detection)
+			begin
+				if (ram_out[17:15] != 3'b000) // Black bricks are already hit bricks
+				begin
+					if ((ram_out[7:0] - ball_x < 16) & (ram_out[14:8] == (ball_y - 2)))
+					begin // Case where ball hits the brick from above. Ball should be moving down
+						ball_y_dir <= 1'b0;
+						brick_to_clear_x <= ram_out[7:0];
+						brick_to_clear_y <= ram_out[14:8];
+						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						actually_collides <= 1'b1;
+						address_of_collision <= ram_address;
+					end
+					else if ((ram_out[7:0] - ball_x < 16) & ((ram_out[14:8] + 4) == ball_y))
+					begin // Case where ball hits the brick from below
+						ball_y_dir <= 1'b1;
+						brick_to_clear_x <= ram_out[7:0];
+						brick_to_clear_y <= ram_out[14:8];
+						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						actually_collides <= 1'b1;
+						address_of_collision <= ram_address;
+					end
+					else if ((ram_out[7:0] == (ball_x + 2)) & (ram_out[14:8] - ball_y < 4))
+					begin // Case where ball hits the brick from the left edge
+						ball_x_dir <= 1'b0;
+						brick_to_clear_x <= ram_out[7:0];
+						brick_to_clear_y <= ram_out[14:8];
+						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						actually_collides <= 1'b1;
+						address_of_collision <= ram_address;
+					end
+					else if ((ram_out[7:0] + 16 == ball_x) & (ram_out[14:8] - ball_y < 4))
+					begin
+						ball_x_dir <= 1'b1;
+						brick_to_clear_x <= ram_out[7:0];
+						brick_to_clear_y <= ram_out[14:8];
+						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						actually_collides <= 1'b1;
+						address_of_collision <= ram_address;
+					end
+				end
+			end
+			else if (~enable_brick_erase)
+				actually_collides = 1'b0;
 		end
 	end
 endmodule
