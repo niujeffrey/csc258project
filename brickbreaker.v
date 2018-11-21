@@ -402,7 +402,6 @@ module control(
 				enable_collision_detection = 1'b1;
 			end
 			STORE_BLACK_BRICK: begin
-				store_ram = 1'b1;
 				enable_black_brick = 1'b1;
 			end
 			ERASE_BRICK: begin
@@ -771,7 +770,7 @@ module datapath(
 		begin
 			x = brick_to_clear_x + draw_counter[3:0];
 			y = brick_to_clear_y + draw_counter[5:4];
-			colour = 3'b000;
+			colour = 3'b111;
 		end
 	end // decide_where_x_y_colour_come_from
 	
@@ -896,7 +895,7 @@ module datapath(
 						address_of_collision <= ram_address;
 					end
 					else if ((ram_out[7:0] + 16 == ball_x) & (ram_out[14:8] - ball_y < 4))
-					begin
+					begin // Case where ball hits the brick from right edge
 						ball_x_dir <= 1'b1;
 						brick_to_clear_x <= ram_out[7:0];
 						brick_to_clear_y <= ram_out[14:8];
@@ -906,7 +905,7 @@ module datapath(
 					end
 				end
 			end
-			else if (~enable_brick_erase)
+			else if (~enable_brick_erase & ~enable_black_brick) // Preserves the values of the actually_collides value.
 				actually_collides = 1'b0;
 		end
 	end
