@@ -802,6 +802,9 @@ module datapath(
 			clear_screen_reg <= 7'd0;
 			actually_collides <= 1'b0;
 			address_of_collision <= 8'd0;
+			info_of_collided_brick <= 18'd0;
+			brick_to_clear_x <= 8'd0;
+			brick_to_clear_y <= 8'd0;
 		end
 		else
 		begin
