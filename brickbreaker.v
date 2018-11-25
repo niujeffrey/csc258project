@@ -64,6 +64,7 @@ module BrickBreaker(
 	wire store_ram, draw_all_bricks, paddle, enable_black, enable_paddle_move, draw_ball, enable_ball_move, clear_screen;	
 	wire enable_brick_erase, enable_collision_detection, enable_black_brick, initial_ram, actually_erase, loss_restart;
 	wire [8:0] mouse_x, mouse_y;
+	wire [7:0] score;
 
 	control c0(
 		.clk(CLOCK_50),
@@ -113,7 +114,8 @@ module BrickBreaker(
 		.loss_restart(loss_restart),
 		.x(x),
 		.y(y),
-		.colour(colour)
+		.colour(colour),
+		.score(score)
 	);
 	
 	wire [8:0] x_coord, y_coord;
@@ -157,20 +159,29 @@ module BrickBreaker(
 
     // Put Y coordinates on hex displays 3-5
 
-    hex_decoder hex3(
-	     .hex_digit(y_coord[3:0]),
-		  .segments(HEX3)
-		  );
-
-    hex_decoder hex4(
-	     .hex_digit(y_coord[7:4]),
-		  .segments(HEX4)
-		  );
-
-    hex_decoder hex5(
-	     .hex_digit({3'b0, y_coord[8]}),
-		  .segments(HEX5)
-		  );
+//    hex_decoder hex3(
+//	     .hex_digit(y_coord[3:0]),
+//		  .segments(HEX3)
+//		  );
+//
+//    hex_decoder hex4(
+//	     .hex_digit(y_coord[7:4]),
+//		  .segments(HEX4)
+//		  );
+//
+//    hex_decoder hex5(
+//	     .hex_digit({3'b0, y_coord[8]}),
+//		  .segments(HEX5)
+//		  );
+	
+	hex_decoder hex4(
+		.hex_digit(score[3:0]),
+		.segments(HEX4)
+	);
+	hex_decoder hex5(
+		.hex_digit(score[7:4]),
+		.segments(HEX5)
+	);
 	
 	mouse_tracker tester(
 	     .clock(CLOCK_50),
@@ -265,7 +276,7 @@ module control(
 				  ACTUAL_ERASE = 4'd13;
 	
 	reg [15:0] clear_counter;    // ensure CLEAR_SCREEN lasts long enough
-	reg [5:0] ram_counter; 		  // ensure the storing/checking the ram lasts	
+	reg [7:0] ram_counter; 		  // ensure the storing/checking the ram lasts	
 	reg [11:0] draw_all_counter; // ensure that drawing all the bricks lasts
 	reg [5:0] ball_counter;		  // ensure drawing ball lasts
 	reg [6:0] paddle_counter;    // ensure drawing paddle lasts
@@ -336,7 +347,7 @@ module control(
 					next_state = ERASE_BALL;
 			end
 			DETECT_COLLISION: begin
-				if (ram_counter == 6'd63)
+				if (ram_counter == 7'd64)
 					next_state = STORE_BLACK_BRICK;
 				else
 					next_state = DETECT_COLLISION;
@@ -476,7 +487,7 @@ module control(
 	always @(posedge clk)
 	begin: ram_counting
 		if (!resetn)
-			ram_counter <= 6'd0;
+			ram_counter <= 8'd0;
 		else
 		begin
 			if (current_state == STORE_INTO_RAM | current_state == DETECT_COLLISION)
@@ -484,7 +495,7 @@ module control(
 				ram_counter <= ram_counter + 1'b1;
 			end
 			else
-				ram_counter <= 6'd0;
+				ram_counter <= 8'd0;
 		end
 	end // ram_counting
 	
@@ -609,14 +620,17 @@ module datapath(
 		output reg [7:0] x,
 		output reg [6:0] y,
 		output reg [2:0] colour,
-		output reg loss_restart
+		output reg loss_restart,
+		output reg [7:0] score
 	);
 	
-	wire [17:0] ram_out;
+	wire [19:0] ram_out;
+	
+	reg [6:0] bricks_hit;
 	
 	reg [7:0] clear_x;
 	reg [6:0] clear_y;
-	reg [17:0] ram_info;
+	reg [19:0] ram_info;
 	reg [7:0] ram_address;
 	reg [5:0] draw_counter;
 	reg [1:0] draw_ball_counter;
@@ -633,12 +647,13 @@ module datapath(
 	reg [7:0] brick_to_clear_x;
 	reg [6:0] brick_to_clear_y;
 	reg actually_collides;
+	reg [1:0] collision_level; // Indicates which level of collision (first hit, second hit, or third hit)
 	reg [7:0] address_of_collision;
-	reg [17:0] info_of_collided_brick;
+	reg [19:0] info_of_collided_brick;
 	
 	
 	// Make the ram256x32
-	ram256x18 storage(
+	ram256x32 storage(
 		.data(ram_info),
 		.address(ram_address),
 		.wren(store_ram & (initial_ram | actually_collides)),
@@ -657,11 +672,11 @@ module datapath(
 	begin
 		if (!resetn)
 		begin
-			ram_info <= 18'b001000000000000000;
+			ram_info <= 20'b11001000010000000000;
 			ram_address <= 8'd0;
 		end
 		else if (clear_screen) begin
-			ram_info <= 18'b001000000000000000;
+			ram_info <= 20'b11001000010000000000;
 			ram_address <= 8'd0;
 		end
 		else if (store_ram == 1'b1)
@@ -679,18 +694,18 @@ module datapath(
 			else
 				ram_address <= ram_address + 1'b1;
 				
-			// Cycle through colours for some spice in life
+			// Cycle through colours for some spice in life, and set all bricks to 3 hits left
 			if (ram_address == 8'd39)
-				ram_info[17:15] <= 3'b000;
+				ram_info[19:15] <= 5'b00000;
 			else if (ram_info[17:15] == 3'b111)
-				ram_info[17:15] <= 3'b001;
+				ram_info[19:15] <= 5'b11001;
 			else
-				ram_info[17:15] <= ram_info[17:15] + 1'b1;
+				ram_info[19:15] <= ram_info[19:15] + 1'b1;
 				
 			if (ram_info[7:0] == 8'd144)
 			begin
 				ram_info[7:0] <= 8'd0;
-				ram_info[14:8] <= ram_info[14:8] + 7'd8;
+				ram_info[14:8] <= ram_info[14:8] + 7'd16;
 			end
 			else
 				ram_info[7:0] <= ram_info[7:0] + 8'd16;
@@ -828,10 +843,22 @@ module datapath(
 			y = clear_y;
 			colour = 3'b000;
 		end
-		else if (enable_brick_erase & actually_collides)
+		else if (enable_brick_erase & actually_collides & collision_level == 2'b01)
 		begin
 			x = brick_to_clear_x + draw_counter[3:0];
 			y = brick_to_clear_y + draw_counter[5:4];
+			colour = 3'b000;
+		end
+		else if (enable_brick_erase & actually_collides & collision_level == 2'b10)
+		begin
+			x = brick_to_clear_x + draw_counter[1:0] * 4;
+			y = brick_to_clear_y + draw_counter[0] * 2 + 1;
+			colour = 3'b000;
+		end
+		else if (enable_brick_erase & actually_collides & collision_level == 2'b11)
+		begin
+			x = brick_to_clear_x + draw_counter[1:0] * 4 + 2;
+			y = brick_to_clear_y + draw_counter[0] * 2;
 			colour = 3'b000;
 		end
 	end // decide_where_x_y_colour_come_from
@@ -865,8 +892,31 @@ module datapath(
 		begin
 			if (ball_y == 7'd117)
 				loss_restart <= 1'b1;
+			else if (bricks_hit == 7'd40)
+				loss_restart <= 1'b1; // Not really a loss, just a restart
 			else
 				loss_restart <= 1'b0;
+		end
+	end
+	
+	always @(posedge clk)
+	begin
+		if (!resetn)
+		begin
+			score <= 7'd0;
+			bricks_hit <= 7'd0;
+		end
+		else if (clear_screen)
+			bricks_hit <= 7'd0;
+		else
+		begin
+			if (actually_erase & actually_collides & collision_level == 2'b01)
+			begin
+				score <= score + 1'b1;
+				bricks_hit <= bricks_hit + 1'b1;
+			end
+			else if (ball_y == 7'd117)
+				score <= 7'd0;
 		end
 	end
 	
@@ -884,6 +934,7 @@ module datapath(
 			info_of_collided_brick <= 18'd0;
 			brick_to_clear_x <= 8'd0;
 			brick_to_clear_y <= 8'd0;
+			collision_level <= 2'd0;
 		end
 //		else if (clear_screen)
 //		begin
@@ -927,7 +978,7 @@ module datapath(
 						ball_y <= ball_y + 1'b1;
 					/////////////////////////////////////ball collisions////////////////////////////
 					else if (ball_y == 7'd113) begin                   //later on have if ball past 115 and not hit paddle reset game
-						if ((((paddle_x + 16) - ball_x) < 16) & (((paddle_x + 16) - ball_x) >= 0)) begin
+						if ((((paddle_x + 16) - ball_x) < 17) & (((paddle_x + 16) - ball_x) >= 0)) begin
 							ball_y_dir <= 1'b0;
 							ball_y <= 7'd112;
 						end
@@ -961,33 +1012,36 @@ module datapath(
 			end
 			else if (enable_collision_detection)
 			begin
-				if (ram_out[17:15] != 3'b000) // Black bricks are already hit bricks
+				if (ram_out[19:18] != 2'b00)
 				begin
-					if ((ball_x - ram_out[7:0] < 16) & (ball_x - ram_out[7:0] >= 0) & (ram_out[14:8] == (ball_y + 1)))
-					begin // Case where ball hits the brick from above. Ball should be moving down
+					if ((ball_x - ram_out[7:0] < 16) & (ball_x - ram_out[7:0] >= 0) & (ram_out[14:8] == (ball_y + 2) | ram_out[14:8] == (ball_y + 1)))
+					begin
 						ball_y_dir <= 1'b0;
 						brick_to_clear_x <= ram_out[7:0];
 						brick_to_clear_y <= ram_out[14:8];
-						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						info_of_collided_brick = {ram_out[19:18] - 1'b1, 3'b000, ram_out[14:0]};
 						actually_collides <= 1'b1;
+						collision_level <= ram_out[19:18];
 						address_of_collision <= ram_address;
 					end
-					else if ((ball_x - ram_out[7:0] < 16) & (ball_x - ram_out[7:0] >= 0) & ((ram_out[14:8] + 4) == ball_y))
+					else if ((ball_x - ram_out[7:0] < 16) & (ball_x - ram_out[7:0] >= 0) & ((ram_out[14:8] + 4) == ball_y | (ram_out[14:8] + 3) == ball_y))
 					begin // Case where ball hits the brick from below
 						ball_y_dir <= 1'b1;
 						brick_to_clear_x <= ram_out[7:0];
 						brick_to_clear_y <= ram_out[14:8];
-						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						info_of_collided_brick = {ram_out[19:18] - 1'b1, 3'b000, ram_out[14:0]};
 						actually_collides <= 1'b1;
+						collision_level <= ram_out[19:18];
 						address_of_collision <= ram_address;
 					end
-					else if ((ram_out[7:0] == (ball_x + 1)) & (ball_y - ram_out[14:8] < 4) & (ball_y - ram_out[14:8] >= 0))
+					else if ((ram_out[7:0] == (ball_x + 2)) & (ball_y - ram_out[14:8] < 4) & (ball_y - ram_out[14:8] >= 0))
 					begin // Case where ball hits the brick from the left edge
 						ball_x_dir <= 1'b0;
 						brick_to_clear_x <= ram_out[7:0];
 						brick_to_clear_y <= ram_out[14:8];
-						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						info_of_collided_brick = {ram_out[19:18] - 1'b1, 3'b000, ram_out[14:0]};
 						actually_collides <= 1'b1;
+						collision_level <= ram_out[19:18];
 						address_of_collision <= ram_address;
 					end
 					else if ((ram_out[7:0] + 16 == ball_x) & (ball_y - ram_out[14:8] < 4) & (ball_y - ram_out[14:8] >= 0))
@@ -995,8 +1049,9 @@ module datapath(
 						ball_x_dir <= 1'b1;
 						brick_to_clear_x <= ram_out[7:0];
 						brick_to_clear_y <= ram_out[14:8];
-						info_of_collided_brick = {3'b000, ram_out[14:0]};
+						info_of_collided_brick = {ram_out[19:18] - 1'b1, 3'b000, ram_out[14:0]};
 						actually_collides <= 1'b1;
+						collision_level <= ram_out[19:18];
 						address_of_collision <= ram_address;
 					end
 				end
