@@ -62,7 +62,7 @@ module BrickBreaker(
 		defparam VGA.BACKGROUND_IMAGE = "black.mif";
 
 	wire store_ram, draw_all_bricks, paddle, enable_black, enable_paddle_move, draw_ball, enable_ball_move, clear_screen;	
-	wire enable_brick_erase, enable_collision_detection, enable_black_brick, initial_ram, actually_erase;
+	wire enable_brick_erase, enable_collision_detection, enable_black_brick, initial_ram, actually_erase, loss_restart;
 	wire [8:0] mouse_x, mouse_y;
 
 	control c0(
@@ -72,6 +72,7 @@ module BrickBreaker(
 		.key_left(~KEY[2]),
 		.key_right(~KEY[1]),
 		.mouse_x_in(x_coord),
+		.loss_restart(loss_restart),
 		.writeEn(writeEn),
 		.store_ram(store_ram),
 		.draw(draw),
@@ -109,6 +110,7 @@ module BrickBreaker(
 		.enable_black_brick(enable_black_brick),
 		.initial_ram(initial_ram),
 		.actually_erase(actually_erase),
+		.loss_restart(loss_restart),
 		.x(x),
 		.y(y),
 		.colour(colour)
@@ -205,6 +207,7 @@ module control(
 		input key_left,
 		input key_right,
 		input [7:0] mouse_x_in,
+		input loss_restart,
 		output [6:0] display,
 		output reg writeEn,
 		output reg store_ram,
@@ -269,6 +272,7 @@ module control(
 	reg [6:0] brick_counter; 	  // ensure erasing brick lasts
 	
 	reg [19:0] timer;			     // 60 Hz counter
+	reg [19:0] ball_timer;
 	reg [3:0] frame_counter;	  // Count the frames for the paddle to move
 	reg [3:0] ball_frame_counter;// To count frame for the ball to move
 	
@@ -284,14 +288,14 @@ module control(
 					next_state = CLEAR_SCREEN;
 			end
 			STORE_INTO_RAM: begin
-				if (ram_counter == 6'd39) // 40 blocks to store into RAM so 32 clock cycles for that
+				if (ram_counter == 6'd40) // 40 blocks to store into RAM so 32 clock cycles for that
 					next_state = INITIAL_DRAW;
 				else
 					next_state = STORE_INTO_RAM;
 			end
 			INITIAL_DRAW: begin
 				if (draw_all_counter == 12'd2560) // 2560 = 40 bricks * 64 pixels each
-					next_state = DRAW_PADDLE;
+					next_state = WAIT;
 				else
 					next_state = INITIAL_DRAW;
 			end
@@ -353,7 +357,8 @@ module control(
 					next_state = ERASE_BRICK;
 			end
 			MOVE_BALL: begin
-				next_state = DRAW_BALL;
+				next_state = loss_restart ? CLEAR_SCREEN : DRAW_BALL;
+//				next_state = DRAW_BALL;
 			end
 		endcase	
 	end // state_table
@@ -553,21 +558,28 @@ module control(
 		if (!resetn)
 		begin
 			timer <= 20'b0;
+			ball_timer <= 20'b0;
 			frame_counter <= 4'b0;
 			ball_frame_counter <= 4'b0;
 		end
 		else
 		begin
-			if (timer == 20'b01001011011100110101)               //org value b11001011011100110101
+			if (timer == 20'd833333)               //org value b11001011011100110101
 			begin
 				timer <= 20'b0;
 				frame_counter <= frame_counter + 1'b1;
-				ball_frame_counter <= ball_frame_counter + 1'b1;
 			end
 			else
 				timer <= timer + 1'b1;
 			if (frame_counter == 4'b0010)                                   //speed of paddle
 				frame_counter <= 4'b0;
+			if (ball_timer == 20'd800000)
+			begin
+				ball_timer <= 20'd0;
+				ball_frame_counter <= ball_frame_counter + 1'b1;
+			end
+			else
+				ball_timer <= ball_timer + 1'b1;
 			if (ball_frame_counter == 4'b0001)                              //speed of ball
 				ball_frame_counter <= 4'b0; 											
 		end
@@ -596,7 +608,8 @@ module datapath(
 		input initial_ram,
 		output reg [7:0] x,
 		output reg [6:0] y,
-		output reg [2:0] colour
+		output reg [2:0] colour,
+		output reg loss_restart
 	);
 	
 	wire [17:0] ram_out;
@@ -624,6 +637,7 @@ module datapath(
 	reg [17:0] info_of_collided_brick;
 	
 	
+	// Make the ram256x32
 	ram256x18 storage(
 		.data(ram_info),
 		.address(ram_address),
@@ -646,6 +660,10 @@ module datapath(
 			ram_info <= 18'b001000000000000000;
 			ram_address <= 8'd0;
 		end
+		else if (clear_screen) begin
+			ram_info <= 18'b001000000000000000;
+			ram_address <= 8'd0;
+		end
 		else if (store_ram == 1'b1)
 		begin
 //			if (enable_black_brick & actually_collides)
@@ -662,7 +680,9 @@ module datapath(
 				ram_address <= ram_address + 1'b1;
 				
 			// Cycle through colours for some spice in life
-			if (ram_info[17:15] == 3'b111)
+			if (ram_address == 8'd39)
+				ram_info[17:15] <= 3'b000;
+			else if (ram_info[17:15] == 3'b111)
 				ram_info[17:15] <= 3'b001;
 			else
 				ram_info[17:15] <= ram_info[17:15] + 1'b1;
@@ -679,7 +699,7 @@ module datapath(
 		else if (draw_all) begin
 			ram_info <= 18'd0;
 			if (draw_counter == 6'b111111) begin
-				if (ram_address == 8'd40)
+				if (ram_address == 8'd39)
 					ram_address <= 8'd0;
 				else
 					ram_address <= ram_address + 1'b1;
@@ -748,7 +768,7 @@ module datapath(
 
 	always @(posedge clk)
 	begin: increment_draw_counter
-		if (!resetn)
+		if (!resetn | clear_screen)
 			draw_counter <= 6'd0;
 		else
 		begin
@@ -766,7 +786,7 @@ module datapath(
 	
 	always @(posedge clk)
 	begin: increment_draw_ball_counter
-		if (!resetn)
+		if (!resetn | clear_screen)
 			draw_ball_counter <= 2'b0;
 		else
 		begin
@@ -818,9 +838,11 @@ module datapath(
 	
 	always @(posedge clk)
 	begin: paddle_movement
-		if (!resetn)
-			paddle_x <= 8'd80;
-		else if (enable_paddle_move) begin
+//		if (!resetn | clear_screen)
+//			paddle_x <= 8'd80;
+//			paddle_x <= mouse_x_in;
+//		else if (enable_paddle_move) begin
+		if (enable_paddle_move) begin
 			//if (mouse_x_in != mouse_prev) begin                            //mouse_x_in != mouse_prev
 				//if (paddle_x != 8'd0)
 					paddle_x <= mouse_x_in;           //or can just decrement x value???????????????? whichever works best with mouse
@@ -832,13 +854,28 @@ module datapath(
 //				end
 		end
 	end // paddle_movement
+
+	always @(posedge clk)
+	begin
+		if (!resetn | clear_screen)
+			loss_restart <= 1'b0;
+		else if (clear_screen)
+			loss_restart <= 1'b0;
+		else
+		begin
+			if (ball_y == 7'd117)
+				loss_restart <= 1'b1;
+			else
+				loss_restart <= 1'b0;
+		end
+	end
 	
 	always @(posedge clk)
 	begin
-		if (!resetn)
+		if (!resetn | clear_screen)
 		begin
 			ball_x <= 8'd88;
-			ball_y <= 7'd98;
+			ball_y <= 7'd112;
 			ball_x_dir <= 1'b1;
 			ball_y_dir <= 1'b0;
 			clear_screen_reg <= 7'd0;
@@ -848,6 +885,19 @@ module datapath(
 			brick_to_clear_x <= 8'd0;
 			brick_to_clear_y <= 8'd0;
 		end
+//		else if (clear_screen)
+//		begin
+//			ball_x <= 8'd88;
+//			ball_y <= 7'd112;
+//			ball_x_dir <= 1'b1;
+//			ball_y_dir <= 1'b0;
+//			clear_screen_reg <= 7'd0;
+//			actually_collides <= 1'b0;
+//			address_of_collision <= 8'd0;
+//			info_of_collided_brick <= 18'd0;
+//			brick_to_clear_x <= 8'd0;
+//			brick_to_clear_y <= 8'd0;
+//		end
 		else
 		begin
 			clear_screen_reg <= clear_screen;
@@ -873,13 +923,13 @@ module datapath(
 				end
 				if (ball_y_dir == 1'b1)
 				begin
-					if (ball_y < 7'd110)
+					if (ball_y < 7'd113)
 						ball_y <= ball_y + 1'b1;
 					/////////////////////////////////////ball collisions////////////////////////////
-					else if (ball_y == 7'd110) begin                   //later on have if ball past 115 and not hit paddle reset game
+					else if (ball_y == 7'd113) begin                   //later on have if ball past 115 and not hit paddle reset game
 						if ((((paddle_x + 16) - ball_x) < 16) & (((paddle_x + 16) - ball_x) >= 0)) begin
 							ball_y_dir <= 1'b0;
-							ball_y <= 7'd109;
+							ball_y <= 7'd112;
 						end
 						else 
 							ball_y <= ball_y + 1'b1;
@@ -892,10 +942,11 @@ module datapath(
 						if(ball_y < 7'd117) begin
 							ball_y <= ball_y + 1'b1;
 						end
-						else begin
-							ball_y_dir <= 1'b0;
-							ball_y <= 7'd116;
-						end
+//						else begin
+//							ball_y_dir <= 1'b0;
+//							ball_y <= 7'd116;
+//							loss_restart = 1'b1;
+//						end
 					end               
 				end
 				else

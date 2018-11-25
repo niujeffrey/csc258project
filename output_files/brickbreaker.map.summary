@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Tue Nov 20 23:05:50 2018
+Analysis & Synthesis Status : Successful - Sun Nov 25 10:24:26 2018
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : brickbreaker
 Top-level Entity Name : BrickBreaker
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 360
+Total registers : 380
 Total pins : 87
 Total virtual pins : 0
 Total block memory bits : 62,208

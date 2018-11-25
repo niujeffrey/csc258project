@@ -38,17 +38,18 @@ s_ps2_receiver.PS2_STATE_3_PARITY_IN 1 0 0 1 0
 s_ps2_receiver.PS2_STATE_4_STOP_IN 0 0 0 1 1 
 
 State Machine - |BrickBreaker|control:c0|current_state
-Name current_state.ERASE_BRICK current_state.STORE_BLACK_BRICK current_state.DETECT_COLLISION current_state.DRAW_BALL current_state.MOVE_BALL current_state.ERASE_BALL current_state.WAIT current_state.DRAW_PADDLE current_state.MOVE_PADDLE current_state.ERASE_PADDLE current_state.INITIAL_DRAW current_state.STORE_INTO_RAM current_state.CLEAR_SCREEN 
-current_state.CLEAR_SCREEN 0 0 0 0 0 0 0 0 0 0 0 0 0 
-current_state.STORE_INTO_RAM 0 0 0 0 0 0 0 0 0 0 0 1 1 
-current_state.INITIAL_DRAW 0 0 0 0 0 0 0 0 0 0 1 0 1 
-current_state.ERASE_PADDLE 0 0 0 0 0 0 0 0 0 1 0 0 1 
-current_state.MOVE_PADDLE 0 0 0 0 0 0 0 0 1 0 0 0 1 
-current_state.DRAW_PADDLE 0 0 0 0 0 0 0 1 0 0 0 0 1 
-current_state.WAIT 0 0 0 0 0 0 1 0 0 0 0 0 1 
-current_state.ERASE_BALL 0 0 0 0 0 1 0 0 0 0 0 0 1 
-current_state.MOVE_BALL 0 0 0 0 1 0 0 0 0 0 0 0 1 
-current_state.DRAW_BALL 0 0 0 1 0 0 0 0 0 0 0 0 1 
-current_state.DETECT_COLLISION 0 0 1 0 0 0 0 0 0 0 0 0 1 
-current_state.STORE_BLACK_BRICK 0 1 0 0 0 0 0 0 0 0 0 0 1 
-current_state.ERASE_BRICK 1 0 0 0 0 0 0 0 0 0 0 0 1 
+Name current_state.ACTUAL_ERASE current_state.ERASE_BRICK current_state.STORE_BLACK_BRICK current_state.DETECT_COLLISION current_state.DRAW_BALL current_state.MOVE_BALL current_state.ERASE_BALL current_state.WAIT current_state.DRAW_PADDLE current_state.MOVE_PADDLE current_state.ERASE_PADDLE current_state.INITIAL_DRAW current_state.STORE_INTO_RAM current_state.CLEAR_SCREEN 
+current_state.CLEAR_SCREEN 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+current_state.STORE_INTO_RAM 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+current_state.INITIAL_DRAW 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+current_state.ERASE_PADDLE 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+current_state.MOVE_PADDLE 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+current_state.DRAW_PADDLE 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+current_state.WAIT 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+current_state.ERASE_BALL 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+current_state.MOVE_BALL 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+current_state.DRAW_BALL 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+current_state.DETECT_COLLISION 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+current_state.STORE_BLACK_BRICK 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+current_state.ERASE_BRICK 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.ACTUAL_ERASE 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
