@@ -1,5 +1,5 @@
 Analysis & Synthesis report for brickbreaker
-Sun Nov 25 17:21:48 2018
+Sun Dec 02 20:44:15 2018
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -18,36 +18,35 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
  10. State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver
  11. State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter
  12. State Machine - |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver
- 13. State Machine - |BrickBreaker|control:c0|current_state
- 14. User-Specified and Inferred Latches
- 15. Registers Removed During Synthesis
- 16. Removed Registers Triggering Further Register Optimizations
- 17. General Register Statistics
- 18. Multiplexer Restructuring Statistics (Restructuring Performed)
- 19. Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated
- 20. Source assignments for datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated
- 21. Parameter Settings for User Entity Instance: vga_adapter:VGA
- 22. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
- 23. Parameter Settings for User Entity Instance: vga_adapter:VGA|altsyncram:VideoMemory
- 24. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component
- 25. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller
- 26. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator
- 27. Parameter Settings for User Entity Instance: datapath:d0|ram256x32:storage|altsyncram:altsyncram_component
- 28. Parameter Settings for User Entity Instance: mouse_tracker:tester
- 29. Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2
- 30. Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out
- 31. altsyncram Parameter Settings by Entity Instance
- 32. altpll Parameter Settings by Entity Instance
- 33. Port Connectivity Checks: "mouse_tracker:tester|PS2_Controller:tracker2"
- 34. Port Connectivity Checks: "mouse_tracker:tester"
- 35. Port Connectivity Checks: "hex_decoder:hex2"
- 36. Port Connectivity Checks: "datapath:d0|ram256x32:storage"
- 37. Port Connectivity Checks: "datapath:d0"
- 38. Port Connectivity Checks: "control:c0"
- 39. Post-Synthesis Netlist Statistics for Top Partition
- 40. Elapsed Time Per Partition
- 41. Analysis & Synthesis Messages
- 42. Analysis & Synthesis Suppressed Messages
+ 13. State Machine - |BrickBreaker|datapath:d0|ball_dir
+ 14. State Machine - |BrickBreaker|control:c0|current_state
+ 15. User-Specified and Inferred Latches
+ 16. Registers Removed During Synthesis
+ 17. Removed Registers Triggering Further Register Optimizations
+ 18. General Register Statistics
+ 19. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 20. Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated
+ 21. Source assignments for datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated
+ 22. Parameter Settings for User Entity Instance: vga_adapter:VGA
+ 23. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_address_translator:user_input_translator
+ 24. Parameter Settings for User Entity Instance: vga_adapter:VGA|altsyncram:VideoMemory
+ 25. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component
+ 26. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller
+ 27. Parameter Settings for User Entity Instance: vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator
+ 28. Parameter Settings for User Entity Instance: datapath:d0|ram256x32:storage|altsyncram:altsyncram_component
+ 29. Parameter Settings for User Entity Instance: mouse_tracker:tester
+ 30. Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2
+ 31. Parameter Settings for User Entity Instance: mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out
+ 32. altsyncram Parameter Settings by Entity Instance
+ 33. altpll Parameter Settings by Entity Instance
+ 34. Port Connectivity Checks: "mouse_tracker:tester|PS2_Controller:tracker2"
+ 35. Port Connectivity Checks: "mouse_tracker:tester"
+ 36. Port Connectivity Checks: "hex_decoder:hex2"
+ 37. Port Connectivity Checks: "datapath:d0|ram256x32:storage"
+ 38. Post-Synthesis Netlist Statistics for Top Partition
+ 39. Elapsed Time Per Partition
+ 40. Analysis & Synthesis Messages
+ 41. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -74,16 +73,16 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Nov 25 17:21:48 2018       ;
+; Analysis & Synthesis Status     ; Successful - Sun Dec 02 20:44:15 2018       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; brickbreaker                                ;
 ; Top-level Entity Name           ; BrickBreaker                                ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 384                                         ;
-; Total pins                      ; 87                                          ;
+; Total registers                 ; 490                                         ;
+; Total pins                      ; 94                                          ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 62,720                                      ;
+; Total block memory bits         ; 698,368                                     ;
 ; Total DSP Blocks                ; 0                                           ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -224,11 +223,11 @@ agreement for further details.
 ; altrom.inc                                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.inc                                 ;         ;
 ; altram.inc                                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altram.inc                                 ;         ;
 ; altdpram.inc                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altdpram.inc                               ;         ;
-; db/altsyncram_m6m1.tdf                       ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_m6m1.tdf                       ;         ;
+; db/altsyncram_o7m1.tdf                       ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_o7m1.tdf                       ;         ;
 ; black.mif                                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Jeffrey/Documents/University/CSC258/project/black.mif                                    ;         ;
-; db/decode_7la.tdf                            ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_7la.tdf                            ;         ;
-; db/decode_01a.tdf                            ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_01a.tdf                            ;         ;
-; db/mux_ifb.tdf                               ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/mux_ifb.tdf                               ;         ;
+; db/decode_nma.tdf                            ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_nma.tdf                            ;         ;
+; db/decode_g2a.tdf                            ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_g2a.tdf                            ;         ;
+; db/mux_8hb.tdf                               ; yes             ; Auto-Generated Megafunction            ; C:/Users/Jeffrey/Documents/University/CSC258/project/db/mux_8hb.tdf                               ;         ;
 ; altpll.tdf                                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf                                 ;         ;
 ; stratix_pll.inc                              ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_pll.inc                            ;         ;
 ; stratixii_pll.inc                            ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratixii_pll.inc                          ;         ;
@@ -243,20 +242,20 @@ agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 471            ;
+; Estimate of Logic utilization (ALMs needed) ; 983            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 816            ;
-;     -- 7 input functions                    ; 4              ;
-;     -- 6 input functions                    ; 108            ;
-;     -- 5 input functions                    ; 103            ;
-;     -- 4 input functions                    ; 117            ;
-;     -- <=3 input functions                  ; 484            ;
+; Combinational ALUT usage for logic          ; 1643           ;
+;     -- 7 input functions                    ; 5              ;
+;     -- 6 input functions                    ; 302            ;
+;     -- 5 input functions                    ; 201            ;
+;     -- 4 input functions                    ; 184            ;
+;     -- <=3 input functions                  ; 951            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 384            ;
+; Dedicated logic registers                   ; 490            ;
 ;                                             ;                ;
-; I/O pins                                    ; 87             ;
+; I/O pins                                    ; 94             ;
 ; Total MLAB memory bits                      ; 0              ;
-; Total block memory bits                     ; 62720          ;
+; Total block memory bits                     ; 698368         ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
@@ -264,9 +263,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 384            ;
-; Total fan-out                               ; 4678           ;
-; Average fan-out                             ; 3.33           ;
+; Maximum fan-out                             ; 575            ;
+; Total fan-out                               ; 10631          ;
+; Average fan-out                             ; 4.35           ;
 +---------------------------------------------+----------------+
 
 
@@ -275,29 +274,30 @@ agreement for further details.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                          ; Entity Name               ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------+---------------------------+--------------+
-; |BrickBreaker                                           ; 816 (1)             ; 384 (0)                   ; 62720             ; 0          ; 87   ; 0            ; |BrickBreaker                                                                                                ; BrickBreaker              ; work         ;
-;    |control:c0|                                         ; 156 (156)           ; 120 (120)                 ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|control:c0                                                                                     ; control                   ; work         ;
-;    |datapath:d0|                                        ; 412 (411)           ; 105 (105)                 ; 5120              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0                                                                                    ; datapath                  ; work         ;
-;       |ram256x32:storage|                               ; 1 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x32:storage                                                                  ; ram256x32                 ; work         ;
-;          |altsyncram:altsyncram_component|              ; 1 (0)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x32:storage|altsyncram:altsyncram_component                                  ; altsyncram                ; work         ;
-;             |altsyncram_4dm1:auto_generated|            ; 1 (1)               ; 0 (0)                     ; 5120              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated   ; altsyncram_4dm1           ; work         ;
+; |BrickBreaker                                           ; 1643 (1)            ; 490 (0)                   ; 698368            ; 0          ; 94   ; 0            ; |BrickBreaker                                                                                                ; BrickBreaker              ; work         ;
+;    |control:c0|                                         ; 304 (304)           ; 180 (180)                 ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|control:c0                                                                                     ; control                   ; work         ;
+;    |datapath:d0|                                        ; 1038 (1037)         ; 147 (147)                 ; 7168              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0                                                                                    ; datapath                  ; work         ;
+;       |ram256x32:storage|                               ; 1 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x32:storage                                                                  ; ram256x32                 ; work         ;
+;          |altsyncram:altsyncram_component|              ; 1 (0)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x32:storage|altsyncram:altsyncram_component                                  ; altsyncram                ; work         ;
+;             |altsyncram_4dm1:auto_generated|            ; 1 (1)               ; 0 (0)                     ; 7168              ; 0          ; 0    ; 0            ; |BrickBreaker|datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated   ; altsyncram_4dm1           ; work         ;
 ;    |hex_decoder:hex0|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex0                                                                               ; hex_decoder               ; work         ;
 ;    |hex_decoder:hex1|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex1                                                                               ; hex_decoder               ; work         ;
+;    |hex_decoder:hex3|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex3                                                                               ; hex_decoder               ; work         ;
 ;    |hex_decoder:hex4|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex4                                                                               ; hex_decoder               ; work         ;
 ;    |hex_decoder:hex5|                                   ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|hex_decoder:hex5                                                                               ; hex_decoder               ; work         ;
-;    |mouse_tracker:tester|                               ; 155 (40)            ; 129 (32)                  ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester                                                                           ; mouse_tracker             ; work         ;
+;    |mouse_tracker:tester|                               ; 152 (37)            ; 129 (32)                  ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester                                                                           ; mouse_tracker             ; work         ;
 ;       |PS2_Controller:tracker2|                         ; 115 (9)             ; 97 (6)                    ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2                                                   ; PS2_Controller            ; work         ;
 ;          |Altera_UP_PS2_Command_Out:PS2_Command_Out|    ; 92 (92)             ; 66 (66)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out         ; Altera_UP_PS2_Command_Out ; work         ;
 ;          |Altera_UP_PS2_Data_In:PS2_Data_In|            ; 14 (14)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In                 ; Altera_UP_PS2_Data_In     ; work         ;
-;    |vga_adapter:VGA|                                    ; 64 (3)              ; 30 (0)                    ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA                                                                                ; vga_adapter               ; work         ;
-;       |altsyncram:VideoMemory|                          ; 9 (0)               ; 4 (0)                     ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory                                                         ; altsyncram                ; work         ;
-;          |altsyncram_m6m1:auto_generated|               ; 9 (0)               ; 4 (4)                     ; 57600             ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated                          ; altsyncram_m6m1           ; work         ;
-;             |decode_01a:rden_decode_b|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_01a:rden_decode_b ; decode_01a                ; work         ;
-;             |decode_7la:decode2|                        ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_7la:decode2       ; decode_7la                ; work         ;
-;             |mux_ifb:mux3|                              ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3             ; mux_ifb                   ; work         ;
-;       |vga_address_translator:user_input_translator|    ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_address_translator:user_input_translator                                   ; vga_address_translator    ; work         ;
-;       |vga_controller:controller|                       ; 42 (32)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller                                                      ; vga_controller            ; work         ;
-;          |vga_address_translator:controller_translator| ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator         ; vga_address_translator    ; work         ;
+;    |vga_adapter:VGA|                                    ; 113 (3)             ; 34 (0)                    ; 691200            ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA                                                                                ; vga_adapter               ; work         ;
+;       |altsyncram:VideoMemory|                          ; 56 (0)              ; 8 (0)                     ; 691200            ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory                                                         ; altsyncram                ; work         ;
+;          |altsyncram_o7m1:auto_generated|               ; 56 (0)              ; 8 (8)                     ; 691200            ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated                          ; altsyncram_o7m1           ; work         ;
+;             |decode_g2a:rden_decode_b|                  ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|decode_g2a:rden_decode_b ; decode_g2a                ; work         ;
+;             |decode_nma:decode2|                        ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|decode_nma:decode2       ; decode_nma                ; work         ;
+;             |mux_8hb:mux3|                              ; 36 (36)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|mux_8hb:mux3             ; mux_8hb                   ; work         ;
+;       |vga_address_translator:user_input_translator|    ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_address_translator:user_input_translator                                   ; vga_address_translator    ; work         ;
+;       |vga_controller:controller|                       ; 43 (32)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller                                                      ; vga_controller            ; work         ;
+;          |vga_address_translator:controller_translator| ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|vga_address_translator:controller_translator         ; vga_address_translator    ; work         ;
 ;       |vga_pll:mypll|                                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll                                                                  ; vga_pll                   ; work         ;
 ;          |altpll:altpll_component|                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component                                          ; altpll                    ; work         ;
 ;             |altpll_80u:auto_generated|                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |BrickBreaker|vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated                ; altpll_80u                ; work         ;
@@ -305,14 +305,14 @@ agreement for further details.
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                  ;
-+---------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-----------+
-; Name                                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF       ;
-+---------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-----------+
-; datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 256          ; 32           ; --           ; --           ; 8192  ; None      ;
-; vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|ALTSYNCRAM                        ; AUTO ; Simple Dual Port ; 19200        ; 3            ; 19200        ; 3            ; 57600 ; black.mif ;
-+---------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-----------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                   ;
++---------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------+
+; Name                                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF       ;
++---------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------+
+; datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port      ; 256          ; 32           ; --           ; --           ; 8192   ; None      ;
+; vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|ALTSYNCRAM                        ; AUTO ; Simple Dual Port ; 76800        ; 9            ; 76800        ; 9            ; 691200 ; black.mif ;
++---------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+-----------+
 
 
 Encoding Type:  One-Hot
@@ -378,26 +378,47 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |BrickBreaker|control:c0|current_state                                                                                                                                                                                                                                                                                                                                                                                        ;
-+---------------------------------+----------------------------+---------------------------+---------------------------------+--------------------------------+-------------------------+-------------------------+--------------------------+--------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+----------------------------+
-; Name                            ; current_state.ACTUAL_ERASE ; current_state.ERASE_BRICK ; current_state.STORE_BLACK_BRICK ; current_state.DETECT_COLLISION ; current_state.DRAW_BALL ; current_state.MOVE_BALL ; current_state.ERASE_BALL ; current_state.WAIT ; current_state.DRAW_PADDLE ; current_state.MOVE_PADDLE ; current_state.ERASE_PADDLE ; current_state.INITIAL_DRAW ; current_state.STORE_INTO_RAM ; current_state.CLEAR_SCREEN ;
-+---------------------------------+----------------------------+---------------------------+---------------------------------+--------------------------------+-------------------------+-------------------------+--------------------------+--------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+----------------------------+
-; current_state.CLEAR_SCREEN      ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 0                          ;
-; current_state.STORE_INTO_RAM    ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ; 1                          ;
-; current_state.INITIAL_DRAW      ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 1                          ; 0                            ; 1                          ;
-; current_state.ERASE_PADDLE      ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 1                          ; 0                          ; 0                            ; 1                          ;
-; current_state.MOVE_PADDLE       ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 1                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.DRAW_PADDLE       ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 1                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.WAIT              ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 1                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.ERASE_BALL        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 1                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.MOVE_BALL         ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 1                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.DRAW_BALL         ; 0                          ; 0                         ; 0                               ; 0                              ; 1                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.DETECT_COLLISION  ; 0                          ; 0                         ; 0                               ; 1                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.STORE_BLACK_BRICK ; 0                          ; 0                         ; 1                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.ERASE_BRICK       ; 0                          ; 1                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-; current_state.ACTUAL_ERASE      ; 1                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
-+---------------------------------+----------------------------+---------------------------+---------------------------------+--------------------------------+-------------------------+-------------------------+--------------------------+--------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+----------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |BrickBreaker|datapath:d0|ball_dir                                                                                                                                                  ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; Name            ; ball_dir.001001 ; ball_dir.001000 ; ball_dir.000111 ; ball_dir.000110 ; ball_dir.000101 ; ball_dir.000100 ; ball_dir.000011 ; ball_dir.000010 ; ball_dir.000001 ; ball_dir.000000 ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; ball_dir.000000 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ;
+; ball_dir.000001 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 1               ;
+; ball_dir.000010 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 1               ;
+; ball_dir.000011 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 1               ;
+; ball_dir.000100 ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 1               ;
+; ball_dir.000101 ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; ball_dir.000110 ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; ball_dir.000111 ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; ball_dir.001000 ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; ball_dir.001001 ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |BrickBreaker|control:c0|current_state                                                                                                                                                                                                                                                                                                                                                                                                                                               ;
++---------------------------------+---------------------------+--------------------------+----------------------------+---------------------------+---------------------------------+--------------------------------+-------------------------+-------------------------+--------------------------+--------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+----------------------------+
+; Name                            ; current_state.SET_POWERUP ; current_state.SOFT_RESET ; current_state.ACTUAL_ERASE ; current_state.ERASE_BRICK ; current_state.STORE_BLACK_BRICK ; current_state.DETECT_COLLISION ; current_state.DRAW_BALL ; current_state.MOVE_BALL ; current_state.ERASE_BALL ; current_state.WAIT ; current_state.DRAW_PADDLE ; current_state.MOVE_PADDLE ; current_state.ERASE_PADDLE ; current_state.INITIAL_DRAW ; current_state.STORE_INTO_RAM ; current_state.CLEAR_SCREEN ;
++---------------------------------+---------------------------+--------------------------+----------------------------+---------------------------+---------------------------------+--------------------------------+-------------------------+-------------------------+--------------------------+--------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+----------------------------+
+; current_state.CLEAR_SCREEN      ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 0                          ;
+; current_state.STORE_INTO_RAM    ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 1                            ; 1                          ;
+; current_state.INITIAL_DRAW      ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 1                          ; 0                            ; 1                          ;
+; current_state.ERASE_PADDLE      ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 1                          ; 0                          ; 0                            ; 1                          ;
+; current_state.MOVE_PADDLE       ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 1                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.DRAW_PADDLE       ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 1                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.WAIT              ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 1                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.ERASE_BALL        ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 1                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.MOVE_BALL         ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 1                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.DRAW_BALL         ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 1                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.DETECT_COLLISION  ; 0                         ; 0                        ; 0                          ; 0                         ; 0                               ; 1                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.STORE_BLACK_BRICK ; 0                         ; 0                        ; 0                          ; 0                         ; 1                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.ERASE_BRICK       ; 0                         ; 0                        ; 0                          ; 1                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.ACTUAL_ERASE      ; 0                         ; 0                        ; 1                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.SOFT_RESET        ; 0                         ; 1                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
+; current_state.SET_POWERUP       ; 1                         ; 0                        ; 0                          ; 0                         ; 0                               ; 0                              ; 0                       ; 0                       ; 0                        ; 0                  ; 0                         ; 0                         ; 0                          ; 0                          ; 0                            ; 1                          ;
++---------------------------------+---------------------------+--------------------------+----------------------------+---------------------------+---------------------------------+--------------------------------+-------------------------+-------------------------+--------------------------+--------------------+---------------------------+---------------------------+----------------------------+----------------------------+------------------------------+----------------------------+
 
 
 +----------------------------------------------------------------------------------------------------+
@@ -405,25 +426,33 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------+---------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
 +-----------------------------------------------------+---------------------+------------------------+
-; datapath:d0|x[7]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[5]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[6]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[3]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[4]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[5]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[6]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|colour[2]                               ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[0]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[1]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[2]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[3]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|x[4]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|colour[1]                               ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|colour[0]                               ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[0]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[1]                                    ; datapath:d0|x[7]    ; yes                    ;
-; datapath:d0|y[2]                                    ; datapath:d0|x[7]    ; yes                    ;
-; Number of user-specified and inferred latches = 18  ;                     ;                        ;
+; datapath:d0|x[8]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[6]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[7]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[4]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[5]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[6]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[7]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[6]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[0]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[1]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[2]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[3]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[4]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|x[5]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[7]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[8]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[3]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[4]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[5]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[0]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[1]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|colour[2]                               ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[0]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[1]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[2]                                    ; datapath:d0|x[8]    ; yes                    ;
+; datapath:d0|y[3]                                    ; datapath:d0|x[8]    ; yes                    ;
+; Number of user-specified and inferred latches = 26  ;                     ;                        ;
 +-----------------------------------------------------+---------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -433,30 +462,41 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
 ; Register name                                                                                                           ; Reason for Removal                                                                                                ;
 +-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
+; control:c0|ball_counter_limit[0,3]                                                                                      ; Stuck at VCC due to stuck port data_in                                                                            ;
+; control:c0|ball_counter_limit[5]                                                                                        ; Stuck at GND due to stuck port data_in                                                                            ;
+; control:c0|ball_counter_limit[7,8,11]                                                                                   ; Stuck at VCC due to stuck port data_in                                                                            ;
+; control:c0|ball_counter_limit[15]                                                                                       ; Stuck at GND due to stuck port data_in                                                                            ;
+; control:c0|ball_counter_limit[17]                                                                                       ; Stuck at VCC due to stuck port data_in                                                                            ;
+; control:c0|ball_counter_limit[19]                                                                                       ; Stuck at GND due to stuck port data_in                                                                            ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[0..7]                                                         ; Lost fanout                                                                                                       ;
-; datapath:d0|info_of_collided_brick[9]                                                                                   ; Merged with datapath:d0|brick_to_clear_y[1]                                                                       ;
-; datapath:d0|info_of_collided_brick[10]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[2]                                                                       ;
-; datapath:d0|info_of_collided_brick[12]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[4]                                                                       ;
-; datapath:d0|info_of_collided_brick[13]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[5]                                                                       ;
-; datapath:d0|info_of_collided_brick[14]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[6]                                                                       ;
-; datapath:d0|info_of_collided_brick[1]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[1]                                                                       ;
-; datapath:d0|info_of_collided_brick[4]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[4]                                                                       ;
+; control:c0|ball_counter_limit[2,4,6,9,10,12..14,16,18]                                                                  ; Merged with control:c0|ball_counter_limit[1]                                                                      ;
+; datapath:d0|info_of_collided_brick[10]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[1]                                                                       ;
+; datapath:d0|info_of_collided_brick[12]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[3]                                                                       ;
+; datapath:d0|info_of_collided_brick[13]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[4]                                                                       ;
+; datapath:d0|info_of_collided_brick[14]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[5]                                                                       ;
+; datapath:d0|info_of_collided_brick[15]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[6]                                                                       ;
+; datapath:d0|info_of_collided_brick[16]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[7]                                                                       ;
+; datapath:d0|info_of_collided_brick[0]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[0]                                                                       ;
 ; datapath:d0|info_of_collided_brick[5]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[5]                                                                       ;
 ; datapath:d0|info_of_collided_brick[6]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[6]                                                                       ;
 ; datapath:d0|info_of_collided_brick[7]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[7]                                                                       ;
+; datapath:d0|info_of_collided_brick[8]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[8]                                                                       ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[4..7]                ; Merged with mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2] ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[1,3]                 ; Merged with mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0] ;
-; datapath:d0|info_of_collided_brick[16,17]                                                                               ; Merged with datapath:d0|info_of_collided_brick[15]                                                                ;
-; datapath:d0|info_of_collided_brick[11]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[3]                                                                       ;
-; datapath:d0|info_of_collided_brick[8]                                                                                   ; Merged with datapath:d0|brick_to_clear_y[0]                                                                       ;
+; datapath:d0|info_of_collided_brick[18..25]                                                                              ; Merged with datapath:d0|info_of_collided_brick[17]                                                                ;
+; datapath:d0|info_of_collided_brick[11]                                                                                  ; Merged with datapath:d0|brick_to_clear_y[2]                                                                       ;
+; datapath:d0|info_of_collided_brick[9]                                                                                   ; Merged with datapath:d0|brick_to_clear_y[0]                                                                       ;
+; datapath:d0|info_of_collided_brick[1]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[1]                                                                       ;
 ; datapath:d0|info_of_collided_brick[2]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[2]                                                                       ;
 ; datapath:d0|info_of_collided_brick[3]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[3]                                                                       ;
-; datapath:d0|info_of_collided_brick[0]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[0]                                                                       ;
+; datapath:d0|info_of_collided_brick[4]                                                                                   ; Merged with datapath:d0|brick_to_clear_x[4]                                                                       ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[0]                   ; Stuck at GND due to stuck port data_in                                                                            ;
-; datapath:d0|info_of_collided_brick[15]                                                                                  ; Stuck at GND due to stuck port data_in                                                                            ;
+; datapath:d0|info_of_collided_brick[17]                                                                                  ; Stuck at GND due to stuck port data_in                                                                            ;
 ; datapath:d0|clear_screen_reg                                                                                            ; Stuck at GND due to stuck port data_in                                                                            ;
-; datapath:d0|clear_y[0..6]                                                                                               ; Lost fanout                                                                                                       ;
-; datapath:d0|clear_x[0..7]                                                                                               ; Lost fanout                                                                                                       ;
+; datapath:d0|clear_x[6..8]                                                                                               ; Lost fanout                                                                                                       ;
+; datapath:d0|clear_y[4..7]                                                                                               ; Lost fanout                                                                                                       ;
+; datapath:d0|clear_x[0..5]                                                                                               ; Lost fanout                                                                                                       ;
+; datapath:d0|clear_y[0..3]                                                                                               ; Lost fanout                                                                                                       ;
 ; mouse_tracker:tester|curr_state~2                                                                                       ; Lost fanout                                                                                                       ;
 ; mouse_tracker:tester|curr_state~3                                                                                       ; Lost fanout                                                                                                       ;
 ; mouse_tracker:tester|curr_state~4                                                                                       ; Lost fanout                                                                                                       ;
@@ -467,6 +507,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|s_ps2_transmitter~4              ; Lost fanout                                                                                                       ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~2                         ; Lost fanout                                                                                                       ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver~3                         ; Lost fanout                                                                                                       ;
+; datapath:d0|ball_dir~12                                                                                                 ; Lost fanout                                                                                                       ;
+; datapath:d0|ball_dir~13                                                                                                 ; Lost fanout                                                                                                       ;
+; datapath:d0|ball_dir~14                                                                                                 ; Lost fanout                                                                                                       ;
+; datapath:d0|ball_dir~15                                                                                                 ; Lost fanout                                                                                                       ;
+; datapath:d0|ball_dir~16                                                                                                 ; Lost fanout                                                                                                       ;
+; datapath:d0|ball_dir~17                                                                                                 ; Lost fanout                                                                                                       ;
 ; control:c0|current_state~2                                                                                              ; Lost fanout                                                                                                       ;
 ; control:c0|current_state~3                                                                                              ; Lost fanout                                                                                                       ;
 ; control:c0|current_state~4                                                                                              ; Lost fanout                                                                                                       ;
@@ -475,7 +521,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_4_END_DELAYED                                  ; Stuck at GND due to stuck port data_in                                                                            ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|s_ps2_transceiver.PS2_STATE_3_END_TRANSFER                                 ; Stuck at GND due to stuck port data_in                                                                            ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|s_ps2_receiver.PS2_STATE_1_WAIT_FOR_DATA ; Stuck at GND due to stuck port data_in                                                                            ;
-; Total Number of Removed Registers = 67                                                                                  ;                                                                                                                   ;
+; datapath:d0|lives_remaining[3]                                                                                          ; Stuck at GND due to stuck port data_in                                                                            ;
+; Total Number of Removed Registers = 103                                                                                 ;                                                                                                                   ;
 +-------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+
 
 
@@ -484,9 +531,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------+
 ; Register name                                                                          ; Reason for Removal        ; Registers Removed due to This Register                                                                                  ;
 +----------------------------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------+
-; datapath:d0|clear_screen_reg                                                           ; Stuck at GND              ; datapath:d0|clear_x[7], datapath:d0|clear_x[6], datapath:d0|clear_x[0],                                                 ;
-;                                                                                        ; due to stuck port data_in ; datapath:d0|clear_x[1], datapath:d0|clear_x[2], datapath:d0|clear_x[3],                                                 ;
-;                                                                                        ;                           ; datapath:d0|clear_x[4]                                                                                                  ;
+; datapath:d0|clear_screen_reg                                                           ; Stuck at GND              ; datapath:d0|clear_x[8], datapath:d0|clear_x[6], datapath:d0|clear_x[7],                                                 ;
+;                                                                                        ; due to stuck port data_in ; datapath:d0|clear_x[0], datapath:d0|clear_x[1], datapath:d0|clear_x[2],                                                 ;
+;                                                                                        ;                           ; datapath:d0|clear_x[3], datapath:d0|clear_x[4], datapath:d0|clear_x[5]                                                  ;
+; datapath:d0|clear_y[7]                                                                 ; Lost Fanouts              ; datapath:d0|clear_y[6], datapath:d0|clear_y[4], datapath:d0|clear_y[5],                                                 ;
+;                                                                                        ;                           ; datapath:d0|clear_y[3], datapath:d0|clear_y[2], datapath:d0|clear_y[1],                                                 ;
+;                                                                                        ;                           ; datapath:d0|clear_y[0]                                                                                                  ;
 ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[3]                           ; Lost Fanouts              ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[4],                                                           ;
 ;                                                                                        ;                           ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[5],                                                           ;
 ;                                                                                        ;                           ; mouse_tracker:tester|PS2_Controller:tracker2|idle_counter[6],                                                           ;
@@ -501,12 +551,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 384   ;
-; Number of registers using Synchronous Clear  ; 267   ;
-; Number of registers using Synchronous Load   ; 30    ;
+; Total registers                              ; 490   ;
+; Number of registers using Synchronous Clear  ; 333   ;
+; Number of registers using Synchronous Load   ; 26    ;
 ; Number of registers using Asynchronous Clear ; 20    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 193   ;
+; Number of registers using Clock Enable       ; 285   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -516,56 +566,69 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[2]              ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data[3]                    ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |BrickBreaker|control:c0|clear_counter[10]                                                                                       ;
-; 3:1                ; 12 bits   ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |BrickBreaker|control:c0|draw_all_counter[5]                                                                                     ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|storage_counter[0]                                                                                      ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|brick_counter[3]                                                                                        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[6]                   ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|control:c0|ram_counter[7]                                                                                          ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|control:c0|timer[9]                                                                                                ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|paddle_counter[0]                                                                                       ;
-; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|control:c0|ball_timer[17]                                                                                          ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_counter[2]                                                                                         ;
-; 3:1                ; 27 bits   ; 54 LEs        ; 0 LEs                ; 54 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|brick_to_clear_x[0]                                                                                    ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|yCounter[2]                                                              ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte1[0]                                                                                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte2[5]                                                                                      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|ps2_command[8]              ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|received_data[0]                    ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |BrickBreaker|control:c0|clear_counter[13]                                                                                       ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 0 LEs                ; 28 LEs                 ; Yes        ; |BrickBreaker|control:c0|draw_all_counter[8]                                                                                     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|storage_counter[1]                                                                                      ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |BrickBreaker|control:c0|brick_counter[6]                                                                                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_shift_reg[3]                   ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|paddle_x[4]                                                                                            ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ram_counter[3]                                                                                          ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|control:c0|timer[14]                                                                                               ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |BrickBreaker|control:c0|paddle_counter[5]                                                                                       ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_counter[0]                                                                                         ;
+; 3:1                ; 29 bits   ; 58 LEs        ; 0 LEs                ; 58 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|brick_to_clear_y[0]                                                                                    ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |BrickBreaker|vga_adapter:VGA|vga_controller:controller|yCounter[6]                                                              ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte1[6]                                                                                      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|byte2[6]                                                                                      ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|left_click                                                                                    ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|bricks_hit[0]                                                                                          ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|frame_counter[2]                                                                                        ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_frame_counter[3]                                                                                   ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_counter[5]                                                                                        ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|clear_x[6]                                                                                             ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_ball_counter[1]                                                                                   ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|clear_y[5]                                                                                             ;
-; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[4] ;
-; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[11]         ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[3]                  ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[3]                       ;
-; 4:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[2]         ;
-; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|x_pos[1]                                                                                      ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|score[2]                                                                                               ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[6]                                                                                              ;
-; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[5]                                                                                              ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[9]                                                                                            ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_y[4]                                                                                              ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_y[1]                                                                                              ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[2]                                                                                            ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[13]                                                                                           ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[4]                                                                                            ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[17]                                                                                           ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[19]                                                                                           ;
-; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ram_address[6]                                                                                         ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3|result_node[1]                  ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[4]                                                                                                   ;
-; 7:1                ; 10 bits   ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|x[7]                                                                                                   ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|bricks_hit[1]                                                                                          ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |BrickBreaker|control:c0|autopilot_counter[16]                                                                                   ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|frame_counter[0]                                                                                        ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|control:c0|ball_frame_counter[0]                                                                                   ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 26 LEs               ; 26 LEs                 ; Yes        ; |BrickBreaker|control:c0|double_speed_counter[0]                                                                                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|draw_counter[5]                                                                                        ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|control:c0|ball_timer[5]                                                                                           ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|draw_ball_counter[4]                                                                                   ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|clear_x[1]                                                                                             ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|clear_y[0]                                                                                             ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|command_initiate_counter[5] ;
+; 4:1                ; 20 bits   ; 40 LEs        ; 0 LEs                ; 40 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|waiting_counter[7]          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|cur_bit[1]                  ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Data_In:PS2_Data_In|data_count[1]                       ;
+; 4:1                ; 17 bits   ; 34 LEs        ; 0 LEs                ; 34 LEs                 ; Yes        ; |BrickBreaker|mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out|transfer_counter[14]        ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 18 LEs               ; 9 LEs                  ; Yes        ; |BrickBreaker|mouse_tracker:tester|x_pos[3]                                                                                      ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|score[7]                                                                                               ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|last_score[4]                                                                                          ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|lives_remaining[0]                                                                                     ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|num_powerups[2]                                                                                        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[10]                                                                                           ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[0]                                                                                            ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[16]                                                                                           ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[8]                                                                                            ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 24 LEs               ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[17]                                                                                           ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[25]                                                                                           ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ram_info[26]                                                                                           ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ram_address[4]                                                                                         ;
+; 11:1               ; 5 bits    ; 35 LEs        ; 25 LEs               ; 10 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ball_x[7]                                                                                              ;
+; 11:1               ; 3 bits    ; 21 LEs        ; 15 LEs               ; 6 LEs                  ; Yes        ; |BrickBreaker|datapath:d0|ball_x[8]                                                                                              ;
+; 21:1               ; 5 bits    ; 70 LEs        ; 30 LEs               ; 40 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ball_y[1]                                                                                              ;
+; 21:1               ; 3 bits    ; 42 LEs        ; 18 LEs               ; 24 LEs                 ; Yes        ; |BrickBreaker|datapath:d0|ball_y[6]                                                                                              ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; No         ; |BrickBreaker|datapath:d0|x[5]                                                                                                   ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|colour[2]                                                                                              ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|Add9                                                                                                   ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|Add9                                                                                                   ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 21 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|Add9                                                                                                   ;
+; 9:1                ; 9 bits    ; 54 LEs        ; 54 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|mux_8hb:mux3|l4_w5_n0_mux_dataout            ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[7]                                                                                                   ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |BrickBreaker|datapath:d0|y[0]                                                                                                   ;
+; 64:1               ; 8 bits    ; 336 LEs       ; 320 LEs              ; 16 LEs                 ; No         ; |BrickBreaker|datapath:d0|ball_dir                                                                                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------+
-; Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated ;
+; Source assignments for vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------+
 ; Assignment                      ; Value              ; From ; To                             ;
 +---------------------------------+--------------------+------+--------------------------------+
@@ -587,9 +650,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-------------------------+-----------+------------------------+
 ; Parameter Name          ; Value     ; Type                   ;
 +-------------------------+-----------+------------------------+
-; BITS_PER_COLOUR_CHANNEL ; 1         ; Signed Integer         ;
+; BITS_PER_COLOUR_CHANNEL ; 3         ; Signed Integer         ;
 ; MONOCHROME              ; FALSE     ; String                 ;
-; RESOLUTION              ; 160x120   ; String                 ;
+; RESOLUTION              ; 320x240   ; String                 ;
 ; BACKGROUND_IMAGE        ; black.mif ; String                 ;
 +-------------------------+-----------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -600,7 +663,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+---------+--------------------------------------------------------------------------------+
 ; Parameter Name ; Value   ; Type                                                                           ;
 +----------------+---------+--------------------------------------------------------------------------------+
-; RESOLUTION     ; 160x120 ; String                                                                         ;
+; RESOLUTION     ; 320x240 ; String                                                                         ;
 +----------------+---------+--------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -617,18 +680,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE          ;
 ; WIDTH_BYTEENA                      ; 1                    ; Untyped                 ;
 ; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                 ;
-; WIDTH_A                            ; 3                    ; Signed Integer          ;
-; WIDTHAD_A                          ; 15                   ; Signed Integer          ;
-; NUMWORDS_A                         ; 19200                ; Signed Integer          ;
+; WIDTH_A                            ; 9                    ; Signed Integer          ;
+; WIDTHAD_A                          ; 17                   ; Signed Integer          ;
+; NUMWORDS_A                         ; 76800                ; Signed Integer          ;
 ; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                 ;
 ; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                 ;
 ; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                 ;
 ; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                 ;
 ; INDATA_ACLR_A                      ; NONE                 ; Untyped                 ;
 ; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                 ;
-; WIDTH_B                            ; 3                    ; Signed Integer          ;
-; WIDTHAD_B                          ; 15                   ; Signed Integer          ;
-; NUMWORDS_B                         ; 19200                ; Signed Integer          ;
+; WIDTH_B                            ; 9                    ; Signed Integer          ;
+; WIDTHAD_B                          ; 17                   ; Signed Integer          ;
+; NUMWORDS_B                         ; 76800                ; Signed Integer          ;
 ; INDATA_REG_B                       ; CLOCK1               ; Untyped                 ;
 ; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                 ;
 ; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                 ;
@@ -661,7 +724,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                 ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                 ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                 ;
-; CBXI_PARAMETER                     ; altsyncram_m6m1      ; Untyped                 ;
+; CBXI_PARAMETER                     ; altsyncram_o7m1      ; Untyped                 ;
 +------------------------------------+----------------------+-------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1045,9 +1108,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------+------------+-------------------------------------------------+
 ; Parameter Name          ; Value      ; Type                                            ;
 +-------------------------+------------+-------------------------------------------------+
-; BITS_PER_COLOUR_CHANNEL ; 1          ; Signed Integer                                  ;
+; BITS_PER_COLOUR_CHANNEL ; 3          ; Signed Integer                                  ;
 ; MONOCHROME              ; FALSE      ; String                                          ;
-; RESOLUTION              ; 160x120    ; String                                          ;
+; RESOLUTION              ; 320x240    ; String                                          ;
 ; C_VERT_NUM_PIXELS       ; 0111100000 ; Unsigned Binary                                 ;
 ; C_VERT_SYNC_START       ; 0111101101 ; Unsigned Binary                                 ;
 ; C_VERT_SYNC_END         ; 0111101110 ; Unsigned Binary                                 ;
@@ -1065,7 +1128,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+---------+----------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value   ; Type                                                                                                     ;
 +----------------+---------+----------------------------------------------------------------------------------------------------------+
-; RESOLUTION     ; 160x120 ; String                                                                                                   ;
+; RESOLUTION     ; 320x240 ; String                                                                                                   ;
 +----------------+---------+----------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -1138,8 +1201,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-----------+--------------------------------------+
 ; XMIN           ; 000000000 ; Unsigned Binary                      ;
 ; YMIN           ; 000000000 ; Unsigned Binary                      ;
-; XMAX           ; 010011111 ; Unsigned Binary                      ;
-; YMAX           ; 001110111 ; Unsigned Binary                      ;
+; XMAX           ; 100111111 ; Unsigned Binary                      ;
+; YMAX           ; 011101111 ; Unsigned Binary                      ;
 ; XSTART         ; 001001111 ; Unsigned Binary                      ;
 ; YSTART         ; 000111011 ; Unsigned Binary                      ;
 +----------------+-----------+--------------------------------------+
@@ -1190,11 +1253,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Number of entity instances                ; 2                                                             ;
 ; Entity Instance                           ; vga_adapter:VGA|altsyncram:VideoMemory                        ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT                                                     ;
-;     -- WIDTH_A                            ; 3                                                             ;
-;     -- NUMWORDS_A                         ; 19200                                                         ;
+;     -- WIDTH_A                            ; 9                                                             ;
+;     -- NUMWORDS_A                         ; 76800                                                         ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                  ;
-;     -- WIDTH_B                            ; 3                                                             ;
-;     -- NUMWORDS_B                         ; 19200                                                         ;
+;     -- WIDTH_B                            ; 9                                                             ;
+;     -- NUMWORDS_B                         ; 76800                                                         ;
 ;     -- ADDRESS_REG_B                      ; CLOCK1                                                        ;
 ;     -- OUTDATA_REG_B                      ; CLOCK1                                                        ;
 ;     -- RAM_BLOCK_TYPE                     ; AUTO                                                          ;
@@ -1267,28 +1330,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type   ; Severity ; Details                                                                                                                                          ;
 +------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; data ; Input  ; Warning  ; Input port expression (20 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "data[31..20]" will be connected to GND. ;
-; q    ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (20 bits) it drives; bit(s) "q[31..20]" have no fanouts                         ;
+; data ; Input  ; Warning  ; Input port expression (28 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "data[31..28]" will be connected to GND. ;
+; q    ; Output ; Warning  ; Output or bidir port (32 bits) is wider than the port expression (28 bits) it drives; bit(s) "q[31..28]" have no fanouts                         ;
 +------+--------+----------+--------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "datapath:d0"                                                                                                                                                                          ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type  ; Severity ; Details                                                                                                                                                                          ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; mouse_x_in ; Input ; Warning  ; Input port expression (9 bits) is wider than the input port (8 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control:c0"                                                                                                                                                                            ;
-+------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port       ; Type   ; Severity ; Details                                                                                                                                                                          ;
-+------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; display    ; Output ; Info     ; Explicitly unconnected                                                                                                                                                           ;
-; mouse_x_in ; Input  ; Warning  ; Input port expression (9 bits) is wider than the input port (8 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -1296,44 +1340,46 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 384                         ;
+; arriav_ff             ; 490                         ;
 ;     CLR SCLR          ; 10                          ;
-;     ENA               ; 49                          ;
+;     ENA               ; 71                          ;
 ;     ENA CLR SCLR      ; 10                          ;
-;     ENA SCLR          ; 117                         ;
-;     ENA SCLR SLD      ; 8                           ;
-;     ENA SLD           ; 9                           ;
-;     SCLR              ; 111                         ;
-;     SCLR SLD          ; 11                          ;
-;     SLD               ; 2                           ;
-;     plain             ; 57                          ;
+;     ENA SCLR          ; 179                         ;
+;     ENA SCLR SLD      ; 7                           ;
+;     ENA SLD           ; 18                          ;
+;     SCLR              ; 126                         ;
+;     SCLR SLD          ; 1                           ;
+;     plain             ; 68                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 821                         ;
-;     arith             ; 317                         ;
-;         0 data inputs ; 3                           ;
-;         1 data inputs ; 276                         ;
-;         2 data inputs ; 38                          ;
-;     extend            ; 4                           ;
-;         7 data inputs ; 4                           ;
-;     normal            ; 453                         ;
+; arriav_lcell_comb     ; 1649                        ;
+;     arith             ; 530                         ;
+;         0 data inputs ; 22                          ;
+;         1 data inputs ; 445                         ;
+;         2 data inputs ; 39                          ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 4                           ;
+;         5 data inputs ; 7                           ;
+;     extend            ; 5                           ;
+;         7 data inputs ; 5                           ;
+;     normal            ; 958                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 53                          ;
-;         3 data inputs ; 64                          ;
-;         4 data inputs ; 117                         ;
-;         5 data inputs ; 103                         ;
-;         6 data inputs ; 108                         ;
-;     shared            ; 47                          ;
-;         0 data inputs ; 6                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 35                          ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 151                         ;
+;         3 data inputs ; 122                         ;
+;         4 data inputs ; 180                         ;
+;         5 data inputs ; 194                         ;
+;         6 data inputs ; 302                         ;
+;     shared            ; 156                         ;
+;         0 data inputs ; 20                          ;
+;         1 data inputs ; 13                          ;
+;         2 data inputs ; 121                         ;
 ;         3 data inputs ; 2                           ;
-; boundary_port         ; 87                          ;
+; boundary_port         ; 94                          ;
 ; generic_pll           ; 1                           ;
-; stratixv_ram_block    ; 29                          ;
+; stratixv_ram_block    ; 118                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.50                        ;
-; Average LUT depth     ; 3.03                        ;
+; Max LUT depth         ; 10.60                       ;
+; Average LUT depth     ; 5.05                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1342,7 +1388,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -1352,14 +1398,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Nov 25 17:21:35 2018
+    Info: Processing started: Sun Dec 02 20:43:58 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off brickbreaker -c brickbreaker
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file ram256x32.v
     Info (12023): Found entity 1: ram256x32 File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x32.v Line: 40
-Info (12021): Found 1 design units, including 1 entities, in source file ram256x18.v
-    Info (12023): Found entity 1: ram256x18 File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x18.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter/vga_pll.v
     Info (12023): Found entity 1: vga_pll File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_pll.v Line: 36
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter/vga_controller.v
@@ -1368,10 +1412,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_ada
     Info (12023): Found entity 1: vga_address_translator File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_address_translator.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter/vga_adapter.v
     Info (12023): Found entity 1: vga_adapter File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 78
-Info (12021): Found 3 design units, including 3 entities, in source file ps2mousekeyboard/ps2_keyboard_controller.v
-    Info (12023): Found entity 1: keyboard_tracker File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Keyboard_Controller.v Line: 117
-    Info (12023): Found entity 2: keyboard_interface_test_mode0 File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Keyboard_Controller.v Line: 333
-    Info (12023): Found entity 3: keyboard_interface_test_mode1 File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Keyboard_Controller.v Line: 367
 Info (12021): Found 1 design units, including 1 entities, in source file ps2mousekeyboard/ps2_controller.v
     Info (12023): Found entity 1: PS2_Controller File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file ps2mousekeyboard/altera_up_ps2_data_in.v
@@ -1384,24 +1424,23 @@ Info (12021): Found 3 design units, including 3 entities, in source file ps2mous
     Info (12023): Found entity 3: hex_decoder File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Mouse_Controller.v Line: 374
 Info (12021): Found 3 design units, including 3 entities, in source file brickbreaker.v
     Info (12023): Found entity 1: BrickBreaker File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1
-    Info (12023): Found entity 2: control File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 215
-    Info (12023): Found entity 3: datapath File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 600
+    Info (12023): Found entity 2: control File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 194
+    Info (12023): Found entity 3: datapath File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 654
 Info (12127): Elaborating entity "BrickBreaker" for the top level hierarchy
-Warning (10034): Output port "HEX3" at brickbreaker.v(20) has no driver File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-Warning (10034): Output port "LEDR[2]" at brickbreaker.v(21) has no driver File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
+Warning (10034): Output port "LEDR[5..2]" at brickbreaker.v(21) has no driver File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
 Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 58
 Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA|vga_address_translator:user_input_translator" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 192
 Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 213
 Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|altsyncram:VideoMemory" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 213
 Info (12133): Instantiated megafunction "vga_adapter:VGA|altsyncram:VideoMemory" with the following parameter: File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 213
-    Info (12134): Parameter "WIDTH_A" = "3"
-    Info (12134): Parameter "WIDTH_B" = "3"
+    Info (12134): Parameter "WIDTH_A" = "9"
+    Info (12134): Parameter "WIDTH_B" = "9"
     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "Cyclone II"
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
-    Info (12134): Parameter "WIDTHAD_A" = "15"
-    Info (12134): Parameter "NUMWORDS_A" = "19200"
-    Info (12134): Parameter "WIDTHAD_B" = "15"
-    Info (12134): Parameter "NUMWORDS_B" = "19200"
+    Info (12134): Parameter "WIDTHAD_A" = "17"
+    Info (12134): Parameter "NUMWORDS_A" = "76800"
+    Info (12134): Parameter "WIDTHAD_B" = "17"
+    Info (12134): Parameter "NUMWORDS_B" = "76800"
     Info (12134): Parameter "OUTDATA_REG_B" = "CLOCK1"
     Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
     Info (12134): Parameter "CLOCK_ENABLE_INPUT_A" = "BYPASS"
@@ -1409,18 +1448,18 @@ Info (12133): Instantiated megafunction "vga_adapter:VGA|altsyncram:VideoMemory"
     Info (12134): Parameter "CLOCK_ENABLE_OUTPUT_B" = "BYPASS"
     Info (12134): Parameter "POWER_UP_UNINITIALIZED" = "FALSE"
     Info (12134): Parameter "INIT_FILE" = "black.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_m6m1.tdf
-    Info (12023): Found entity 1: altsyncram_m6m1 File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_m6m1.tdf Line: 34
-Info (12128): Elaborating entity "altsyncram_m6m1" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12021): Found 1 design units, including 1 entities, in source file db/decode_7la.tdf
-    Info (12023): Found entity 1: decode_7la File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_7la.tdf Line: 23
-Info (12128): Elaborating entity "decode_7la" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_7la:decode2" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_m6m1.tdf Line: 47
-Info (12021): Found 1 design units, including 1 entities, in source file db/decode_01a.tdf
-    Info (12023): Found entity 1: decode_01a File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_01a.tdf Line: 23
-Info (12128): Elaborating entity "decode_01a" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|decode_01a:rden_decode_b" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_m6m1.tdf Line: 48
-Info (12021): Found 1 design units, including 1 entities, in source file db/mux_ifb.tdf
-    Info (12023): Found entity 1: mux_ifb File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/mux_ifb.tdf Line: 23
-Info (12128): Elaborating entity "mux_ifb" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_m6m1:auto_generated|mux_ifb:mux3" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_m6m1.tdf Line: 50
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_o7m1.tdf
+    Info (12023): Found entity 1: altsyncram_o7m1 File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_o7m1.tdf Line: 34
+Info (12128): Elaborating entity "altsyncram_o7m1" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_nma.tdf
+    Info (12023): Found entity 1: decode_nma File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_nma.tdf Line: 23
+Info (12128): Elaborating entity "decode_nma" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|decode_nma:decode2" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_o7m1.tdf Line: 47
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_g2a.tdf
+    Info (12023): Found entity 1: decode_g2a File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/decode_g2a.tdf Line: 23
+Info (12128): Elaborating entity "decode_g2a" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|decode_g2a:rden_decode_b" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_o7m1.tdf Line: 48
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_8hb.tdf
+    Info (12023): Found entity 1: mux_8hb File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/mux_8hb.tdf Line: 23
+Info (12128): Elaborating entity "mux_8hb" for hierarchy "vga_adapter:VGA|altsyncram:VideoMemory|altsyncram_o7m1:auto_generated|mux_8hb:mux3" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_o7m1.tdf Line: 50
 Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VGA|vga_pll:mypll" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 231
 Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_pll.v Line: 53
 Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_pll.v Line: 53
@@ -1440,41 +1479,61 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/altp
     Info (12023): Found entity 1: altpll_80u File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altpll_80u.tdf Line: 26
 Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VGA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA|vga_controller:controller" File: C:/Users/Jeffrey/Documents/University/CSC258/project/vga_adapter/vga_adapter.v Line: 252
-Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 92
-Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(242): object "mouse_prev" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 242
-Warning (10270): Verilog HDL Case Statement warning at brickbreaker.v(395): incomplete case statement has no default case item File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 395
-Info (10264): Verilog HDL Case Statement information at brickbreaker.v(395): all case item expressions in this case statement are onehot File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 395
-Warning (10034): Output port "display" at brickbreaker.v(222) has no driver File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 222
-Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 119
-Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(643): object "mouse_prev" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 643
-Warning (10230): Verilog HDL assignment warning at brickbreaker.v(854): truncated value with size 32 to match size of target (8) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 854
-Warning (10230): Verilog HDL assignment warning at brickbreaker.v(855): truncated value with size 32 to match size of target (7) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 855
-Warning (10230): Verilog HDL assignment warning at brickbreaker.v(860): truncated value with size 32 to match size of target (8) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 860
-Warning (10230): Verilog HDL assignment warning at brickbreaker.v(861): truncated value with size 32 to match size of target (7) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 861
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(821): inferring latch(es) for variable "x", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 821
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(821): inferring latch(es) for variable "y", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 821
-Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(821): inferring latch(es) for variable "colour", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 821
-Warning (10230): Verilog HDL assignment warning at brickbreaker.v(931): truncated value with size 7 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 931
-Warning (10230): Verilog HDL assignment warning at brickbreaker.v(936): truncated value with size 8 to match size of target (7) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 936
-Info (10041): Inferred latch for "colour[0]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "colour[1]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "colour[2]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[0]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[1]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[2]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[3]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[4]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[5]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "y[6]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[0]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[1]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[2]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[3]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[4]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[5]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[6]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (10041): Inferred latch for "x[7]" at brickbreaker.v(828) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-Info (12128): Elaborating entity "ram256x32" for hierarchy "datapath:d0|ram256x32:storage" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 662
+Info (12128): Elaborating entity "control" for hierarchy "control:c0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 100
+Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(227): object "mouse_prev" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
+Warning (10270): Verilog HDL Case Statement warning at brickbreaker.v(417): incomplete case statement has no default case item File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 417
+Info (10264): Verilog HDL Case Statement information at brickbreaker.v(417): all case item expressions in this case statement are onehot File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 417
+Info (12128): Elaborating entity "datapath" for hierarchy "datapath:d0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 134
+Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(708): object "ball_x_dir" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 708
+Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(708): object "ball_y_dir" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 708
+Warning (10036): Verilog HDL or VHDL warning at brickbreaker.v(711): object "mouse_prev" assigned a value but never read File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 711
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(921): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 921
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(922): truncated value with size 32 to match size of target (8) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 922
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(927): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 927
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(928): truncated value with size 32 to match size of target (8) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 928
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(885): inferring latch(es) for variable "x", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 885
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(885): inferring latch(es) for variable "y", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 885
+Warning (10240): Verilog HDL Always Construct warning at brickbreaker.v(885): inferring latch(es) for variable "colour", which holds its previous value in one or more paths through the always construct File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 885
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(945): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 945
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(971): truncated value with size 32 to match size of target (4) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 971
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(974): truncated value with size 32 to match size of target (4) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 974
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1037): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1037
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1042): truncated value with size 7 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1042
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1060): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1060
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1163): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1163
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1224): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1224
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1227): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1227
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1245): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1245
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1309): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1309
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1328): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1328
+Warning (10230): Verilog HDL assignment warning at brickbreaker.v(1331): truncated value with size 32 to match size of target (9) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 1331
+Info (10041): Inferred latch for "colour[0]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[1]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[2]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[3]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[4]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[5]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[6]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[7]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "colour[8]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[0]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[1]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[2]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[3]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[4]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[5]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[6]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "y[7]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[0]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[1]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[2]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[3]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[4]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[5]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[6]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[7]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (10041): Inferred latch for "x[8]" at brickbreaker.v(895) File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+Info (12128): Elaborating entity "ram256x32" for hierarchy "datapath:d0|ram256x32:storage" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 734
 Info (12128): Elaborating entity "altsyncram" for hierarchy "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component" File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x32.v Line: 86
 Info (12130): Elaborated megafunction instantiation "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component" File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x32.v Line: 86
 Info (12133): Instantiated megafunction "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Jeffrey/Documents/University/CSC258/project/ram256x32.v Line: 86
@@ -1495,8 +1554,8 @@ Info (12133): Instantiated megafunction "datapath:d0|ram256x32:storage|altsyncra
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_4dm1.tdf
     Info (12023): Found entity 1: altsyncram_4dm1 File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_4dm1" for hierarchy "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "hex_decoder" for hierarchy "hex_decoder:hex0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 148
-Info (12128): Elaborating entity "mouse_tracker" for hierarchy "mouse_tracker:tester" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 196
+Info (12128): Elaborating entity "hex_decoder" for hierarchy "hex_decoder:hex0" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 146
+Info (12128): Elaborating entity "mouse_tracker" for hierarchy "mouse_tracker:tester" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 183
 Info (12128): Elaborating entity "PS2_Controller" for hierarchy "mouse_tracker:tester|PS2_Controller:tracker2" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Mouse_Controller.v Line: 165
 Warning (10230): Verilog HDL assignment warning at PS2_Controller.v(64): truncated value with size 32 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 64
 Warning (10230): Verilog HDL assignment warning at PS2_Controller.v(65): truncated value with size 32 to match size of target (1) File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 65
@@ -1504,70 +1563,59 @@ Info (12128): Elaborating entity "Altera_UP_PS2_Data_In" for hierarchy "mouse_tr
 Info (12128): Elaborating entity "Altera_UP_PS2_Command_Out" for hierarchy "mouse_tracker:tester|PS2_Controller:tracker2|Altera_UP_PS2_Command_Out:PS2_Command_Out" File: C:/Users/Jeffrey/Documents/University/CSC258/project/PS2MouseKeyboard/PS2_Controller.v Line: 266
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[20]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 477
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[21]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 499
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[22]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 521
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[23]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 543
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[24]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 565
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[25]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 587
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[26]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 609
-        Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[27]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 631
         Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[28]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 653
         Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[29]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 675
         Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[30]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 697
         Warning (14320): Synthesized away node "datapath:d0|ram256x32:storage|altsyncram:altsyncram_component|altsyncram_4dm1:auto_generated|q_a[31]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/db/altsyncram_4dm1.tdf Line: 719
-Warning (12241): 5 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13012): Latch datapath:d0|x[7] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|x[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|x[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|y[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|y[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|y[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|y[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|colour[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|x[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|x[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|x[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|x[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|x[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|colour[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|colour[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 240
-Warning (13012): Latch datapath:d0|y[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|y[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
-Warning (13012): Latch datapath:d0|y[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 828
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 227
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch datapath:d0|y[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|y[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|y[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|y[7] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[6] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[7] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[8] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[4] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[5] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|colour[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|current_state.INITIAL_DRAW File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 225
+Warning (13012): Latch datapath:d0|y[0] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 209
+Warning (13012): Latch datapath:d0|y[1] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 209
+Warning (13012): Latch datapath:d0|y[2] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 209
+Warning (13012): Latch datapath:d0|y[3] has unsafe behavior File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 895
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal control:c0|draw_paddle File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 209
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
     Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
     Warning (13410): Pin "HEX2[6]" is stuck at VCC File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[0]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[1]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[2]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[3]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[4]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[5]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
-    Warning (13410): Pin "HEX3[6]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 20
     Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 21
     Warning (13410): Pin "VGA_SYNC_N" is stuck at VCC File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 27
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 28
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 29
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 30
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 37 registers lost all their fanouts during netlist optimizations.
+Info (17049): 45 registers lost all their fanouts during netlist optimizations.
 Warning (20013): Ignored 385 assignments for entity "DE1_SoC" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_CS_N -entity DE1_SoC was ignored
     Warning (20014): Assignment for entity set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to ADC_DIN -entity DE1_SoC was ignored
@@ -1963,18 +2011,18 @@ Warning (21074): Design contains 3 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 19
     Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 19
     Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/Jeffrey/Documents/University/CSC258/project/brickbreaker.v Line: 19
-Info (21057): Implemented 1010 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1941 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
-    Info (21059): Implemented 80 output pins
+    Info (21059): Implemented 87 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 893 logic cells
-    Info (21064): Implemented 29 RAM segments
+    Info (21061): Implemented 1728 logic cells
+    Info (21064): Implemented 118 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 473 warnings
-    Info: Peak virtual memory: 4875 megabytes
-    Info: Processing ended: Sun Nov 25 17:21:48 2018
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Peak virtual memory: 4893 megabytes
+    Info: Processing ended: Sun Dec 02 20:44:15 2018
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:29
 
 
 +------------------------------------------+

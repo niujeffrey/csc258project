@@ -76,6 +76,34 @@
 					"strict" : false
 				},
 				{
+					"name" : "HEX3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX3[6]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX4[0]",
 					"strict" : false
 				},
@@ -140,6 +168,22 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[7]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[8]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[9]",
+					"strict" : false
+				},
+				{
 					"name" : "VGA_HS",
 					"strict" : false
 				},
@@ -149,10 +193,6 @@
 				},
 				{
 					"name" : "VGA_BLANK_N",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_R[0]",
 					"strict" : false
 				},
 				{
@@ -192,10 +232,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "VGA_G[0]",
-					"strict" : false
-				},
-				{
 					"name" : "VGA_G[1]",
 					"strict" : false
 				},
@@ -229,10 +265,6 @@
 				},
 				{
 					"name" : "VGA_G[9]",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_B[0]",
 					"strict" : false
 				},
 				{
